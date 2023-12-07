@@ -5,9 +5,9 @@ VisualStudioVersion = 17.8.34205.153
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CvBlog.Web", "CvBlog.Web\CvBlog.Web.csproj", "{EB2F1E50-98E1-4EF0-BDCE-45CDF88D933C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CvBlog.DataAccess", "CvBlog.DataAccess\CvBlog.DataAccess.csproj", "{AFE2BA69-2B0B-4404-807D-842291F01AA2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CvBlog.Data", "CvBlog.DataAccess\CvBlog.Data.csproj", "{AFE2BA69-2B0B-4404-807D-842291F01AA2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CvBlog.Business", "CvBlog.Business\CvBlog.Business.csproj", "{C4DE1781-9536-481B-B04D-3D5CB8CE8E2F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CvBlog.Services", "CvBlog.Business\CvBlog.Services.csproj", "{C4DE1781-9536-481B-B04D-3D5CB8CE8E2F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CvBlog.Entities", "CvBlog.Entities\CvBlog.Entities.csproj", "{14291AB4-7B25-48D2-98C9-161AE4D7807E}"
 EndProject
