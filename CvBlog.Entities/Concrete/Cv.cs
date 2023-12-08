@@ -10,10 +10,15 @@ namespace CvBlog.Entities.Concrete
     // ÖZGEÇMİŞ
     public class Cv : EntityBase,IEntity
     {
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public DateTime DateOfBirth { get; set; }
+        public string Address { get; set; }
+        public string Email { get; set; }
+        public string Phone { get; set; }
+        public bool IsFreelance { get; set; }
         public string Description { get; set; }
         public string HeaderImage { get; set; }
-        public int UserId { get; set; }
-        public User User { get; set; }
         public ICollection<Customer> Customers { get; set; }
         public ICollection<Education> Educations { get; set; }
         public ICollection<Experience> Experiences { get; set; }

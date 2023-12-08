@@ -30,7 +30,7 @@ namespace CvBlog.Data.Concrete.EntityFramework.Mappings
             builder.Property(u => u.Description).HasMaxLength(500);
             builder.Property(u => u.Picture).IsRequired();
             builder.Property(u => u.Picture).HasMaxLength(250);
-            builder.HasOne<Cv>(u => u.Cv).WithOne(c => c.User).HasForeignKey<User>(u => u.CvId);
+            //builder.HasOne<Cv>(u => u.Cv).WithOne(c => c.User).HasForeignKey<User>(u => u.CvId);
             builder.HasOne<Role>(u => u.Role).WithMany(u => u.Users).HasForeignKey(u => u.RoleId);
             builder.Property(u => u.CreatedByName).IsRequired();
             builder.Property(u => u.CreatedByName).HasMaxLength(50);
@@ -56,7 +56,9 @@ namespace CvBlog.Data.Concrete.EntityFramework.Mappings
                 FirstName = "Emre",
                 LastName = "Akdemir",
                 Email = "info@emreakdemir.net",
+                Username = "info@emreakdemir.net",
                 Description = "Sistemin ilk admin kullanıcısı",
+                Picture = "default.jpg",
                 IsActive = true,
                 IsDeleted = false,
                 CreatedByName = "InitialCreate",

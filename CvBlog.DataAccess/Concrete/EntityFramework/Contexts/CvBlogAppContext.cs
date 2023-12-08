@@ -31,7 +31,7 @@ namespace CvBlog.Data.Concrete.EntityFramework.Contexts
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             // @ -> içerisidndeki stringi tamamen string olarak almasını sağlar
-            optionsBuilder.UseSqlServer(@"Server=localhost\SQLEXPRESS;Database=CvBlogApp;Trusted_Connection=True;ConnectTimeout=30;MultipleActiveResultSets=True;");
+            optionsBuilder.UseSqlServer(@"Server=localhost\SQLEXPRESS;Database=CvBlogApp;Trusted_Connection=True;Connect Timeout=120;MultipleActiveResultSets=True;");
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
