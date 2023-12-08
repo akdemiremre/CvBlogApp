@@ -18,6 +18,7 @@ namespace CvBlog.Entities.Concrete
         public string Phone { get; set; }
         public bool IsFreelance { get; set; }
         public string Description { get; set; }
+        public string ProfileImage { get; set; }
         public string HeaderImage { get; set; }
         public ICollection<Customer> Customers { get; set; }
         public ICollection<Education> Educations { get; set; }

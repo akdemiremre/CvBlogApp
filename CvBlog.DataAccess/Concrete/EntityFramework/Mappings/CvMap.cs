@@ -27,6 +27,8 @@ namespace CvBlog.Data.Concrete.EntityFramework.Mappings
             builder.Property(c => c.Phone).IsRequired();
             builder.Property(c => c.Phone).HasMaxLength(21);
             builder.Property(c => c.IsFreelance).IsRequired();
+            builder.Property(c => c.ProfileImage).IsRequired();
+            builder.Property(c => c.ProfileImage).HasMaxLength(250);
             builder.Property(c => c.HeaderImage).IsRequired();
             builder.Property(c => c.HeaderImage).HasMaxLength(250);
             builder.Property(c => c.Description).IsRequired();
