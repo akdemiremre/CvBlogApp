@@ -43,13 +43,29 @@ namespace CvBlog.Data.Concrete.EntityFramework.Mappings
             builder.Property(u => u.Note).HasMaxLength(500);
             builder.ToTable("Users");
 
-
-
             // Mevcut projelere de sonradan bu map işlemini uygulayabiliriz.
             // Örneğin bir mail adresi USER_EMAIL sütununda tutuluyor olsun.
             // O sütun için işlem yaparken HasColumnName("MEVCUT_SUTUN_ADI") şeklinde işlem yapabiliriz.
             //builder.Property(u => u.Email).HasColumnName("USER_EMAIL")...
             // Aynı durum tablo ismi içinde geçerli -> builder.ToTable("MEVCUT_TABLO_ADI"); bu şekilde etki edebiliriz.
+
+            builder.HasData(new User
+            {
+                Id = 1,
+                RoleId = 1,
+                FirstName = "Emre",
+                LastName = "Akdemir",
+                Email = "info@emreakdemir.net",
+                Description = "Sistemin ilk admin kullanıcısı",
+                IsActive = true,
+                IsDeleted = false,
+                CreatedByName = "InitialCreate",
+                CreatedDate = DateTime.Now,
+                ModifiedByName = "InitialCreate",
+                ModifiedDate = DateTime.Now,
+                Note = "Admin Kullanıcısı",
+                PasswordHash = Encoding.ASCII.GetBytes("0192023a7bbd73250516f069df18b500")
+            });
         }
     }
 }
