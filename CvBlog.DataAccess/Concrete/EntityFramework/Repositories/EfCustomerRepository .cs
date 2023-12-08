@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace CvBlog.Data.Concrete.EntityFramework.Repositories
 {
-    public class CustomerRepository : EfEntityRepositoryBase<Customer>, ICustomerRepository
+    public class EfCustomerRepository : EfEntityRepositoryBase<Customer>, ICustomerRepository
     {
-        public CustomerRepository(DbContext context) : base(context)
+        public EfCustomerRepository(DbContext context) : base(context)
         {
         }
     }
