@@ -25,6 +25,7 @@ builder.Services.AddDbContext<CvBlogAppContext>();// AddDbContext -> özünde bir 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IArticleService, ArticleManager>();
 builder.Services.AddScoped<ICategoryService, CategoryManager>();
+builder.Services.AddScoped<ISkillService, SkillManager>();
 #endregion
 
 var app = builder.Build();
