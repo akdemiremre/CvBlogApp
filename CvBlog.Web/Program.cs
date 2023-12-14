@@ -14,7 +14,7 @@ builder.Services.AddRazorPages();
 // AddRazorRuntimeCompilation => Frontend tarafýnda her deðiþiklikte uygulamayý derlemeye gerek kalmayacak
 builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 //builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-builder.Services.AddAutoMapper(typeof(ArticleProfile),typeof(CategoryProfile));
+builder.Services.AddAutoMapper(typeof(ArticleProfile),typeof(CategoryProfile), typeof(SkillProfile));
 #region serviceCollection
 builder.Services.AddDbContext<CvBlogAppContext>();// AddDbContext -> özünde bir scope dur.
 // scoped => Yapýlan her request'te nesne tekrar oluþur ve bir request içerisinde sadce bir tane nesne kullanýlýr. Bu yöntem için AddScoped() metodu kullanýlýr.
