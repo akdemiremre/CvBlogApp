@@ -118,7 +118,6 @@ namespace CvBlog.Services.Concrete
         {
             var skill = _mapper.Map<Skill>(skillUpdateDto);
             skill.ModifiedByName = modifiedByName;
-            skill.ModifiedDate = DateTime.Now;
             await _unitOfWork.Skills.UpdateAsync(skill).ContinueWith(t => { _unitOfWork.SaveAsync(); });
             return new Result(ResultStatus.Success,$"{skill.Name} adlı yetenek kaydı başarıyla silinmiştir.");
         }

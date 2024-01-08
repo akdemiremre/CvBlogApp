@@ -28,7 +28,6 @@ namespace CvBlog.Services.Concrete
             var service = _mapper.Map<Service>(serviceAddDto);
             service.CreatedByName = createdByName;
             service.ModifiedByName = createdByName;
-            service.CreatedDate = DateTime.Now;
             await _unitOfWork.Services.AddAsync(service).ContinueWith(t => { _unitOfWork.SaveAsync(); });
             return new Result(ResultStatus.Success, "Başarılı");
         }
@@ -119,7 +118,6 @@ namespace CvBlog.Services.Concrete
         {
             var service = _mapper.Map<Service>(serviceUpdateDto);
             service.ModifiedByName = modifiedByName;
-            service.ModifiedDate = DateTime.Now;
             await _unitOfWork.Services.UpdateAsync(service).ContinueWith(t => { _unitOfWork.SaveAsync(); });
             return new Result(ResultStatus.Success, "Hizmet kaydı başarıyla güncellendi");
 

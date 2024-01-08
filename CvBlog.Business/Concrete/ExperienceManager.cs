@@ -29,7 +29,6 @@ namespace CvBlog.Services.Concrete
             var experience = _mapper.Map<Experience>(experienceAddDto);
             experience.CreatedByName = createdByName;
             experience.ModifiedByName = createdByName;
-            experience.CreatedDate = DateTime.Now;
             await _unitOfWork.Experiences.AddAsync(experience).ContinueWith(t => { _unitOfWork.SaveAsync(); });
             return new Result(ResultStatus.Success, $"{experience.Title} başlıklı deneyim başarıyla eklenmiştir.");
         }
@@ -121,7 +120,6 @@ namespace CvBlog.Services.Concrete
         {
             var experience = _mapper.Map<Experience>(experienceUpdateDto);
             experience.ModifiedByName = modifiedByName;
-            experience.ModifiedDate = DateTime.Now;
             await _unitOfWork.Experiences.UpdateAsync(experience).ContinueWith(t => { _unitOfWork.SaveAsync(); });
             return new Result(ResultStatus.Success, $"{experience.Title} başlıklı deneyim başarıyla güncellenmiştir.");
         }

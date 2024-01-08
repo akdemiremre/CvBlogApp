@@ -86,8 +86,6 @@ namespace CvBlog.Services.Concrete
             var socialMedia = _mapper.Map<SocialMedia>(socialMediaAddDto);
             socialMedia.CreatedByName = createdByName;
             socialMedia.ModifiedByName = createdByName;
-            socialMedia.CreatedDate = DateTime.Now;
-            socialMedia.ModifiedDate = DateTime.Now;
             await _unitOfWork.SocialMedias.AddAsync(socialMedia).ContinueWith(t => { _unitOfWork.SaveAsync(); });
             return new Result(ResultStatus.Success, $"{socialMedia.Name} isimli kayıt başarıyla eklendi.");
         }
@@ -96,7 +94,6 @@ namespace CvBlog.Services.Concrete
         {
             var socialMedia = _mapper.Map<SocialMedia>(socialMediaUpdateDto);
             socialMedia.ModifiedByName = modifiedByName;
-            socialMedia.ModifiedDate = DateTime.Now;
             await _unitOfWork.SocialMedias.UpdateAsync(socialMedia).ContinueWith(t => { _unitOfWork.SaveAsync(); });
             return new Result(ResultStatus.Success, $"{socialMedia.Name} isimli kayıt başarıyla güncellend.");
         }

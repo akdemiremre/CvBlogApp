@@ -30,7 +30,6 @@ namespace CvBlog.Services.Concrete
             var education = _mapper.Map<Education>(educationAddDto);
             education.CreatedByName = createdByName;
             education.ModifiedByName = createdByName;
-            education.CreatedDate = DateTime.Now;
             await _unitOfWork.Educations.AddAsync(education).ContinueWith(t => { _unitOfWork.SaveAsync(); });
             return new Result(ResultStatus.Success, $"{education.SchoolName} okuluna ait eğitim bilgisi başarıyla kaydedildi.");
         }
@@ -121,7 +120,6 @@ namespace CvBlog.Services.Concrete
         {
             var education = _mapper.Map<Education>(educationUpdateDto);
             education.ModifiedByName = modifiedByName;
-            education.ModifiedDate = DateTime.Now;
             await _unitOfWork.Educations.UpdateAsync(education).ContinueWith(t => { _unitOfWork.SaveAsync(); });
             return new Result(ResultStatus.Success, $"{education.SchoolName} isimli okula ait kayıt başarıyla güncellenmiştir.");
         }
