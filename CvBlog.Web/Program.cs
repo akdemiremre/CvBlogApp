@@ -1,6 +1,7 @@
 using CvBlog.Data.Abstract;
 using CvBlog.Data.Concrete;
 using CvBlog.Data.Concrete.EntityFramework.Contexts;
+using CvBlog.Data.Concrete.EntityFramework.Mappings;
 using CvBlog.Services.Abstract;
 using CvBlog.Services.AutoMapper.Profiles;
 using CvBlog.Services.Concrete;
@@ -14,7 +15,7 @@ builder.Services.AddRazorPages();
 // AddRazorRuntimeCompilation => Frontend tarafýnda her deðiþiklikte uygulamayý derlemeye gerek kalmayacak
 builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 //builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-builder.Services.AddAutoMapper(typeof(ArticleProfile),typeof(CategoryProfile), typeof(SkillProfile), typeof(SocialMediaProfile), typeof(ServiceProfile), typeof(EducationProfile));
+builder.Services.AddAutoMapper(typeof(ArticleProfile),typeof(CategoryProfile), typeof(SkillProfile), typeof(SocialMediaProfile), typeof(ServiceProfile), typeof(EducationProfile), typeof(ExperienceMap));
 #region serviceCollection
 builder.Services.AddDbContext<CvBlogAppContext>();// AddDbContext -> özünde bir scope dur.
 // scoped => Yapýlan her request'te nesne tekrar oluþur ve bir request içerisinde sadce bir tane nesne kullanýlýr. Bu yöntem için AddScoped() metodu kullanýlýr.
@@ -28,6 +29,7 @@ builder.Services.AddScoped<ICategoryService, CategoryManager>();
 builder.Services.AddScoped<ISkillService, SkillManager>();
 builder.Services.AddScoped<IServiceService, ServiceManager>();
 builder.Services.AddScoped<IEducationService, EducationManager>();
+builder.Services.AddScoped<IExperienceService, ExperienceManager>();
 #endregion
 
 var app = builder.Build();

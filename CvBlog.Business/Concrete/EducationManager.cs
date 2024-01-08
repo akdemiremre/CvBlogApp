@@ -3,6 +3,7 @@ using CvBlog.Data.Abstract;
 using CvBlog.Entities.Concrete;
 using CvBlog.Entities.Dtos;
 using CvBlog.Services.Abstract;
+using CvBlog.Shared.Utilities.Results.Abstract;
 using CvBlog.Shared.Utilities.Results.ComplexTypes;
 using CvBlog.Shared.Utilities.Results.Concrete;
 using System;
@@ -24,7 +25,7 @@ namespace CvBlog.Services.Concrete
             _mapper = mapper;
         }
 
-        public async Task<Result> Add(EducationAddDto educationAddDto, string createdByName)
+        public async Task<IResult> Add(EducationAddDto educationAddDto, string createdByName)
         {
             var education = _mapper.Map<Education>(educationAddDto);
             education.CreatedByName = createdByName;
@@ -34,7 +35,7 @@ namespace CvBlog.Services.Concrete
             return new Result(ResultStatus.Success, $"{education.SchoolName} okuluna ait eğitim bilgisi başarıyla kaydedildi.");
         }
 
-        public async Task<Result> Delete(int educationId, string modifiedByName)
+        public async Task<IResult> Delete(int educationId, string modifiedByName)
         {
             var result = await _unitOfWork.Educations.AnyAsync(x => x.Id == educationId);
             if (result) 
@@ -48,7 +49,7 @@ namespace CvBlog.Services.Concrete
             return new Result(ResultStatus.Error, "Böyle bir kayıt bulunamadı.");
         }
 
-        public async Task<DataResult<EducationListDto>> GetAll()
+        public async Task<IDataResult<EducationListDto>> GetAll()
         {
             var educations = await _unitOfWork.Educations.GetAllAsync();
             if (educations.Count > -1)
@@ -62,7 +63,7 @@ namespace CvBlog.Services.Concrete
             return new DataResult<EducationListDto>(ResultStatus.Error, "Herhangi bir eğitim kaydı bulunamadı", null);
         }
 
-        public async Task<DataResult<EducationListDto>> GetAllByNonDeleted()
+        public async Task<IDataResult<EducationListDto>> GetAllByNonDeleted()
         {
             var educations = await _unitOfWork.Educations.GetAllAsync(x => !x.IsDeleted);
             if (educations.Count > -1)
@@ -76,7 +77,7 @@ namespace CvBlog.Services.Concrete
             return new DataResult<EducationListDto>(ResultStatus.Error, "Herhangi bir eğitim kaydı bulunamadı", null);
         }
 
-        public async Task<DataResult<EducationListDto>> GetAlLByNonDeletedAndActive()
+        public async Task<IDataResult<EducationListDto>> GetAlLByNonDeletedAndActive()
         {
             var educations = await _unitOfWork.Educations.GetAllAsync(x => !x.IsDeleted && x.IsActive);
             if (educations.Count > -1)
@@ -90,7 +91,7 @@ namespace CvBlog.Services.Concrete
             return new DataResult<EducationListDto>(ResultStatus.Error, "Herhangi bir eğitim kaydı bulunamadı", null);
         }
 
-        public async Task<DataResult<EducationDto>> Get(int educationId)
+        public async Task<IDataResult<EducationDto>> Get(int educationId)
         {
             var education = await _unitOfWork.Educations.GetAsync(x => x.Id == educationId);
             if (education != null)
@@ -104,7 +105,7 @@ namespace CvBlog.Services.Concrete
             return new DataResult<EducationDto>(ResultStatus.Error, "Herhangi bir eğitim kaydı bulunamadı", null);
         }
 
-        public async Task<Result> HardDelete(int educationId)
+        public async Task<IResult> HardDelete(int educationId)
         {
             var result = await _unitOfWork.Educations.AnyAsync(x => x.Id == educationId);
             if (result)
@@ -116,7 +117,7 @@ namespace CvBlog.Services.Concrete
             return new Result(ResultStatus.Error, "Herhangi bir kayıt bulunamadı.");
         }
 
-        public async Task<Result> Update(EducationUpdateDto educationUpdateDto, string modifiedByName)
+        public async Task<IResult> Update(EducationUpdateDto educationUpdateDto, string modifiedByName)
         {
             var education = _mapper.Map<Education>(educationUpdateDto);
             education.ModifiedByName = modifiedByName;

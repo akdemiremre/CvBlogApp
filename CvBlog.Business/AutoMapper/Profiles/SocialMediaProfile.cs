@@ -14,7 +14,7 @@ namespace CvBlog.Services.AutoMapper.Profiles
         public SocialMediaProfile()
         {
             CreateMap<SocialMediaAddDto, SocialMedia>().ForMember(d => d.CreatedDate, opt => opt.MapFrom(x => DateTime.Now));
-            CreateMap<SocialMediaUpdateDto, SocialMedia>().ForMember(d => d.CreatedDate, opt => opt.MapFrom(x => DateTime.Now));
+            CreateMap<SocialMediaUpdateDto, SocialMedia>().ForMember(d => d.ModifiedDate, opt => opt.MapFrom(x => DateTime.Now));
         }
     }
 }

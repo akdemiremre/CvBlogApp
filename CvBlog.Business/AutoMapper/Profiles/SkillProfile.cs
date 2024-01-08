@@ -14,7 +14,7 @@ namespace CvBlog.Services.AutoMapper.Profiles
         public SkillProfile()
         {
             CreateMap<SkillAddDto, Skill>().ForMember(d => d.CreatedDate, opt => opt.MapFrom(x => DateTime.Now));
-            CreateMap<SkillUpdateDto, Skill>().ForMember(d => d.CreatedDate, opt => opt.MapFrom(x => DateTime.Now));
+            CreateMap<SkillUpdateDto, Skill>().ForMember(d => d.ModifiedDate, opt => opt.MapFrom(x => DateTime.Now));
         }
     }
 }
