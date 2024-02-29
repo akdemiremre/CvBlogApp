@@ -19,11 +19,13 @@ namespace CvBlog.Services.Concrete
         // hem dışardan geldiği için hem de private olduğu için _ kullandık
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
+
         public CategoryManager(IUnitOfWork unitOfWork, IMapper mapper)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
+
         public async Task<IResult> Add(CategoryAddDto categoryAddDto, string createdByName)
         {
             /*
@@ -109,6 +111,26 @@ namespace CvBlog.Services.Concrete
         {
             var categories = await _unitOfWork.Categories.GetAllAsync(x => !x.IsDeleted && x.IsActive, c => c.Articles);
             if (categories.Count > -1)
+            {
+                return new DataResult<CategoryListDto>(ResultStatus.Success, new CategoryListDto
+                {
+                    Categories = categories,
+                    ResultStatus = ResultStatus.Success
+                });
+            }
+            return new DataResult<CategoryListDto>(ResultStatus.Error, "Hiç bir kategori bulunamadı.", null);
+        }
+
+        public async Task<int> CountAsync()
+        {
+            return await _unitOfWork.Categories.CountAsync(x => !x.IsDeleted);
+        }
+
+        public async Task<IDataResult<CategoryListDto>> GetPagingAllAsync(int pageNumber, int rowCount, string orderColumn, string orderType, string searchValue)
+        {
+            //var categories = await _unitOfWork.Categories.GetAllAsync();
+            var categories = await _unitOfWork.Categories.GetPagingAllAsync(pageNumber, rowCount, orderColumn, orderType,x => !x.IsDeleted && x.Name.Contains(searchValue));
+            if (categories.Count > -1) // hiç kategori olmayadabilir... yani count=0 da olabilir.
             {
                 return new DataResult<CategoryListDto>(ResultStatus.Success, new CategoryListDto
                 {

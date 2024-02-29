@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Dynamic.Core;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
@@ -48,9 +49,8 @@ namespace CvBlog.Shared.Data.Concrete.EntityFramework
 
         public async Task<IList<TEntity>> GetAllAsync(Expression<Func<TEntity, bool>> predicate = null, params Expression<Func<TEntity, object>>[] includeProperties)
         {
-            IQueryable<TEntity> query = _context.Set<TEntity>(); 
+            IQueryable<TEntity> query = _context.Set<TEntity>();
             // Articles,Category... query için entity i belirledik
-
             if (predicate!=null)
             {
                 // Articles.Where(x=> x.Id=5)
@@ -98,11 +98,48 @@ namespace CvBlog.Shared.Data.Concrete.EntityFramework
             return await query.AsNoTracking().SingleOrDefaultAsync();
         }
 
+        public async Task<IList<TEntity>> GetPagingAllAsync(int pageNumber, int rowCount, string orderColumn, string orderType, Expression<Func<TEntity, bool>> predicate = null, params Expression<Func<TEntity, object>>[] includeProperties)
+        {
+
+            IQueryable<TEntity> query = _context.Set<TEntity>();
+            // Articles,Category... query için entity i belirledik
+            if (predicate != null)
+            {
+                // Articles.Where(x=> x.Id=5)
+                // Category.Where(x=> x.Id=5)
+                query = query.Where(predicate);
+            }
+            if (includeProperties.Any())
+            {
+                // gelen property leri queyr e include ediyoruz.
+                foreach (var includeProperty in includeProperties)
+                {
+                    // Articles.Where(x=> x.Id=5).Include(includeProperty)
+                    // Category.Where(x=> x.Id=5).Include(includeProperty)
+                    query = query.Include(includeProperty);
+                }
+            }
+
+            /*
+            return await query.ToListAsync();
+            include performans kaybını önlemek için AsNoTracking kullanma sebebimiz : incldue kullandığımızdda SingleOrDefaultAsync() ve ToListAsync() lerde örneğin : makalelerin çekerken kategorileri de gelsin dediğimizde gelen kategoriye ait makalelerde geliyor hatta bu makalelere ait kategorilerde geliyor .... RECVURSİVE yapıda uzayıp gidiyor. Yani birbirine referans eden veriler geliyor... Bu da performans kaybına yol açıyor.
+            Her bir get işleminde AsNoTracking() yazmak yerine context e '_context.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;' bunu yazarak da aynı işlemi sağlayabiliriz.
+            */
+            int skipCount = 0;
+            if (pageNumber > 1)
+            {
+                skipCount = (pageNumber - 1) * rowCount;
+            }
+            query = query.OrderBy(orderColumn + " " + orderType).Skip(skipCount).Take(rowCount);
+            return await query.AsNoTracking().ToListAsync();
+        }
+
         public async Task UpdateAsync(TEntity entity)
         {
             //await _context.Set<TEntity>().Update(entity);
             // updateAsync olmadığı için Task.Run ile async çalışacak şekilde yazdık.
             Task.Run(() => { _context.Set<TEntity>().Update(entity); });
         }
+
     }
 }

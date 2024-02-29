@@ -26,5 +26,6 @@ namespace CvBlog.Shared.Data.Abstract
         Task<bool> AnyAsync(Expression<Func<T, bool>> predicate);
         // Predicate = null tanımlama sebebimiz : Mesela silinmiş olanları getir veya aktif olanları getir... null verirsek tüm kayıtları alma imkanımmız olacaktır.
         Task<int> CountAsync(Expression<Func<T, bool>> predicate = null);
+        Task<IList<T>> GetPagingAllAsync(int pageNumber, int rowCount, string orderColumn, string orderType, Expression<Func<T, bool>> predicate = null, params Expression<Func<T, object>>[] includeProperties);
     }
 }

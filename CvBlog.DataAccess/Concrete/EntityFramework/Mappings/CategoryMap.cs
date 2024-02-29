@@ -29,6 +29,24 @@ namespace CvBlog.Data.Concrete.EntityFramework.Mappings
             builder.Property(c => c.IsDeleted).IsRequired();
             builder.Property(c => c.Note).HasMaxLength(500);
             builder.ToTable("Categories");
+            int id = 0;
+            for (int i = 0; i < 50; i++)
+            {
+                id++;
+                builder.HasData(new Category
+                {
+                    Id = id,
+                    Name = "Kategori"+id.ToString(),
+                    Description = "Açıklama"+id.ToString(),
+                    CreatedByName = "InitialCreate",
+                    CreatedDate = DateTime.Now,
+                    ModifiedByName = "InitialCreate",
+                    ModifiedDate = DateTime.Now,
+                    IsActive = true,
+                    IsDeleted = false,
+                    Note = "CategoryMap'ten kaydedildi."
+                });
+            }
         }
     }
 }
