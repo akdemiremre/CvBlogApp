@@ -25,9 +25,10 @@ namespace CvBlog.Shared.Data.Concrete.EntityFramework
 
         // _context.Set<TEntity>() : Gelen T nin yani burdaki TEntitynin hangi class olduğunu bulur.
         
-        public async Task AddAsync(TEntity entity)
+        public async Task<TEntity> AddAsync(TEntity entity)
         {
             await _context.Set<TEntity>().AddAsync(entity);
+            return entity;
         }
 
         public async Task<bool> AnyAsync(Expression<Func<TEntity, bool>> predicate)

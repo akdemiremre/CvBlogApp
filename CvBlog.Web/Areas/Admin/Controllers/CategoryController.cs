@@ -1,20 +1,27 @@
-﻿using CvBlog.Services.Abstract;
+﻿using AutoMapper;
+using CvBlog.Entities.Dtos;
+using CvBlog.Services.Abstract;
 using CvBlog.Services.Utilities;
+using CvBlog.Shared.Utilities.Exttensions;
 using CvBlog.Shared.Utilities.Results.ComplexTypes;
+using CvBlog.Shared.Utilities.Results.Concrete;
 using CvBlog.Web.Areas.Admin.Models;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json.Linq;
+using System.Text.Json;
 
 namespace CvBlog.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class CategoryController : Controller
+    [Route("admin/kategori")]
+    public class CategoryController : BaseController
     {
         private readonly ICategoryService _categoryService;
-        public CategoryController(ICategoryService categoryService)
+        public CategoryController(ICategoryService categoryService,IMapper mapper) : base(mapper)
         {
             _categoryService = categoryService;
         }
+        [Route("kategoriler")]
         [HttpGet]
         public async Task<IActionResult> Index()
         {
@@ -25,6 +32,7 @@ namespace CvBlog.Web.Areas.Admin.Controllers
             }
             return View();
         }
+        [Route("kategori-listesi")]
         [HttpGet]
         public async Task<JsonResult> CategoryList(string? p, string? r, string? oc, string? ot, string? l)
         {
@@ -36,6 +44,7 @@ namespace CvBlog.Web.Areas.Admin.Controllers
             var queryResult = await _categoryService.GetAll();
             return Json(queryResult.Data);
         }
+        [Route("kategori-listesi")]
         [HttpPost]
         public async Task<JsonResult> CategoryList(string val, int draw, int start, int length)
         {
@@ -72,6 +81,39 @@ namespace CvBlog.Web.Areas.Admin.Controllers
             }
             categoryViewModel.CategoryDataTable.Data = data;
             return Json(categoryViewModel.CategoryDataTable);
+        }
+        [Route("kategori-ekleme-formu")]
+        [HttpGet]
+        public async Task<PartialViewResult> CategoryAddModal()
+        {
+            return PartialView("_CategoryAddModalPartial");
+        }
+        [Route("kategori-ekle")]
+        [HttpPost]
+        public async Task<IActionResult> CategoryAdd(CategoryAddDto categoryAddDto)
+        {
+            if (ModelState.IsValid)
+            {
+                var result = await _categoryService.Add(categoryAddDto, "system");
+                if (result.ResultStatus == ResultStatus.Success)
+                {
+                    //System.Text.Json; daki JsonSerializer
+                    var categoryAddAjaxViewModel = JsonSerializer.Serialize(new CategoryAddAjaxViewModel
+                    {
+                        CategoryDto = result.Data, // veri gönderildi.
+                        CategoryAddPartial = await this.RenderViewToStringAsync("_CategoryAddModalPartial", categoryAddDto)
+                    });
+                    return Json(categoryAddAjaxViewModel);
+                }
+            }
+            //System.Text.Json; daki JsonSerializer
+            var categoryAddAjaxErrorViewModel = JsonSerializer.Serialize(new CategoryAddAjaxViewModel
+            {
+                // CategoryDto kısmını göndermeye gerek yok zaten error a dustu.. 
+                // Hata mesajları görünmesi için partialview i gönderdik.
+                CategoryAddPartial = await this.RenderViewToStringAsync("_CategoryAddModalPartial",categoryAddDto)
+            });
+            return Json(categoryAddAjaxErrorViewModel);
         }
     }
 }

@@ -12,5 +12,6 @@ namespace CvBlog.Shared.Entities.Abstract
         // Dto yu view a taşıdık tablo da göstericeğimizi varsayalım. ResultStatus -> success,error durumlarına göre farklı viewlar gösterebilmemizi sağlar.
 
         public virtual ResultStatus ResultStatus { get; set; }
+        public virtual string Message { get; set; }
     }
 }

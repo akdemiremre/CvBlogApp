@@ -14,19 +14,13 @@ using System.Threading.Tasks;
 
 namespace CvBlog.Services.Concrete
 {
-    public class CategoryManager : ICategoryService
+    public class CategoryManager : ManagerBase,ICategoryService
     {
-        // hem dışardan geldiği için hem de private olduğu için _ kullandık
-        private readonly IUnitOfWork _unitOfWork;
-        private readonly IMapper _mapper;
-
-        public CategoryManager(IUnitOfWork unitOfWork, IMapper mapper)
+        public CategoryManager(IUnitOfWork unitOfWork, IMapper mapper) : base (unitOfWork,mapper)
         {
-            _unitOfWork = unitOfWork;
-            _mapper = mapper;
         }
 
-        public async Task<IResult> Add(CategoryAddDto categoryAddDto, string createdByName)
+        public async Task<IDataResult<CategoryDto>> Add(CategoryAddDto categoryAddDto, string createdByName)
         {
             /*
             await _unitOfWork.Categories.AddAsync(new Category
@@ -44,23 +38,37 @@ namespace CvBlog.Services.Concrete
             // ekleme işlemi tamamlanırken ContinueWith ile db savechange işlemini hızlıca yapıp bu arada frontend e hızlıca yanıt dönmüş oluruz.
             // await _unitOfWork.SaveAsync();
             */
+
+            /*
             var category = _mapper.Map<Category>(categoryAddDto);
             category.CreatedByName = createdByName;
             category.ModifiedByName = createdByName;
             await _unitOfWork.Categories.AddAsync(category).ContinueWith(t => { _unitOfWork.SaveAsync(); });
             return new Result(ResultStatus.Success, $"{categoryAddDto.Name} adlı kategori başarıyla eklenmiştir.");
+            */
+            var category = Mapper.Map<Category>(categoryAddDto);
+            category.CreatedByName = createdByName;
+            category.ModifiedByName = createdByName;
+            var addedCategory = await UnitOfWork.Categories.AddAsync(category);
+            await UnitOfWork.SaveAsync();
+            return new DataResult<CategoryDto>(ResultStatus.Success, "Başarılı", new CategoryDto
+            {
+                Category = addedCategory,
+                ResultStatus = ResultStatus.Success,
+                Message = "Başarılı"
+            });
         }
 
         public async Task<IResult> Delete(int categoryId,string modifiedByName)
         {
-            var category = await _unitOfWork.Categories.GetAsync(c => c.Id == categoryId);
+            var category = await UnitOfWork.Categories.GetAsync(c => c.Id == categoryId);
             if (category != null)
             {
                 category.IsDeleted = false;
                 category.ModifiedByName = modifiedByName;
                 category.ModifiedDate = DateTime.Now;
                 // güncelleme işlemi tamamlanırken ContinueWith ile db savechange işlemini hızlıca yapıp bu arada frontend e hızlıca yanıt dönmüş oluruz.
-                await _unitOfWork.Categories.UpdateAsync(category).ContinueWith(t => _unitOfWork.SaveAsync()); 
+                await UnitOfWork.Categories.UpdateAsync(category).ContinueWith(t => UnitOfWork.SaveAsync()); 
                 return new Result(ResultStatus.Success, $"{category.Name} adlı kategori başarıyla silinmiştir.");
             }
             return new Result(ResultStatus.Error, "Böyle bir kategori bulunamadı.", null);
@@ -68,7 +76,7 @@ namespace CvBlog.Services.Concrete
 
         public async Task<IDataResult<CategoryDto>> Get(int categoryId)
         {
-            var category = await _unitOfWork.Categories.GetAsync(x => x.Id == categoryId, c => c.Articles);
+            var category = await UnitOfWork.Categories.GetAsync(x => x.Id == categoryId, c => c.Articles);
             if (category != null)
             {
                 return new DataResult<CategoryDto>(ResultStatus.Success, new CategoryDto
@@ -82,7 +90,7 @@ namespace CvBlog.Services.Concrete
 
         public async Task<IDataResult<CategoryListDto>> GetAll()
         {
-            var categories = await _unitOfWork.Categories.GetAllAsync(null, c => c.Articles);
+            var categories = await UnitOfWork.Categories.GetAllAsync(null, c => c.Articles);
             if (categories.Count > -1) // hiç kategori olmayadabilir... yani count=0 da olabilir.
             {
                 return new DataResult<CategoryListDto>(ResultStatus.Success, new CategoryListDto
@@ -96,7 +104,7 @@ namespace CvBlog.Services.Concrete
 
         public async Task<IDataResult<CategoryListDto>> GetAllByNonDeleted()
         {
-            var categories = await _unitOfWork.Categories.GetAllAsync(x => !x.IsDeleted, c => c.Articles);
+            var categories = await UnitOfWork.Categories.GetAllAsync(x => !x.IsDeleted, c => c.Articles);
             if (categories.Count > -1)
             {
                 return new DataResult<CategoryListDto>(ResultStatus.Success, new CategoryListDto
@@ -109,7 +117,7 @@ namespace CvBlog.Services.Concrete
         }
         public async Task<IDataResult<CategoryListDto>> GetAllByNonDeletedAndActive()
         {
-            var categories = await _unitOfWork.Categories.GetAllAsync(x => !x.IsDeleted && x.IsActive, c => c.Articles);
+            var categories = await UnitOfWork.Categories.GetAllAsync(x => !x.IsDeleted && x.IsActive, c => c.Articles);
             if (categories.Count > -1)
             {
                 return new DataResult<CategoryListDto>(ResultStatus.Success, new CategoryListDto
@@ -123,13 +131,13 @@ namespace CvBlog.Services.Concrete
 
         public async Task<int> CountAsync()
         {
-            return await _unitOfWork.Categories.CountAsync(x => !x.IsDeleted);
+            return await UnitOfWork.Categories.CountAsync(x => !x.IsDeleted);
         }
 
         public async Task<IDataResult<CategoryListDto>> GetPagingAllAsync(int pageNumber, int rowCount, string orderColumn, string orderType, string searchValue)
         {
             //var categories = await _unitOfWork.Categories.GetAllAsync();
-            var categories = await _unitOfWork.Categories.GetPagingAllAsync(pageNumber, rowCount, orderColumn, orderType,x => !x.IsDeleted && x.Name.Contains(searchValue));
+            var categories = await UnitOfWork.Categories.GetPagingAllAsync(pageNumber, rowCount, orderColumn, orderType,x => !x.IsDeleted && x.Name.Contains(searchValue));
             if (categories.Count > -1) // hiç kategori olmayadabilir... yani count=0 da olabilir.
             {
                 return new DataResult<CategoryListDto>(ResultStatus.Success, new CategoryListDto
@@ -143,10 +151,10 @@ namespace CvBlog.Services.Concrete
 
         public async Task<IResult> HardDelete(int categoryId, string modifiedByName)
         {
-            var category = await _unitOfWork.Categories.GetAsync(c => c.Id == categoryId);
+            var category = await UnitOfWork.Categories.GetAsync(c => c.Id == categoryId);
             if (category != null)
             {
-                await _unitOfWork.Categories.DeleteAsync(category).ContinueWith(t => _unitOfWork.SaveAsync());
+                await UnitOfWork.Categories.DeleteAsync(category).ContinueWith(t => UnitOfWork.SaveAsync());
                 // silme işlemi tamamlanırken ContinueWith ile db savechange işlemini hızlıca yapıp bu arada frontend e hızlıca yanıt dönmüş oluruz.
                 return new Result(ResultStatus.Success, $"{category.Name} adlı kategori başarıyla kalıcı olarak silinmiştir.");
             }
@@ -170,9 +178,9 @@ namespace CvBlog.Services.Concrete
                 return new Result(ResultStatus.Success, $"{categoryUpdateDto.Name} adlı kategori başarıyla güncelenmiştir.");
             }
             */
-            var category = _mapper.Map<Category>(categoryUpdateDto);
+            var category = Mapper.Map<Category>(categoryUpdateDto);
             category.ModifiedByName = modifiedByName;
-            await _unitOfWork.Categories.UpdateAsync(category).ContinueWith(t => { _unitOfWork.SaveAsync(); });
+            await UnitOfWork.Categories.UpdateAsync(category).ContinueWith(t => { UnitOfWork.SaveAsync(); });
             return new Result(ResultStatus.Error, "Böyle bir kategori bulunamadı.", null);
         }
     }
