@@ -21,7 +21,7 @@ namespace CvBlog.Web.Areas.Admin.Controllers
         {
             _categoryService = categoryService;
         }
-        [Route("kategoriler")]
+        [Route("liste")]
         [HttpGet]
         public async Task<IActionResult> Index()
         {

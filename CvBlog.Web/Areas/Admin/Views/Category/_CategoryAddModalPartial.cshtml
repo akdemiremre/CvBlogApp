@@ -1,4 +1,5 @@
-﻿<div class="modal fade" id="categoryAddModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+﻿@model CvBlog.Entities.Dtos.CategoryAddDto
+<div class="modal fade" id="categoryAddModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-md" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -8,23 +9,36 @@
                 </button>
             </div>
             <div class="modal-body">
+                <!-- Controller daki ModelState.IsValid değerini buraya aktardık. -->
+                <input name="IsValid" type="hidden" value="@ViewData.ModelState.IsValid.ToString()" />
+                <div asp-validation-summary="All" class="text-danger" id="validation-summary" aria-hidden="true" style="display:none;"></div>
                 <div class="form-group row">
-                    <label class="col-sm-3 col-form-label">Kategori Adı</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control form-control-normal my-input-control" name="Name" id="Name" placeholder="Lütfen kategori adı giriniz">
+                    <label asp-for="Name" class="col-sm-4 col-form-label"></label>
+                    <div class="col-sm-8">
+                        <input class="form-control my-input-control" asp-for="Name" placeholder="Kategori adı giriniz..." />
                     </div>
+                    <span class="text-danger ml-3" asp-validation-for="Name"></span>
                 </div>
                 <div class="form-group row">
-                    <label class="col-sm-3 col-form-label">Açıklama</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control form-control-normal my-input-control" name="Description" id="Description" placeholder="Lütfen açıklama giriniz">
+                    <label asp-for="Description" class="col-sm-4 col-form-label"></label>
+                    <div class="col-sm-8">
+                        <input class="form-control my-input-control" asp-for="Description" placeholder="Kategori açıklamasını giriniz..." />
                     </div>
+                    <span class="text-danger ml-3" asp-validation-for="Description"></span>
                 </div>
                 <div class="form-group row">
-                    <label class="col-sm-3 col-form-label">Özel Not</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control form-control-normal my-input-control" name="Note" id="Note" placeholder="Lütfen kategoriye ait özel notunuzu giriniz">
+                    <label asp-for="Note" class="col-sm-4 col-form-label"></label>
+                    <div class="col-sm-8">
+                        <input class="form-control my-input-control" asp-for="Note" placeholder="Kategoriye özel not giriniz..." />
                     </div>
+                    <span class="text-danger ml-3" asp-validation-for="Note"></span>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="IsActive" class="form-check-label col-sm-4 col-form-label"></label>
+                    <div class="col-sm-8">
+                        <input type="checkbox" class="border-checkbox form-check-input" asp-for="IsActive" />
+                    </div>
+                    <span class="text-danger ml-3" asp-validation-for="IsActive"></span>
                 </div>
             </div>
             <div class="modal-footer">

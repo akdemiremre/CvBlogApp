@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using CvBlog.Data.Abstract;
+using CvBlog.Data.Concrete;
 using CvBlog.Entities.Concrete;
 using CvBlog.Entities.Dtos;
 using CvBlog.Services.Abstract;
@@ -22,34 +23,14 @@ namespace CvBlog.Services.Concrete
 
         public async Task<IDataResult<CategoryDto>> Add(CategoryAddDto categoryAddDto, string createdByName)
         {
-            /*
-            await _unitOfWork.Categories.AddAsync(new Category
-            {
-                Name = categoryAddDto.Name,
-                Description = categoryAddDto.Description,
-                Note = categoryAddDto.Note,
-                IsActive = categoryAddDto.IsActive,
-                CreatedByName = createdByName, // entitybase de var girilmese de olur.
-                CreatedDate = DateTime.Now, // entitybase de var girilmese de olur.
-                ModifiedByName = createdByName, // entitybase de var girilmese de olur.
-                ModifiedDate = DateTime.Now, // entitybase de var girilmese de olur.
-                IsDeleted = false // entitybase de var girilmese de olur.
-            }).ContinueWith(t => _unitOfWork.SaveAsync());
-            // ekleme işlemi tamamlanırken ContinueWith ile db savechange işlemini hızlıca yapıp bu arada frontend e hızlıca yanıt dönmüş oluruz.
-            // await _unitOfWork.SaveAsync();
-            */
-
-            /*
-            var category = _mapper.Map<Category>(categoryAddDto);
-            category.CreatedByName = createdByName;
-            category.ModifiedByName = createdByName;
-            await _unitOfWork.Categories.AddAsync(category).ContinueWith(t => { _unitOfWork.SaveAsync(); });
-            return new Result(ResultStatus.Success, $"{categoryAddDto.Name} adlı kategori başarıyla eklenmiştir.");
-            */
             var category = Mapper.Map<Category>(categoryAddDto);
             category.CreatedByName = createdByName;
             category.ModifiedByName = createdByName;
             var addedCategory = await UnitOfWork.Categories.AddAsync(category);
+            // await UnitOfWork.Categories.AddAsync(category).ContinueWith(t => { _unitOfWork.SaveAsync(); });
+            // bu scope da mevcutta 1 thread zaten çalışırken ContinueWith ile yeni bir thread e SaveAsync() işlemini verip eş zamanlı şekilde arka planda kaydı yapmasınıda sağladık.
+            // -> dezavantajo => 2.thread çalışırken(dbcontext te kayıt atarken) 1.thread direkt arayüze success dönüp liste çekmek(örneğin getAllAsync) istediğinde zaten bir thread üzerinde dbcontext in çalıştığını 2.threadin bunu beklemesi gerektiğini söyleyen hata verecektir.
+            // bu yüzden await ile işlemin bitmesini bekle diyerek saveAsync i 1.thread e yaptırarak hatayı çözmüş olduk.
             await UnitOfWork.SaveAsync();
             return new DataResult<CategoryDto>(ResultStatus.Success, "Başarılı", new CategoryDto
             {

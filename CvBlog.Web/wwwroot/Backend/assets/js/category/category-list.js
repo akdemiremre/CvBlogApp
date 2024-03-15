@@ -25,7 +25,6 @@ $(document).ready(function () {
                 data: { val: JSON.stringify(parameters) },
                 dataType: "json",
                 async: true,
-                headers: { 'Token': "xyz" },
                 dataFilter: function (data) {
                     var json = jQuery.parseJSON(data);
                     return JSON.stringify(json); // return JSON string
@@ -181,6 +180,7 @@ $(document).ready(function () {
                 list["Name"] = modal.find("#Name").val();
                 list["Description"] = modal.find("#Description").val();
                 list["Note"] = modal.find("#Note").val();
+                list["IsActive"] = modal.find("#IsActive").is(':checked');
                 $.ajax({
                     url: "/admin/kategori/kategori-ekle",
                     type: "post",
@@ -193,9 +193,21 @@ $(document).ready(function () {
                         console.log("categoryAddButton_result_start");
                         console.log("result = " + result);
                         const categoryAddAjaxViewModel = jQuery.parseJSON(result);
-                        Swal.fire(swalTitle, `${categoryAddAjaxViewModel.CategoryDto.Message}`, 'success');
-                        table.ajax.reload();
-                        modal.modal("hide");
+                        const newFormBody = $('.modal-body', categoryAddAjaxViewModel.CategoryAddPartial);
+                        placeHolderDiv.find('.modal-body').replaceWith(newFormBody);
+                        const isValid = newFormBody.find('[name="IsValid"]').val() === 'True';
+                        if (isValid) {
+                            Swal.fire(swalTitle, `${categoryAddAjaxViewModel.CategoryDto.Message}`, 'success');
+                            table.ajax.reload();
+                            modal.modal("hide");
+                        } else {
+                            let summaryText = "";
+                            $('#validation-summary > ul > li').each(function () {
+                                let text = $(this).text();
+                                summaryText += `*${text}\n`;
+                            });
+                            //Swal.fire(swalTitle, `${categoryAddAjaxViewModel.CategoryDto.Message}`, 'error');
+                        }
                         console.log("categoryAddButton_result_end");
                     },
                     error: function (err) {
