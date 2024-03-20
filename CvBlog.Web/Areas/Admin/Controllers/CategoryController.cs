@@ -118,9 +118,9 @@ namespace CvBlog.Web.Areas.Admin.Controllers
         }
         [Route("kategori-guncelleme-formu")]
         [HttpGet]
-        public async Task<IActionResult> CategoryUpdateModal(string categoryId)
+        public async Task<IActionResult> CategoryUpdateModal(string val)
         {
-            var result = await _categoryService.GetCategoryUpdateDto(Convert.ToInt32(Tool.Base64Decode(categoryId)));
+            var result = await _categoryService.GetCategoryUpdateDto(Convert.ToInt32(Tool.Base64Decode(val)));
             if (result.ResultStatus == ResultStatus.Success)
             {
                 return PartialView("_CategoryUpdateModalPartial", result.Data);
@@ -149,6 +149,28 @@ namespace CvBlog.Web.Areas.Admin.Controllers
                 CategoryUpdatePartial = await this.RenderViewToStringAsync("_CategoryUpdateModalPartial",categoryUpdateDto)
             });
             return Json(categoryUpdateErrorAjaxModel);
+        }
+        [Route("kategori-aktif-durumunu-degistir")]
+        [HttpPost]
+        public async Task<Result> CategoryUpdateIsActive(string val)
+        {
+            if (!string.IsNullOrEmpty(val))
+            {
+                var result = await _categoryService.UpdateIsActive(Convert.ToInt32(Tool.Base64Decode(val)),"admin");
+                return new Result(result.ResultStatus, result.Message);
+            }
+            return new Result(ResultStatus.Error, "Lütfen işlem yapmak istediğiniz kategoriyi seçiniz.");
+        }
+        [Route("kategori-sil")]
+        [HttpPost]
+        public async Task<Result> CategoryDelete(string val)
+        {
+            if (!string.IsNullOrEmpty(val))
+            {
+                var result = await _categoryService.Delete(Convert.ToInt32(Tool.Base64Decode(val)), "admin");
+                return new Result(result.ResultStatus, result.Message);
+            }
+            return new Result(ResultStatus.Error, "Lütfen işlem yapmak istediğiniz kategoriyi seçiniz.");
         }
     }
 }

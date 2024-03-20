@@ -45,11 +45,13 @@ namespace CvBlog.Services.Concrete
             var category = await UnitOfWork.Categories.GetAsync(c => c.Id == categoryId);
             if (category != null)
             {
-                category.IsDeleted = false;
+                category.IsDeleted = true;
                 category.ModifiedByName = modifiedByName;
                 category.ModifiedDate = DateTime.Now;
                 // güncelleme işlemi tamamlanırken ContinueWith ile db savechange işlemini hızlıca yapıp bu arada frontend e hızlıca yanıt dönmüş oluruz.
-                await UnitOfWork.Categories.UpdateAsync(category).ContinueWith(t => UnitOfWork.SaveAsync()); 
+                //await UnitOfWork.Categories.UpdateAsync(category).ContinueWith(t => UnitOfWork.SaveAsync()); 
+                await UnitOfWork.Categories.UpdateAsync(category);
+                await UnitOfWork.SaveAsync();
                 return new Result(ResultStatus.Success, $"{category.Name} adlı kategori başarıyla silinmiştir.");
             }
             return new Result(ResultStatus.Error, "Böyle bir kategori bulunamadı.", null);
@@ -188,6 +190,32 @@ namespace CvBlog.Services.Concrete
                 return new DataResult<CategoryUpdateDto>(ResultStatus.Success, categoryUpdateDto);
             }
             return new DataResult<CategoryUpdateDto>(ResultStatus.Error,"Böyle bir kategori bulunamadı.",null);
+        }
+
+        public async Task<IResult> UpdateIsActive(int categoryId, string modifiedByName)
+        {
+            var result = await UnitOfWork.Categories.AnyAsync(x => x.Id == categoryId);
+            if (result)
+            {
+                var category = await UnitOfWork.Categories.GetAsync(x => x.Id == categoryId);
+                category.ModifiedByName = modifiedByName;
+                category.ModifiedDate = DateTime.Now;
+                string message = string.Empty;
+                if (category.IsActive)
+                {
+                    category.IsActive = false;
+                    message = $"{category.Name} isimli kategori başarıyla aktif hale getirilmiştir.";
+                }
+                else
+                {
+                    category.IsActive = true;
+                    message = $"{category.Name} isimli kategori başarıyla pasif hale getirilmiştir.";
+                }
+                category = await UnitOfWork.Categories.UpdateAsync(category);
+                await UnitOfWork.SaveAsync();
+                return new Result(ResultStatus.Success, message);
+            }
+            return new Result(ResultStatus.Error, "Böyle bir kategori bulunamadı.");
         }
     }
 }

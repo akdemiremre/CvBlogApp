@@ -110,10 +110,10 @@ $(document).ready(function () {
                     render: function (data, type, row, order) {
                         var html = "";
                         var editHtml = '<button class="btn btn-xs btn-info btn-outline-info categoryUpdateModalShow" title="Düzenlemek için tıklayınız." data-val="' + data + '"><i class="icofont icofont-edit"></i></button>';
-                        var isActiveHtml = '<button class="btn btn-xs btn-warning btn-outline-success ml-1" title="Pasif yapmak için tıklayınız." data-val="' + data + '"><i class="icofont icofont-refresh"></i></button>';
-                        if (row[7] == "0")
-                            isActiveHtml = '<button class="btn btn-xs btn-warning btn-outline-danger ml-1"><i class="icofont icofont-refresh" title="Aktif yapmak için tıklayınız."  data-val="' + data + '"></i></button>';
-                        var isDeletedHtml = '<button class="btn btn-xs btn-danger btn-outline-danger ml-1" title="Silmek için tıklayınız." data-val="' + data + '"><i class="icofont icofont-trash"></i></button>';
+                        var isActiveHtml = '<button class="btn btn-xs btn-warning btn-outline-success ml-1 categoryIsActiveButton"  data-val="' + data + '" title="Pasif yapmak için tıklayınız."><i class="icofont icofont-refresh"></i></button>';
+                        if (row[7] == "False")
+                            isActiveHtml = '<button class="btn btn-xs btn-warning btn-outline-danger ml-1 categoryIsActiveButton" data-val="' + data + '"><i class="icofont icofont-refresh" title="Aktif yapmak için tıklayınız."></i></button>';
+                        var isDeletedHtml = '<button class="btn btn-xs btn-danger btn-outline-danger ml-1 categoryIsDeletedButton" title="Silmek için tıklayınız." data-val="' + data + '"><i class="icofont icofont-trash"></i></button>';
                         html += editHtml + isActiveHtml + isDeletedHtml;
                         return html;
                     }
@@ -235,7 +235,7 @@ $(document).ready(function () {
             var btn = $(this);
             var data_val = btn.attr("data-val");
             btn.attr("disabled", "disabled");
-            $.get("/admin/kategori/kategori-guncelleme-formu", { categoryId: data_val }).done(function (data) {
+            $.get("/admin/kategori/kategori-guncelleme-formu", { val: data_val }).done(function (data) {
                 placeHolderDiv.html(data);
                 placeHolderDiv.find('.modal').modal('show');
             }).fail(function (err) {
@@ -310,4 +310,112 @@ $(document).ready(function () {
             console.log("categoryUpdateButton_end");
         });
     })
-// #endregion                        
+// #endregion
+
+// #region category-isActive
+$(document).on('click', '.categoryIsActiveButton', function (e) {
+    console.log("categoryIsActiveButton_start");
+    e.preventDefault();
+    var btn = $(this);
+    btn.attr("disabled", "disabled");
+    Swal.fire({
+        icon: `question`,
+        title: "Durumu güncellemek istediğinize emin misiniz?",
+        showCancelButton: true,
+        confirmButtonText: "Evet, Sil",
+        cancelButtonText: `Vazgeç`,
+    }).then((result) => {
+        if (result.value) {
+            var swalTitle = "Aktif Durumunu Güncelleme İşlemi";
+            var data_val = btn.attr("data-val");
+            $.ajax({
+                url: "/admin/kategori/kategori-aktif-durumunu-degistir",
+                type: "post",
+                data: { val: data_val },
+                beforeSend: function () {
+                    console.log("categoryIsActiveButton_beforeSend");
+                },
+                success: function (result) {
+                    console.log("categoryIsActiveButton_success");
+                    console.log("result = " + result);
+                    if (result.resultStatus == "0") {
+                        Swal.fire({
+                            title: swalTitle,
+                            html: result.message,
+                            icon: "success"
+                        }).then(function () {
+                            table.ajax.reload();
+                        });
+                    } else {
+                        Swal.fire({
+                            title: swalTitle,
+                            html: result.message,
+                            icon: "warning"
+                        });
+                    }
+                },
+                error: function (err) {
+                    console.log("categoryIsActiveButton_error");
+                    Swal.fire('Hata!', `${err.responseText}`, 'warning');
+                }
+            });
+        }
+    });
+    btn.removeAttr("disabled");
+    console.log("categoryIsActiveButton_end");
+});
+// #endregion
+
+// #region category-isActive
+$(document).on('click', '.categoryIsDeletedButton', function (e) {
+    console.log("categoryIsDeletedButton_start");
+    e.preventDefault();
+    var btn = $(this);
+    btn.attr("disabled", "disabled");
+    Swal.fire({
+        icon: `question`,
+        title: "Silmek istediğinize emin misiniz?",
+        showCancelButton: true,
+        confirmButtonText: "Evet, Sil",
+        cancelButtonText: `Vazgeç`,
+    }).then((result) => {
+        if (result.value) {
+            var swalTitle = "Silme İşlemi";
+            var data_val = btn.attr("data-val");
+            $.ajax({
+                url: "/admin/kategori/kategori-sil",
+                type: "post",
+                data: { val: data_val },
+                beforeSend: function () {
+                    console.log("categoryIsDeletedButton_beforeSend");
+                },
+                success: function (result) {
+                    console.log("categoryIsDeletedButton_success");
+                    console.log("result = " + result);
+                    if (result.resultStatus == "0") {
+                        Swal.fire({
+                            title: swalTitle,
+                            html: result.message,
+                            icon: "success"
+                        }).then(function () {
+                            table.ajax.reload();
+                        });
+                    } else {
+                        Swal.fire({
+                            title: swalTitle,
+                            html: result.message,
+                            icon: "warning"
+                        });
+                    }
+                },
+                error: function (err) {
+                    console.log("categoryIsDeletedButton_error");
+                    Swal.fire('Hata!', `${err.responseText}`, 'warning');
+                }
+            });
+        }
+    });
+    btn.removeAttr("disabled");    
+    console.log("categoryIsDeletedButton_end");
+});
+// #endregion    
