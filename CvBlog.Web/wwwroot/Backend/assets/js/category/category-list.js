@@ -109,7 +109,7 @@ $(document).ready(function () {
                     "sortable": false,
                     render: function (data, type, row, order) {
                         var html = "";
-                        var editHtml = '<button class="btn btn-xs btn-info btn-outline-info" title="Düzenlemek için tıklayınız." data-val="' + data + '"><i class="icofont icofont-edit"></i></button>';
+                        var editHtml = '<button class="btn btn-xs btn-info btn-outline-info categoryUpdateModalShow" title="Düzenlemek için tıklayınız." data-val="' + data + '"><i class="icofont icofont-edit"></i></button>';
                         var isActiveHtml = '<button class="btn btn-xs btn-warning btn-outline-success ml-1" title="Pasif yapmak için tıklayınız." data-val="' + data + '"><i class="icofont icofont-refresh"></i></button>';
                         if (row[7] == "0")
                             isActiveHtml = '<button class="btn btn-xs btn-warning btn-outline-danger ml-1"><i class="icofont icofont-refresh" title="Aktif yapmak için tıklayınız."  data-val="' + data + '"></i></button>';
@@ -192,12 +192,12 @@ $(document).ready(function () {
                     success: function (result) {
                         console.log("categoryAddButton_result_start");
                         console.log("result = " + result);
-                        const categoryAddAjaxViewModel = jQuery.parseJSON(result);
-                        const newFormBody = $('.modal-body', categoryAddAjaxViewModel.CategoryAddPartial);
+                        const categoryAddAjaxModel = jQuery.parseJSON(result);
+                        const newFormBody = $('.modal-body', categoryAddAjaxModel.CategoryAddPartial);
                         placeHolderDiv.find('.modal-body').replaceWith(newFormBody);
                         const isValid = newFormBody.find('[name="IsValid"]').val() === 'True';
                         if (isValid) {
-                            Swal.fire(swalTitle, `${categoryAddAjaxViewModel.CategoryDto.Message}`, 'success');
+                            Swal.fire(swalTitle, `${categoryAddAjaxModel.CategoryDto.Message}`, 'success');
                             table.ajax.reload();
                             modal.modal("hide");
                         } else {
@@ -226,3 +226,88 @@ $(document).ready(function () {
         });
     })
 // #endregion
+
+// #region category-update
+    $(function () {
+        const placeHolderDiv = $("#modalPlaceHolder");
+        $(document).on('click', '.categoryUpdateModalShow', function (e) {
+            e.preventDefault();
+            var btn = $(this);
+            var data_val = btn.attr("data-val");
+            btn.attr("disabled", "disabled");
+            $.get("/admin/kategori/kategori-guncelleme-formu", { categoryId: data_val }).done(function (data) {
+                placeHolderDiv.html(data);
+                placeHolderDiv.find('.modal').modal('show');
+            }).fail(function (err) {
+                Swal.fire('Hata!', `${err.responseText}`, 'warning');
+                btn.removeAttr("disabled");
+            });
+        });
+        $(document).on('click', '#categoryUpdateButton', function (e) {
+            console.log("categoryUpdateButton_start");
+            e.preventDefault();
+            var swalTitle = "Kategori Güncelleme İşlemi";
+            var errorMessage = "";
+            var btn = $(this);
+            var modal = $("#categoryUpdateModal");
+            $(".my-input-control").each(function () {
+                var val = $(this).val();
+                if (val == "") {
+                    var labelText = $(this).parents(".row").find("label").html();
+                    errorMessage += "<br/>" + labelText + " alanı boş geçilemez";
+                }
+            });
+            console.log("errorMessage = " + errorMessage);
+            if (errorMessage == "") {
+                var list = {};
+                list["Id"] = modal.find("#Id").val();
+                list["Name"] = modal.find("#Name").val();
+                list["Description"] = modal.find("#Description").val();
+                list["Note"] = modal.find("#Note").val();
+                list["IsActive"] = modal.find("#IsActive").is(':checked');
+                list["IsDeleted"] = modal.find("#IsDeleted").is(':checked');
+                    $.ajax({
+                        url: "/admin/kategori/kategori-guncelle",
+                        type: "post",
+                        data: list,
+                        beforeSend: function () {
+                            console.log("categoryUpdateButton_beforeSend");
+                            btn.attr("disabled", "disabled");
+                        },
+                        success: function (result) {
+                            console.log("categoryUpdateButton_success_start");
+                            console.log("result = " + result);
+                            const categoryUpdateAjaxModel = jQuery.parseJSON(result);
+                            const newFormBody = $('.modal-body', categoryUpdateAjaxModel.CategoryUpdatePartial);
+                            placeHolderDiv.find(".modal-body").replaceWith(newFormBody);
+                            const isValid = placeHolderDiv.find('[name="IsValid"]').val() === 'True';
+                            if (isValid) {
+                                Swal.fire(swalTitle, `${categoryUpdateAjaxModel.CategoryDto.Message}`, 'success');
+                                table.ajax.reload();
+                                modal.modal("hide");
+                            } else {
+                                let summaryText = "";
+                                $("#validation-summary > ul > li").each(function () {
+                                    let text = $(this).text();
+                                    summaryText += `*${text}\n`;
+                                });
+                            }
+                            console.log("categoryUpdateButton_success_end");
+                        },
+                        error: function (err) {
+                            console.log("categoryUpdateButton_error");
+                            Swal.fire('Hata!', `${err.responseText}`, 'warning');
+                        }
+                });
+            } else {
+                Swal.fire({
+                    title: swalTitle,
+                    html: `${errorMessage}`,
+                    icon:"warning"
+                });
+            }
+            btn.removeAttr("disabled");
+            console.log("categoryUpdateButton_end");
+        });
+    })
+// #endregion                        

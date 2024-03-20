@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using CvBlog.Data.Concrete;
 using CvBlog.Entities.Dtos;
 using CvBlog.Services.Abstract;
 using CvBlog.Services.Utilities;
@@ -98,22 +99,56 @@ namespace CvBlog.Web.Areas.Admin.Controllers
                 if (result.ResultStatus == ResultStatus.Success)
                 {
                     //System.Text.Json; daki JsonSerializer
-                    var categoryAddAjaxViewModel = JsonSerializer.Serialize(new CategoryAddAjaxViewModel
+                    var categoryAddAjaxModel = JsonSerializer.Serialize(new CategoryAddAjaxViewModel
                     {
                         CategoryDto = result.Data, // veri gönderildi.
                         CategoryAddPartial = await this.RenderViewToStringAsync("_CategoryAddModalPartial", categoryAddDto)
                     });
-                    return Json(categoryAddAjaxViewModel);
+                    return Json(categoryAddAjaxModel);
                 }
             }
             //System.Text.Json; daki JsonSerializer
-            var categoryAddAjaxErrorViewModel = JsonSerializer.Serialize(new CategoryAddAjaxViewModel
+            var categoryAddAjaxErrorModel = JsonSerializer.Serialize(new CategoryAddAjaxViewModel
             {
                 // CategoryDto kısmını göndermeye gerek yok zaten error a dustu.. 
                 // Hata mesajları görünmesi için partialview i gönderdik.
                 CategoryAddPartial = await this.RenderViewToStringAsync("_CategoryAddModalPartial",categoryAddDto)
             });
-            return Json(categoryAddAjaxErrorViewModel);
+            return Json(categoryAddAjaxErrorModel);
+        }
+        [Route("kategori-guncelleme-formu")]
+        [HttpGet]
+        public async Task<IActionResult> CategoryUpdateModal(string categoryId)
+        {
+            var result = await _categoryService.GetCategoryUpdateDto(Convert.ToInt32(Tool.Base64Decode(categoryId)));
+            if (result.ResultStatus == ResultStatus.Success)
+            {
+                return PartialView("_CategoryUpdateModalPartial", result.Data);
+            }
+            return NotFound();
+        }
+        [Route("kategori-guncelle")]
+        [HttpPost]
+        public async Task<IActionResult> CategoryUpdate(CategoryUpdateDto categoryUpdateDto)
+        {
+            if (ModelState.IsValid)
+            {
+                var result = await _categoryService.Update(categoryUpdateDto, "system");
+                if (result.ResultStatus == ResultStatus.Success)
+                {
+                    var categpryUpdateAjaxModel = JsonSerializer.Serialize(new CategoryUpdateAjaxViewModel
+                    {
+                        CategoryDto = result.Data,
+                        CategoryUpdatePartial = await this.RenderViewToStringAsync("_CategoryUpdateModalPartial",categoryUpdateDto)
+                    });
+                    return Json(categpryUpdateAjaxModel);
+                }
+            }
+            var categoryUpdateErrorAjaxModel = JsonSerializer.Serialize(new CategoryUpdateAjaxViewModel
+            {
+                CategoryUpdatePartial = await this.RenderViewToStringAsync("_CategoryUpdateModalPartial",categoryUpdateDto)
+            });
+            return Json(categoryUpdateErrorAjaxModel);
         }
     }
 }

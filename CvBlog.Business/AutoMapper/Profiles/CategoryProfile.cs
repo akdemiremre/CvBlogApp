@@ -15,6 +15,7 @@ namespace CvBlog.Services.AutoMapper.Profiles
         {
             CreateMap<CategoryAddDto, Category>().ForMember(d => d.CreatedDate, opt => opt.MapFrom(x => DateTime.Now));
             CreateMap<CategoryUpdateDto, Category>().ForMember(d => d.ModifiedDate, opt => opt.MapFrom(x => DateTime.Now));
+            CreateMap<Category, CategoryUpdateDto>();
         }
     }
 }
