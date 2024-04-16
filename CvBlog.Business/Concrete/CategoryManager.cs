@@ -151,22 +151,10 @@ namespace CvBlog.Services.Concrete
 
         public async Task<IDataResult<CategoryDto>> Update(CategoryUpdateDto categoryUpdateDto, string modifiedByName)
         {
-            /*
-            var category = await _unitOfWork.Categories.GetAsync(c => c.Id == categoryUpdateDto.Id);
-            if (category != null)
-            {
-                category.Name = categoryUpdateDto.Name;
-                category.Description = categoryUpdateDto.Description;
-                category.Note = categoryUpdateDto.Note;
-                category.IsActive = categoryUpdateDto.IsActive;
-                category.IsDeleted = categoryUpdateDto.IsDeleted;
-                category.ModifiedByName = modifiedByName;
-                category.ModifiedDate = DateTime.Now;
-                await _unitOfWork.Categories.UpdateAsync(category).ContinueWith(t => _unitOfWork.SaveAsync()); // güncelleme işlemi tamamlanırken ContinueWith ile db savechange işlemini hızlıca yapıp bu arada frontend e hızlıca yanıt dönmüş oluruz.
-                return new Result(ResultStatus.Success, $"{categoryUpdateDto.Name} adlı kategori başarıyla güncelenmiştir.");
-            }
-            */
-            var category = Mapper.Map<Category>(categoryUpdateDto);
+            //var category = Mapper.Map<Category>(categoryUpdateDto);
+            // categoryUpdateDto -> category e map ederken tekrardan createdDate ve createdByName i verme durumundan dolayı map işlemine eski kategori bilgisini kaynak olarak verdik. Bunun sonucunda createdDate ve createdByName e dokunmadan map işlemini yapmış olduk.
+            var oldCategory = await UnitOfWork.Categories.GetAsync(c => c.Id == categoryUpdateDto.Id);
+            var category = Mapper.Map<CategoryUpdateDto,Category>(categoryUpdateDto,oldCategory);
             category.ModifiedByName = modifiedByName;
             //var updatedCategory = await UnitOfWork.Categories.UpdateAsync(category).ContinueWith(t => { UnitOfWork.SaveAsync(); });
             var updatedCategory = await UnitOfWork.Categories.UpdateAsync(category);
