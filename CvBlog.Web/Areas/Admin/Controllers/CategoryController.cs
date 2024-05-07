@@ -9,6 +9,8 @@ using CvBlog.Shared.Utilities.Results.Concrete;
 using CvBlog.Web.Areas.Admin.Models;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json.Linq;
+using System.Net;
+using System.Text;
 using System.Text.Json;
 
 namespace CvBlog.Web.Areas.Admin.Controllers
