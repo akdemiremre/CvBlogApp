@@ -161,7 +161,6 @@ $(document).ready(function () {
             });
             btn.removeAttr("disabled");
         });
-
         $(document).on('click', "#categoryAddButton", function (e) {
             e.preventDefault();
             var swalTitle = "Kategori Ekleme İşlemi";
