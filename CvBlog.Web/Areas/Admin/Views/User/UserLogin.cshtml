@@ -1,0 +1,56 @@
+﻿@model CvBlog.Entities.Dtos.UserLoginDto
+@{
+    Layout = "_UserLoginLayout";
+    ViewBag.Title = "Giriş Yap";
+}
+<form class="md-float-material form-material" action="/admin/kullanici/giris-yap" method="post">
+    <div class="text-center">
+        <img src="/Backend/assets/images/logo.png" alt="logo.png">
+    </div>
+    <div class="auth-box card">
+        <div class="card-block">
+            <div class="row m-b-20">
+                <div class="col-md-12">
+                    <h3 class="text-center"><i class="fa fa-home"></i> Yönetim Paneli</h3>
+                </div>
+            </div>
+            <div asp-validation-summary="All" class="text-danger mb-2"></div>
+            <div class="form-group form-primary">
+                <input asp-for="Email" type="email" class="form-control" required="" placeholder="E-Posta Adresi">
+                <span asp-validation-for="Email" class="form-bar text-danger"></span>
+            </div>
+            <div class="form-group form-primary">
+                <input asp-for="Password" type="password" class="form-control" required="" placeholder="Şifre">
+                <span asp-validation-for="Password" class="form-bar text-danger"></span>
+            </div>
+            <div class="row m-t-25 text-left">
+                <div class="col-12">
+                    <div class="checkbox-fade fade-in-primary d-">
+                        <label>
+                            <input asp-for="RememberMe" type="checkbox">
+                            <span class="cr"><i class="cr-icon icofont icofont-ui-check txt-primary"></i></span>
+                            <label class="text-inverse" asp-for="RememberMe"></label>
+                        </label>
+                    </div>
+                    <div class="forgot-phone text-right f-right">
+                        <a href="auth-reset-password.htm" class="text-right f-w-600"><i class="fa fa-lock"></i> Şifremi Unuttum</a>
+                    </div>
+                </div>
+            </div>
+            <div class="row m-t-30">
+                <div class="col-md-12">
+                    <button id="loginButton" type="submit" class="btn btn-primary btn-md btn-block waves-effect waves-light text-center m-b-20"><i class="fa fa-sign-in"></i> Giriş Yap</button>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-10">
+                    <p class="text-inverse text-left"><a href="/Home/Index"><b class="f-w-600">Web siteye geri dönmek için tıklayınız</b></a></p>
+                </div>
+                <div class="col-md-2">
+                    <img src="/Backend/assets/images/auth/Logo-small-bottom.png" alt="small-logo.png">
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

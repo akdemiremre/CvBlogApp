@@ -9,6 +9,7 @@ using CvBlog.Shared.Utilities.Exttensions;
 using CvBlog.Shared.Utilities.Results.ComplexTypes;
 using CvBlog.Shared.Utilities.Results.Concrete;
 using CvBlog.Web.Areas.Admin.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -23,13 +24,48 @@ namespace CvBlog.Web.Areas.Admin.Controllers
     public class UserController : BaseController
     {
         private readonly UserManager<User> _userManager;
+        private readonly SignInManager<User> _signInManager;
         private readonly IWebHostEnvironment _env;
-        public UserController(UserManager<User> userManager, IWebHostEnvironment env, IMapper mapper) : base(mapper)
+        public UserController(UserManager<User> userManager, IWebHostEnvironment env, IMapper mapper, SignInManager<User> signInManager) : base(mapper)
         {
             _userManager = userManager;
             _env = env;
+            _signInManager = signInManager;
         }
-
+        [Route("giris-yap")]
+        [HttpGet]
+        public IActionResult Login()
+        {
+            return View("UserLogin");
+        }
+        [Route("giris-yap")]
+        [HttpPost]
+        public async Task<IActionResult> Login(UserLoginDto userLoginDto)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await _userManager.FindByEmailAsync(userLoginDto.Email);
+                if (user != null)
+                {
+                    var result = await _signInManager.PasswordSignInAsync(user, userLoginDto.Password, userLoginDto.RememberMe, false); // şifre ile giriş yapıcağımızı belirttik.
+                    if (result.Succeeded)
+                    {
+                        // Kullanıcı giriş yaptı.
+                        return RedirectToAction("Index", "Home");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "E-Posta adresiniz veya şifreniz yanlıştır.");
+                    }
+                }
+                else
+                {
+                    ModelState.AddModelError("", "E-Posta adresiniz veya şifreniz yanlıştır.");
+                }
+            }
+            return View("UserLogin");
+        }
+        [Authorize]
         [Route("liste")]
         [HttpGet]
         public async Task<IActionResult> Index()
@@ -41,6 +77,7 @@ namespace CvBlog.Web.Areas.Admin.Controllers
                 ResultStatus = ResultStatus.Success
             });
         }
+        [Authorize]
         [Route("liste-yinele")]
         [HttpGet]
         public async Task<IActionResult> ListRefresh()
@@ -52,12 +89,14 @@ namespace CvBlog.Web.Areas.Admin.Controllers
                 ResultStatus = ResultStatus.Success
             });
         }
+        [Authorize]
         [Route("kullanici-ekleme-formu")]
         [HttpGet]
         public IActionResult Add()
         {
             return PartialView("_UserAddModalPartial");
         }
+        [Authorize]
         [Route("kullanici-ekle")]
         [HttpPost]
         public async Task<IActionResult> Add(UserAddDto userAddDto)
@@ -104,6 +143,7 @@ namespace CvBlog.Web.Areas.Admin.Controllers
             });
             return Json(userAddAjaxModelStateErrorViewModel);
         }
+        [Authorize]
         [Route("kullanici-sil")]
         [HttpPost]
         public async Task<JsonResult> Delete(int userId)
@@ -137,6 +177,7 @@ namespace CvBlog.Web.Areas.Admin.Controllers
                 return Json(deletedUserErrorModel);
             }
         }
+        [Authorize]
         [Route("kullanici-guncelleme-formu")]
         [HttpGet]
         public async Task<PartialViewResult> Update(int userId)
@@ -145,6 +186,7 @@ namespace CvBlog.Web.Areas.Admin.Controllers
             var userUpdateDto = Mapper.Map<UserUpdateDto>(user);
             return PartialView("_UserUpdateModalPartial", userUpdateDto);
         }
+        [Authorize]
         [Route("kullanici-guncelle")]
         [HttpPost]
         public async Task<IActionResult> Update(UserUpdateDto userUpdateDto)
@@ -204,6 +246,7 @@ namespace CvBlog.Web.Areas.Admin.Controllers
                 return Json(userUpdateModelStateErrorViewModel);
             }
         }
+        [Authorize]
         public async Task<string> ImageUpload(string userName, IFormFile pictureFile)
         {
             string wwwroot = _env.WebRootPath;
@@ -217,6 +260,7 @@ namespace CvBlog.Web.Areas.Admin.Controllers
             }
             return fileName;
         }
+        [Authorize]
         public bool ImageDelete(string pictureName)
         {
             string wwwroot = _env.WebRootPath;

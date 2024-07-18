@@ -7,6 +7,7 @@ using CvBlog.Shared.Utilities.Exttensions;
 using CvBlog.Shared.Utilities.Results.ComplexTypes;
 using CvBlog.Shared.Utilities.Results.Concrete;
 using CvBlog.Web.Areas.Admin.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json.Linq;
 using System.Net;
@@ -16,6 +17,7 @@ using System.Text.Json;
 namespace CvBlog.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize]
     [Route("admin/kategori")]
     public class CategoryController : BaseController
     {

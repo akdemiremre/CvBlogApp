@@ -50,7 +50,7 @@ builder.Services.AddScoped<IUserService, UserManager>();
 #endregion
 builder.Services.ConfigureApplicationCookie(options =>
 {
-    options.LoginPath = new PathString("/Admin/User/Login");
+    options.LoginPath = new PathString("/admin/kullanici/giris-yap");
     options.LogoutPath = new PathString("/Admin/User/Logout");
     options.Cookie = new CookieBuilder
     {
