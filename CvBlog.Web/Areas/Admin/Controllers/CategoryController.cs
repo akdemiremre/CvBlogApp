@@ -17,7 +17,7 @@ using System.Text.Json;
 namespace CvBlog.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize]
+    [Authorize(Roles ="Admin,Editor")]
     [Route("admin/kategori")]
     public class CategoryController : BaseController
     {

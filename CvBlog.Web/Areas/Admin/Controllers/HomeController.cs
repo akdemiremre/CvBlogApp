@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace CvBlog.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize]
+    [Authorize(Roles ="Admin,Editor")]
     public class HomeController : Controller
     {
         public async Task<IActionResult> Index()

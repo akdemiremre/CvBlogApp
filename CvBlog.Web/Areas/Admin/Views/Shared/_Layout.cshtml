@@ -69,7 +69,6 @@
         <div class="pcoded-container navbar-wrapper">
 
             @await Html.PartialAsync("_LayoutHeaderNavbarPartial")
-            
 
             <!-- Sidebar chat start -->
             <div id="sidebar" class="users p-chat-user showChat">
@@ -180,7 +179,8 @@
             <!-- Sidebar inner chat end-->
             <div class="pcoded-main-container">
                 <div class="pcoded-wrapper">
-                    @await Html.PartialAsync("_LayoutSidebarPartial")
+                    @* @await Html.PartialAsync("_LayoutSidebarPartial") *@
+                    @await Component.InvokeAsync("AdminMenu")
                     <div class="pcoded-content">
                         @RenderBody()
                     </div>

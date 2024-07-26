@@ -65,7 +65,15 @@ namespace CvBlog.Web.Areas.Admin.Controllers
             }
             return View("UserLogin");
         }
+        [Route("cikis-yap")]
         [Authorize]
+        [HttpGet]
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Home", new { Area = "" });
+        }
+        [Authorize(Roles ="Admin")]
         [Route("liste")]
         [HttpGet]
         public async Task<IActionResult> Index()
@@ -77,7 +85,7 @@ namespace CvBlog.Web.Areas.Admin.Controllers
                 ResultStatus = ResultStatus.Success
             });
         }
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [Route("liste-yinele")]
         [HttpGet]
         public async Task<IActionResult> ListRefresh()
@@ -89,14 +97,14 @@ namespace CvBlog.Web.Areas.Admin.Controllers
                 ResultStatus = ResultStatus.Success
             });
         }
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [Route("kullanici-ekleme-formu")]
         [HttpGet]
         public IActionResult Add()
         {
             return PartialView("_UserAddModalPartial");
         }
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [Route("kullanici-ekle")]
         [HttpPost]
         public async Task<IActionResult> Add(UserAddDto userAddDto)
@@ -143,7 +151,7 @@ namespace CvBlog.Web.Areas.Admin.Controllers
             });
             return Json(userAddAjaxModelStateErrorViewModel);
         }
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [Route("kullanici-sil")]
         [HttpPost]
         public async Task<JsonResult> Delete(int userId)
@@ -177,7 +185,7 @@ namespace CvBlog.Web.Areas.Admin.Controllers
                 return Json(deletedUserErrorModel);
             }
         }
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [Route("kullanici-guncelleme-formu")]
         [HttpGet]
         public async Task<PartialViewResult> Update(int userId)
@@ -186,7 +194,7 @@ namespace CvBlog.Web.Areas.Admin.Controllers
             var userUpdateDto = Mapper.Map<UserUpdateDto>(user);
             return PartialView("_UserUpdateModalPartial", userUpdateDto);
         }
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [Route("kullanici-guncelle")]
         [HttpPost]
         public async Task<IActionResult> Update(UserUpdateDto userUpdateDto)
@@ -246,7 +254,13 @@ namespace CvBlog.Web.Areas.Admin.Controllers
                 return Json(userUpdateModelStateErrorViewModel);
             }
         }
-        [Authorize]
+        [Route("yetkisiz-erisim")]
+        [HttpGet]
+        public ViewResult AccessDenied()
+        {
+            return View();
+        }
+        [Authorize(Roles = "Admin,Editor")]
         public async Task<string> ImageUpload(string userName, IFormFile pictureFile)
         {
             string wwwroot = _env.WebRootPath;
@@ -260,7 +274,7 @@ namespace CvBlog.Web.Areas.Admin.Controllers
             }
             return fileName;
         }
-        [Authorize]
+        [Authorize(Roles = "Admin,Editor")]
         public bool ImageDelete(string pictureName)
         {
             string wwwroot = _env.WebRootPath;

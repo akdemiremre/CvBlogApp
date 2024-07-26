@@ -1,4 +1,5 @@
 ﻿using CvBlog.Entities.Concrete;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
@@ -48,6 +49,42 @@ namespace CvBlog.Data.Concrete.EntityFramework.Mappings
 
             // Each User can have many entries in the UserRole join table
             builder.HasMany<UserRole>().WithOne().HasForeignKey(ur => ur.UserId).IsRequired();
+
+            var adminUser = new User
+            {
+                Id = 1,
+                UserName = "admin",
+                NormalizedUserName = "ADMIN",
+                Email = "admin@emreakdemir.net",
+                NormalizedEmail = "ADMIN@EMREAKDEMIR.NET",
+                PhoneNumber = "+901111111111",
+                Picture = "defaultUser.png",
+                EmailConfirmed = true,
+                PhoneNumberConfirmed = true,
+                SecurityStamp = Guid.NewGuid().ToString()
+            };
+            adminUser.PasswordHash = CreatePasswordHash(adminUser, "admin");
+
+            var editorUser = new User
+            {
+                Id = 2,
+                UserName = "editor",
+                NormalizedUserName = "EDITOR",
+                Email = "editor@emreakdemir.net",
+                NormalizedEmail = "EDITOR@EMREAKDEMIR.NET",
+                PhoneNumber = "++902222222222",
+                Picture = "defaultUser.png",
+                EmailConfirmed = true,
+                PhoneNumberConfirmed = true,
+                SecurityStamp = Guid.NewGuid().ToString()
+            };
+            editorUser.PasswordHash = CreatePasswordHash(editorUser, "editor");
+            builder.HasData(adminUser, editorUser);
+        }
+        private string CreatePasswordHash(User user, string password)
+        {
+            var passwordHasher = new PasswordHasher<User>();
+            return passwordHasher.HashPassword(user, password);
         }
     }
 }
