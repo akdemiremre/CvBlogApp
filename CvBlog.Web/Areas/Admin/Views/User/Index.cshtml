@@ -30,11 +30,11 @@
                             @foreach (var user in Model.Users)
                             {
                                 <tr name="@user.Id">
-                                    <td>@user.Id</td>
-                                    <td>@user.UserName</td>
-                                    <td>@user.Email</td>
-                                    <td>@user.PhoneNumber</td>
-                                    <td><img src="~/img/@user.Picture" alt="@user.UserName" class="my-image-table" /></td>
+                                    <td class="text-center">@user.Id</td>
+                                    <td class="text-center">@user.UserName</td>
+                                    <td class="text-center">@user.Email</td>
+                                    <td class="text-center">@user.PhoneNumber</td>
+                                    <td class="text-center"><img src="~/img/@user.Picture" alt="@user.UserName" class="my-image-table" /></td>
                                     <td>
                                         <button class="btn btn-xs btn-info btn-outline-info userUpdateModalShow" title="Düzenlemek için tıklayınız." data-id="@user.Id">
                                         <i class="icofont icofont-edit"></i>

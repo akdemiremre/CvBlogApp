@@ -1,0 +1,276 @@
+﻿@model CvBlog.Entities.Dtos.ProfileUpdateDto
+<div class="tab-pane active" id="personal" role="tabpanel">
+    <!-- personal card start -->
+    <div class="card">
+        <div class="card-header">
+            <h5 class="card-header-text">Hakkımda</h5>
+            <button id="edit-btn" type="button" class="btn btn-sm btn-primary waves-effect waves-light f-right">
+                <i class="icofont icofont-edit"></i>
+            </button>
+        </div>
+        <div class="card-block">
+            <div class="view-info">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="general-info">
+                            <div class="row">
+                                <div class="col-lg-12 col-xl-6">
+                                    <div class="table-responsive">
+                                        <table class="table m-0">
+                                            <tbody>
+                                                <tr>
+                                                    <th scope="row"><label asp-for="FirstName"></label></th>
+                                                    <td>@Model.FirstName</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row"><label asp-for="Email"></label></th>
+                                                    <td>@Model.Email</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row"><label asp-for="YoutubeLink"></label></th>
+                                                    <td><a href="@Model.YoutubeLink" target="_blank">Tıklayınız</a></td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row"><label asp-for="TwitterLink"></label></th>
+                                                    <td><a href="@Model.TwitterLink" target="_blank">Tıklayınız</a></td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row"><label asp-for="InstagramLink"></label></th>
+                                                    <td><a href="@Model.InstagramLink" target="_blank">Tıklayınız</a></td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row"><label asp-for="FacebookLink"></label></th>
+                                                    <td><a href="@Model.FacebookLink" target="_blank">Tıklayınız</a></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <!-- end of table col-lg-6 -->
+                                <div class="col-lg-12 col-xl-6">
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <tbody>
+                                                <tr>
+                                                    <th scope="row"><label asp-for="LastName"></label></th>
+                                                    <td>@Model.LastName</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row"><label asp-for="UserName"></label></th>
+                                                    <td>@Model.UserName</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row"><label asp-for="PhoneNumber"></label></th>
+                                                    <td>@Model.PhoneNumber</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row"><label asp-for="WebsiteLink"></label></th>
+                                                    <td><a href="@Model.WebsiteLink" target="_blank">Tıklayınız</a></td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row"><label asp-for="LinkedInLink"></label></th>
+                                                    <td><a href="@Model.LinkedInLink" target="_blank">Tıklayınız</a></td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row"><label asp-for="GitHubLink"></label></th>
+                                                    <td><a href="@Model.GitHubLink" target="_blank">Tıklayınız</a></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <!-- end of table col-lg-6 -->
+                            </div>
+                            <!-- end of row -->
+                        </div>
+                        <!-- end of general info -->
+                    </div>
+                    <!-- end of col-lg-12 -->
+                </div>
+                <!-- end of row -->
+            </div>
+            <!-- end of view-info -->
+            <div class="edit-info">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <form id="profileUpdateForm">
+                            <div class="general-info">
+                                <div class="row">
+                                    <div class="col-lg-12 text-danger" asp-validation-summary="All" id="validation-summary"></div>
+                                    <input type="hidden" asp-for="Id" />
+                                    <div class="col-lg-6">
+                                        <table class="table">
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon" asp-for="FirstName"><i class="icofont icofont-boy"></i></span>
+                                                            <input asp-for="FirstName" type="text" class="form-control" placeholder="Lütfen, adınızı giriniz.">
+                                                            <span class="text-danger" asp-asp-validation-for="Email">
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon" asp-for="Email"><i class="icofont icofont-ui-email"></i></span>
+                                                            <input asp-for="Email" type="email" class="form-control" placeholder="Lütfen, E-Posta adresi giriniz.">
+                                                            <span class="text-danger" asp-asp-validation-for="Email">
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon" asp-for="YoutubeLink"><i class="icofont icofont-social-youtube"></i></span>
+                                                            <input asp-for="YoutubeLink" type="text" class="form-control" placeholder="Lütfen, Youtube adresinizi giriniz.">
+                                                            <span class="text-danger" asp-asp-validation-for="YoutubeLink">
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon" asp-for="TwitterLink"><i class="icofont icofont-social-twitter"></i></span>
+                                                            <input asp-for="TwitterLink" type="text" class="form-control" placeholder="Lütfen, Twitter adresinizi giriniz.">
+                                                            <span class="text-danger" asp-asp-validation-for="TwitterLink">
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon" asp-for="InstagramLink"><i class="icofont icofont-social-instagram"></i></span>
+                                                            <input asp-for="InstagramLink" type="text" class="form-control" placeholder="Lütfen, Instagram adresinizi giriniz.">
+                                                            <span class="text-danger" asp-asp-validation-for="InstagramLink">
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon" asp-for="FacebookLink"><i class="icofont icofont-social-facebook"></i></span>
+                                                            <input asp-for="FacebookLink" type="text" class="form-control" placeholder="Lütfen, Facebook adresinizi giriniz.">
+                                                            <span class="text-danger" asp-asp-validation-for="FacebookLink">
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                @*                                                                         <tr>
+                                                <td>
+                                                <div class="input-group">
+                                                <span class="input-group-addon" asp-for="Picture"><i class="icofont icofont-user"></i></span>
+                                                <input asp-for="Picture" type="hidden" />
+                                                <img class="my-image" src="~/img/@Model.Picture" alt="@Model.UserName" />
+                                                </div>
+                                                </td>
+                                                </tr>
+                                                <tr>
+                                                <td>
+                                                <div class="input-group">
+                                                <span class="input-group-addon" asp-for="UserName"><i class="icofont icofont-user"></i></span>
+                                                <span class="text-danger" asp-asp-validation-for="PictureFile">
+                                                </div>
+                                                </td>
+                                                </tr> *@
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!-- end of table col-lg-6 -->
+                                    <div class="col-lg-6">
+                                        <table class="table">
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon" asp-for="LastName"><i class="icofont icofont-boy"></i></span>
+                                                            <input asp-for="LastName" type="text" class="form-control" placeholder="Lütfen, soyadınızı giriniz.">
+                                                            <span class="text-danger" asp-asp-validation-for="Email">
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon" asp-for="UserName"><i class="icofont icofont-user"></i></span>
+                                                            <input asp-for="UserName" type="text" class="form-control" placeholder="Lütfen, E-Posta adresi giriniz.">
+                                                            <span class="text-danger" asp-asp-validation-for="UserName">
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon" asp-for="PhoneNumber"><i class="icofont icofont-mobile-phone"></i></span>
+                                                            <input asp-for="PhoneNumber" type="text" class="form-control" placeholder="Lütfen, telefon numarası giriniz.">
+                                                            <span class="text-danger" asp-validation-for="PhoneNumber"></span>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon" asp-for="WebsiteLink"><i class="icofont icofont-earth"></i></span>
+                                                            <input asp-for="WebsiteLink" type="text" class="form-control" placeholder="Lütfen, Website adresinizi giriniz.">
+                                                            <span class="text-danger" asp-validation-for="WebsiteLink"></span>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon" asp-for="LinkedInLink"><i class="icofont icofont-social-linkedin"></i></span>
+                                                            <input asp-for="LinkedInLink" type="text" class="form-control" placeholder="Lütfen, LinkedIn adresinizi giriniz.">
+                                                            <span class="text-danger" asp-validation-for="LinkedInLink"></span>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon" asp-for="GitHubLink"><i class="icofont icofont-social-github"></i></span>
+                                                            <input asp-for="GitHubLink" type="text" class="form-control" placeholder="Lütfen, GitHub adresinizi giriniz.">
+                                                            <span class="text-danger" asp-validation-for="GitHubLink"></span>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!-- end of table col-lg-6 -->
+                                </div>
+                                <!-- end of row -->
+@*                                 <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="card">
+                                            <div class="card-block user-desc">
+                                                <div class="col-md-12">
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-2 col-form-label" asp-for="About"></label>
+                                                        <div class="col-sm-10">
+                                                            <textarea asp-for=About rows="5" cols="5" class="form-control" placeholder="Hakkında bilgisi..."></textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> *@
+                                <!-- end of row -->
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-primary waves-effect waves-light m-r-20" id="profilePersonalUpdateButton">Güncelle</button>
+                                </div>
+                            </div>
+                            <!-- end of edit info -->
+                        </form>
+                    </div>
+                    <!-- end of col-lg-12 -->
+                </div>
+                <!-- end of row -->
+            </div>
+            <!-- end of edit-info -->
+        </div>
+        <!-- end of card-block -->
+    </div>
+    
+    <!-- personal card end-->
+</div>

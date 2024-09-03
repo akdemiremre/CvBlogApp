@@ -254,6 +254,62 @@ namespace CvBlog.Web.Areas.Admin.Controllers
                 return Json(userUpdateModelStateErrorViewModel);
             }
         }
+        [Authorize]
+        [Route("profil")]
+        [HttpGet]
+        public async Task<ViewResult> Profile()
+        {
+            var user = await _userManager.GetUserAsync(HttpContext.User);
+            var profileUpdateDto = Mapper.Map<ProfileUpdateDto>(user);
+            return View(new UserProfileViewModel
+            {
+                User = user,
+                ProfileUpdateDto = profileUpdateDto
+            });
+        }
+        [Authorize]
+        [Route("profil-kisisel-bilgiler-guncelle")]
+        [HttpPost]
+        public async Task<IActionResult> ProfilePersonalUpdate([FromBody]ProfileUpdateDto profileUpdateDto)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var user = await _userManager.GetUserAsync(HttpContext.User);
+                    var updateDto = Mapper.Map<ProfileUpdateDto, User>(profileUpdateDto, user);
+                    var result = await _userManager.UpdateAsync(updateDto);
+                    if (result.Succeeded)
+                    {
+                        return Json(new { success = true, message="Profil başarıyla güncellendi." });
+                    }
+                    else
+                    {
+                        string message = string.Empty;
+                        foreach (var error in result.Errors.ToList())
+                        {
+                            message += "<br/>* " + error;
+                        }
+                        return Json(new { success = false, message = message });
+                    }
+                }
+                catch (Exception Ex)
+                {
+                    return Json(new { success = false, message = Ex.Message.ToString() });
+                }
+            }
+            else
+            {
+                var errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage).ToList();
+                string message = string.Empty;
+                foreach (var error in errors)
+                {
+                    message += "<br/>* " + error;
+                }
+                //IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                return Json(new { success = false, message = message });
+            }
+        }
         [Route("yetkisiz-erisim")]
         [HttpGet]
         public ViewResult AccessDenied()

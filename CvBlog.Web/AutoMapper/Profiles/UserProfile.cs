@@ -11,6 +11,8 @@ namespace CvBlog.Web.AutoMapper.Profiles
             CreateMap<UserAddDto, User>();
             CreateMap<User, UserUpdateDto>();
             CreateMap<UserUpdateDto, User>();
+            CreateMap<User, ProfileUpdateDto>();
+            CreateMap<ProfileUpdateDto,User>();
         }
     }
 }

@@ -16,6 +16,18 @@ namespace CvBlog.Data.Concrete.EntityFramework.Mappings
         {
             builder.Property(u => u.Picture).IsRequired();
             builder.Property(u => u.Picture).HasMaxLength(250);
+            // Social Media Links
+            builder.Property(u => u.YoutubeLink).HasMaxLength(250);
+            builder.Property(u => u.TwitterLink).HasMaxLength(250);
+            builder.Property(u => u.InstagramLink).HasMaxLength(250);
+            builder.Property(u => u.FacebookLink).HasMaxLength(250);
+            builder.Property(u => u.LinkedInLink).HasMaxLength(250);
+            builder.Property(u => u.GitHubLink).HasMaxLength(250);
+            builder.Property(u => u.WebsiteLink).HasMaxLength(250);
+            //About
+            builder.Property(u => u.FirstName).HasMaxLength(30);
+            builder.Property(u => u.LastName).HasMaxLength(30);
+            builder.Property(u => u.About).HasMaxLength(1000);
             // Primary key
             builder.HasKey(u => u.Id);
 
@@ -59,6 +71,16 @@ namespace CvBlog.Data.Concrete.EntityFramework.Mappings
                 NormalizedEmail = "ADMIN@EMREAKDEMIR.NET",
                 PhoneNumber = "+901111111111",
                 Picture = "defaultUser.png",
+                FirstName = "Admin",
+                LastName ="Admin",
+                About = "Admin User About...",
+                TwitterLink = "https://twitter.com/",
+                InstagramLink = "https://instagram.com/",
+                YoutubeLink = "https://youtube.com/",
+                GitHubLink = "https://github.com/",
+                LinkedInLink = "https://linkedin.com/",
+                WebsiteLink = "https://emreakdemir.net.com/",
+                FacebookLink = "https://facebook.com/",
                 EmailConfirmed = true,
                 PhoneNumberConfirmed = true,
                 SecurityStamp = Guid.NewGuid().ToString()
@@ -74,6 +96,16 @@ namespace CvBlog.Data.Concrete.EntityFramework.Mappings
                 NormalizedEmail = "EDITOR@EMREAKDEMIR.NET",
                 PhoneNumber = "++902222222222",
                 Picture = "defaultUser.png",
+                FirstName = "Editor",
+                LastName = "Editor",
+                About = "Editor User About...",
+                TwitterLink = "https://twitter.com/",
+                InstagramLink = "https://instagram.com/",
+                YoutubeLink = "https://youtube.com/",
+                GitHubLink = "https://github.com/",
+                LinkedInLink = "https://linkedin.com/",
+                WebsiteLink = "https://emreakdemir.net.com/",
+                FacebookLink = "https://facebook.com/",
                 EmailConfirmed = true,
                 PhoneNumberConfirmed = true,
                 SecurityStamp = Guid.NewGuid().ToString()

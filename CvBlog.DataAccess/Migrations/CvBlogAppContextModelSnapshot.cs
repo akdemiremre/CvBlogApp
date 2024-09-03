@@ -163,12 +163,12 @@ namespace CvBlog.Data.Migrations
                         {
                             Id = 1,
                             CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(2649),
+                            CreatedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(4377),
                             Description = "Açıklama1",
                             IsActive = true,
                             IsDeleted = false,
                             ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(2651),
+                            ModifiedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(4381),
                             Name = "Kategori1",
                             Note = "CategoryMap'ten kaydedildi."
                         },
@@ -176,12 +176,12 @@ namespace CvBlog.Data.Migrations
                         {
                             Id = 2,
                             CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(2684),
+                            CreatedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(4441),
                             Description = "Açıklama2",
                             IsActive = true,
                             IsDeleted = false,
                             ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(2685),
+                            ModifiedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(4443),
                             Name = "Kategori2",
                             Note = "CategoryMap'ten kaydedildi."
                         },
@@ -189,12 +189,12 @@ namespace CvBlog.Data.Migrations
                         {
                             Id = 3,
                             CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(2694),
+                            CreatedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(4463),
                             Description = "Açıklama3",
                             IsActive = true,
                             IsDeleted = false,
                             ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(2695),
+                            ModifiedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(4466),
                             Name = "Kategori3",
                             Note = "CategoryMap'ten kaydedildi."
                         },
@@ -202,12 +202,12 @@ namespace CvBlog.Data.Migrations
                         {
                             Id = 4,
                             CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(2718),
+                            CreatedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(4479),
                             Description = "Açıklama4",
                             IsActive = true,
                             IsDeleted = false,
                             ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(2719),
+                            ModifiedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(4480),
                             Name = "Kategori4",
                             Note = "CategoryMap'ten kaydedildi."
                         },
@@ -215,12 +215,12 @@ namespace CvBlog.Data.Migrations
                         {
                             Id = 5,
                             CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(2727),
+                            CreatedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(4496),
                             Description = "Açıklama5",
                             IsActive = true,
                             IsDeleted = false,
                             ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(2728),
+                            ModifiedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(4498),
                             Name = "Kategori5",
                             Note = "CategoryMap'ten kaydedildi."
                         },
@@ -228,12 +228,12 @@ namespace CvBlog.Data.Migrations
                         {
                             Id = 6,
                             CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(2738),
+                            CreatedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(4518),
                             Description = "Açıklama6",
                             IsActive = true,
                             IsDeleted = false,
                             ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(2739),
+                            ModifiedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(4519),
                             Name = "Kategori6",
                             Note = "CategoryMap'ten kaydedildi."
                         },
@@ -241,12 +241,12 @@ namespace CvBlog.Data.Migrations
                         {
                             Id = 7,
                             CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(2747),
+                            CreatedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(4537),
                             Description = "Açıklama7",
                             IsActive = true,
                             IsDeleted = false,
                             ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(2748),
+                            ModifiedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(4540),
                             Name = "Kategori7",
                             Note = "CategoryMap'ten kaydedildi."
                         },
@@ -254,12 +254,12 @@ namespace CvBlog.Data.Migrations
                         {
                             Id = 8,
                             CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(2755),
+                            CreatedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(4556),
                             Description = "Açıklama8",
                             IsActive = true,
                             IsDeleted = false,
                             ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(2756),
+                            ModifiedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(4558),
                             Name = "Kategori8",
                             Note = "CategoryMap'ten kaydedildi."
                         },
@@ -267,12 +267,12 @@ namespace CvBlog.Data.Migrations
                         {
                             Id = 9,
                             CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(2762),
+                            CreatedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(4576),
                             Description = "Açıklama9",
                             IsActive = true,
                             IsDeleted = false,
                             ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(2764),
+                            ModifiedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(4578),
                             Name = "Kategori9",
                             Note = "CategoryMap'ten kaydedildi."
                         },
@@ -280,12 +280,12 @@ namespace CvBlog.Data.Migrations
                         {
                             Id = 10,
                             CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(2774),
+                            CreatedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(4602),
                             Description = "Açıklama10",
                             IsActive = true,
                             IsDeleted = false,
                             ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(2775),
+                            ModifiedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(4605),
                             Name = "Kategori10",
                             Note = "CategoryMap'ten kaydedildi."
                         },
@@ -293,12 +293,12 @@ namespace CvBlog.Data.Migrations
                         {
                             Id = 11,
                             CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(2782),
+                            CreatedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(4625),
                             Description = "Açıklama11",
                             IsActive = true,
                             IsDeleted = false,
                             ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(2784),
+                            ModifiedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(4626),
                             Name = "Kategori11",
                             Note = "CategoryMap'ten kaydedildi."
                         },
@@ -306,12 +306,12 @@ namespace CvBlog.Data.Migrations
                         {
                             Id = 12,
                             CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(2790),
+                            CreatedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(4636),
                             Description = "Açıklama12",
                             IsActive = true,
                             IsDeleted = false,
                             ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(2791),
+                            ModifiedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(4637),
                             Name = "Kategori12",
                             Note = "CategoryMap'ten kaydedildi."
                         },
@@ -319,12 +319,12 @@ namespace CvBlog.Data.Migrations
                         {
                             Id = 13,
                             CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(2798),
+                            CreatedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(4645),
                             Description = "Açıklama13",
                             IsActive = true,
                             IsDeleted = false,
                             ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(2799),
+                            ModifiedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(4646),
                             Name = "Kategori13",
                             Note = "CategoryMap'ten kaydedildi."
                         },
@@ -332,12 +332,12 @@ namespace CvBlog.Data.Migrations
                         {
                             Id = 14,
                             CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(2806),
+                            CreatedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(4654),
                             Description = "Açıklama14",
                             IsActive = true,
                             IsDeleted = false,
                             ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(2807),
+                            ModifiedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(4655),
                             Name = "Kategori14",
                             Note = "CategoryMap'ten kaydedildi."
                         },
@@ -345,12 +345,12 @@ namespace CvBlog.Data.Migrations
                         {
                             Id = 15,
                             CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(2814),
+                            CreatedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(4663),
                             Description = "Açıklama15",
                             IsActive = true,
                             IsDeleted = false,
                             ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(2815),
+                            ModifiedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(4664),
                             Name = "Kategori15",
                             Note = "CategoryMap'ten kaydedildi."
                         },
@@ -358,12 +358,12 @@ namespace CvBlog.Data.Migrations
                         {
                             Id = 16,
                             CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(2822),
+                            CreatedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(4672),
                             Description = "Açıklama16",
                             IsActive = true,
                             IsDeleted = false,
                             ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(2822),
+                            ModifiedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(4673),
                             Name = "Kategori16",
                             Note = "CategoryMap'ten kaydedildi."
                         },
@@ -371,12 +371,12 @@ namespace CvBlog.Data.Migrations
                         {
                             Id = 17,
                             CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(2829),
+                            CreatedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(4681),
                             Description = "Açıklama17",
                             IsActive = true,
                             IsDeleted = false,
                             ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(2830),
+                            ModifiedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(4682),
                             Name = "Kategori17",
                             Note = "CategoryMap'ten kaydedildi."
                         },
@@ -384,12 +384,12 @@ namespace CvBlog.Data.Migrations
                         {
                             Id = 18,
                             CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(2839),
+                            CreatedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(4694),
                             Description = "Açıklama18",
                             IsActive = true,
                             IsDeleted = false,
                             ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(2840),
+                            ModifiedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(4696),
                             Name = "Kategori18",
                             Note = "CategoryMap'ten kaydedildi."
                         },
@@ -397,12 +397,12 @@ namespace CvBlog.Data.Migrations
                         {
                             Id = 19,
                             CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(2846),
+                            CreatedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(4714),
                             Description = "Açıklama19",
                             IsActive = true,
                             IsDeleted = false,
                             ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(2847),
+                            ModifiedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(4717),
                             Name = "Kategori19",
                             Note = "CategoryMap'ten kaydedildi."
                         },
@@ -410,12 +410,12 @@ namespace CvBlog.Data.Migrations
                         {
                             Id = 20,
                             CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(2854),
+                            CreatedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(4818),
                             Description = "Açıklama20",
                             IsActive = true,
                             IsDeleted = false,
                             ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(2855),
+                            ModifiedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(4821),
                             Name = "Kategori20",
                             Note = "CategoryMap'ten kaydedildi."
                         },
@@ -423,12 +423,12 @@ namespace CvBlog.Data.Migrations
                         {
                             Id = 21,
                             CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(2861),
+                            CreatedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(4840),
                             Description = "Açıklama21",
                             IsActive = true,
                             IsDeleted = false,
                             ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(2862),
+                            ModifiedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(4843),
                             Name = "Kategori21",
                             Note = "CategoryMap'ten kaydedildi."
                         },
@@ -436,12 +436,12 @@ namespace CvBlog.Data.Migrations
                         {
                             Id = 22,
                             CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(2869),
+                            CreatedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(4859),
                             Description = "Açıklama22",
                             IsActive = true,
                             IsDeleted = false,
                             ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(2870),
+                            ModifiedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(4861),
                             Name = "Kategori22",
                             Note = "CategoryMap'ten kaydedildi."
                         },
@@ -449,12 +449,12 @@ namespace CvBlog.Data.Migrations
                         {
                             Id = 23,
                             CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(2877),
+                            CreatedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(4876),
                             Description = "Açıklama23",
                             IsActive = true,
                             IsDeleted = false,
                             ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(2878),
+                            ModifiedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(4877),
                             Name = "Kategori23",
                             Note = "CategoryMap'ten kaydedildi."
                         },
@@ -462,12 +462,12 @@ namespace CvBlog.Data.Migrations
                         {
                             Id = 24,
                             CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(2885),
+                            CreatedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(4885),
                             Description = "Açıklama24",
                             IsActive = true,
                             IsDeleted = false,
                             ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(2886),
+                            ModifiedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(4886),
                             Name = "Kategori24",
                             Note = "CategoryMap'ten kaydedildi."
                         },
@@ -475,12 +475,12 @@ namespace CvBlog.Data.Migrations
                         {
                             Id = 25,
                             CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(2893),
+                            CreatedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(4894),
                             Description = "Açıklama25",
                             IsActive = true,
                             IsDeleted = false,
                             ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(2894),
+                            ModifiedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(4896),
                             Name = "Kategori25",
                             Note = "CategoryMap'ten kaydedildi."
                         },
@@ -488,12 +488,12 @@ namespace CvBlog.Data.Migrations
                         {
                             Id = 26,
                             CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(2901),
+                            CreatedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(4905),
                             Description = "Açıklama26",
                             IsActive = true,
                             IsDeleted = false,
                             ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(2902),
+                            ModifiedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(4905),
                             Name = "Kategori26",
                             Note = "CategoryMap'ten kaydedildi."
                         },
@@ -501,12 +501,12 @@ namespace CvBlog.Data.Migrations
                         {
                             Id = 27,
                             CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(2918),
+                            CreatedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(4913),
                             Description = "Açıklama27",
                             IsActive = true,
                             IsDeleted = false,
                             ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(2919),
+                            ModifiedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(4914),
                             Name = "Kategori27",
                             Note = "CategoryMap'ten kaydedildi."
                         },
@@ -514,12 +514,12 @@ namespace CvBlog.Data.Migrations
                         {
                             Id = 28,
                             CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(2926),
+                            CreatedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(4922),
                             Description = "Açıklama28",
                             IsActive = true,
                             IsDeleted = false,
                             ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(2927),
+                            ModifiedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(4923),
                             Name = "Kategori28",
                             Note = "CategoryMap'ten kaydedildi."
                         },
@@ -527,12 +527,12 @@ namespace CvBlog.Data.Migrations
                         {
                             Id = 29,
                             CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(2934),
+                            CreatedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(4929),
                             Description = "Açıklama29",
                             IsActive = true,
                             IsDeleted = false,
                             ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(2935),
+                            ModifiedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(4930),
                             Name = "Kategori29",
                             Note = "CategoryMap'ten kaydedildi."
                         },
@@ -540,12 +540,12 @@ namespace CvBlog.Data.Migrations
                         {
                             Id = 30,
                             CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(2942),
+                            CreatedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(4937),
                             Description = "Açıklama30",
                             IsActive = true,
                             IsDeleted = false,
                             ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(2943),
+                            ModifiedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(4938),
                             Name = "Kategori30",
                             Note = "CategoryMap'ten kaydedildi."
                         },
@@ -553,12 +553,12 @@ namespace CvBlog.Data.Migrations
                         {
                             Id = 31,
                             CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(2949),
+                            CreatedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(4951),
                             Description = "Açıklama31",
                             IsActive = true,
                             IsDeleted = false,
                             ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(2950),
+                            ModifiedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(4953),
                             Name = "Kategori31",
                             Note = "CategoryMap'ten kaydedildi."
                         },
@@ -566,12 +566,12 @@ namespace CvBlog.Data.Migrations
                         {
                             Id = 32,
                             CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(2957),
+                            CreatedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(4971),
                             Description = "Açıklama32",
                             IsActive = true,
                             IsDeleted = false,
                             ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(2958),
+                            ModifiedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(4974),
                             Name = "Kategori32",
                             Note = "CategoryMap'ten kaydedildi."
                         },
@@ -579,12 +579,12 @@ namespace CvBlog.Data.Migrations
                         {
                             Id = 33,
                             CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(2965),
+                            CreatedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(4989),
                             Description = "Açıklama33",
                             IsActive = true,
                             IsDeleted = false,
                             ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(2966),
+                            ModifiedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(4991),
                             Name = "Kategori33",
                             Note = "CategoryMap'ten kaydedildi."
                         },
@@ -592,12 +592,12 @@ namespace CvBlog.Data.Migrations
                         {
                             Id = 34,
                             CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(2975),
+                            CreatedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(5009),
                             Description = "Açıklama34",
                             IsActive = true,
                             IsDeleted = false,
                             ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(2976),
+                            ModifiedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(5010),
                             Name = "Kategori34",
                             Note = "CategoryMap'ten kaydedildi."
                         },
@@ -605,12 +605,12 @@ namespace CvBlog.Data.Migrations
                         {
                             Id = 35,
                             CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(2982),
+                            CreatedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(5027),
                             Description = "Açıklama35",
                             IsActive = true,
                             IsDeleted = false,
                             ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(2983),
+                            ModifiedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(5028),
                             Name = "Kategori35",
                             Note = "CategoryMap'ten kaydedildi."
                         },
@@ -618,12 +618,12 @@ namespace CvBlog.Data.Migrations
                         {
                             Id = 36,
                             CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(2990),
+                            CreatedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(5044),
                             Description = "Açıklama36",
                             IsActive = true,
                             IsDeleted = false,
                             ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(2991),
+                            ModifiedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(5047),
                             Name = "Kategori36",
                             Note = "CategoryMap'ten kaydedildi."
                         },
@@ -631,12 +631,12 @@ namespace CvBlog.Data.Migrations
                         {
                             Id = 37,
                             CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(2999),
+                            CreatedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(5063),
                             Description = "Açıklama37",
                             IsActive = true,
                             IsDeleted = false,
                             ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(3000),
+                            ModifiedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(5064),
                             Name = "Kategori37",
                             Note = "CategoryMap'ten kaydedildi."
                         },
@@ -644,12 +644,12 @@ namespace CvBlog.Data.Migrations
                         {
                             Id = 38,
                             CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(3006),
+                            CreatedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(5079),
                             Description = "Açıklama38",
                             IsActive = true,
                             IsDeleted = false,
                             ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(3007),
+                            ModifiedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(5080),
                             Name = "Kategori38",
                             Note = "CategoryMap'ten kaydedildi."
                         },
@@ -657,12 +657,12 @@ namespace CvBlog.Data.Migrations
                         {
                             Id = 39,
                             CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(3014),
+                            CreatedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(5096),
                             Description = "Açıklama39",
                             IsActive = true,
                             IsDeleted = false,
                             ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(3015),
+                            ModifiedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(5097),
                             Name = "Kategori39",
                             Note = "CategoryMap'ten kaydedildi."
                         },
@@ -670,12 +670,12 @@ namespace CvBlog.Data.Migrations
                         {
                             Id = 40,
                             CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(3021),
+                            CreatedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(5158),
                             Description = "Açıklama40",
                             IsActive = true,
                             IsDeleted = false,
                             ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(3022),
+                            ModifiedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(5161),
                             Name = "Kategori40",
                             Note = "CategoryMap'ten kaydedildi."
                         },
@@ -683,12 +683,12 @@ namespace CvBlog.Data.Migrations
                         {
                             Id = 41,
                             CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(3029),
+                            CreatedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(5243),
                             Description = "Açıklama41",
                             IsActive = true,
                             IsDeleted = false,
                             ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(3030),
+                            ModifiedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(5244),
                             Name = "Kategori41",
                             Note = "CategoryMap'ten kaydedildi."
                         },
@@ -696,12 +696,12 @@ namespace CvBlog.Data.Migrations
                         {
                             Id = 42,
                             CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(3037),
+                            CreatedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(5265),
                             Description = "Açıklama42",
                             IsActive = true,
                             IsDeleted = false,
                             ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(3038),
+                            ModifiedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(5267),
                             Name = "Kategori42",
                             Note = "CategoryMap'ten kaydedildi."
                         },
@@ -709,12 +709,12 @@ namespace CvBlog.Data.Migrations
                         {
                             Id = 43,
                             CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(3044),
+                            CreatedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(5284),
                             Description = "Açıklama43",
                             IsActive = true,
                             IsDeleted = false,
                             ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(3045),
+                            ModifiedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(5286),
                             Name = "Kategori43",
                             Note = "CategoryMap'ten kaydedildi."
                         },
@@ -722,12 +722,12 @@ namespace CvBlog.Data.Migrations
                         {
                             Id = 44,
                             CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(3052),
+                            CreatedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(5300),
                             Description = "Açıklama44",
                             IsActive = true,
                             IsDeleted = false,
                             ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(3053),
+                            ModifiedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(5301),
                             Name = "Kategori44",
                             Note = "CategoryMap'ten kaydedildi."
                         },
@@ -735,12 +735,12 @@ namespace CvBlog.Data.Migrations
                         {
                             Id = 45,
                             CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(3060),
+                            CreatedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(5309),
                             Description = "Açıklama45",
                             IsActive = true,
                             IsDeleted = false,
                             ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(3061),
+                            ModifiedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(5310),
                             Name = "Kategori45",
                             Note = "CategoryMap'ten kaydedildi."
                         },
@@ -748,12 +748,12 @@ namespace CvBlog.Data.Migrations
                         {
                             Id = 46,
                             CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(3068),
+                            CreatedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(5317),
                             Description = "Açıklama46",
                             IsActive = true,
                             IsDeleted = false,
                             ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(3069),
+                            ModifiedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(5319),
                             Name = "Kategori46",
                             Note = "CategoryMap'ten kaydedildi."
                         },
@@ -761,12 +761,12 @@ namespace CvBlog.Data.Migrations
                         {
                             Id = 47,
                             CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(3075),
+                            CreatedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(5327),
                             Description = "Açıklama47",
                             IsActive = true,
                             IsDeleted = false,
                             ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(3076),
+                            ModifiedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(5327),
                             Name = "Kategori47",
                             Note = "CategoryMap'ten kaydedildi."
                         },
@@ -774,12 +774,12 @@ namespace CvBlog.Data.Migrations
                         {
                             Id = 48,
                             CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(3093),
+                            CreatedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(5335),
                             Description = "Açıklama48",
                             IsActive = true,
                             IsDeleted = false,
                             ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(3094),
+                            ModifiedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(5336),
                             Name = "Kategori48",
                             Note = "CategoryMap'ten kaydedildi."
                         },
@@ -787,12 +787,12 @@ namespace CvBlog.Data.Migrations
                         {
                             Id = 49,
                             CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(3101),
+                            CreatedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(5344),
                             Description = "Açıklama49",
                             IsActive = true,
                             IsDeleted = false,
                             ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(3102),
+                            ModifiedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(5345),
                             Name = "Kategori49",
                             Note = "CategoryMap'ten kaydedildi."
                         },
@@ -800,12 +800,12 @@ namespace CvBlog.Data.Migrations
                         {
                             Id = 50,
                             CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(3109),
+                            CreatedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(5352),
                             Description = "Açıklama50",
                             IsActive = true,
                             IsDeleted = false,
                             ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(3110),
+                            ModifiedDate = new DateTime(2024, 8, 15, 14, 54, 44, 501, DateTimeKind.Local).AddTicks(5353),
                             Name = "Kategori50",
                             Note = "CategoryMap'ten kaydedildi."
                         });
@@ -910,11 +910,11 @@ namespace CvBlog.Data.Migrations
                         {
                             Id = 1,
                             CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(9499),
+                            CreatedDate = new DateTime(2024, 8, 15, 14, 54, 44, 502, DateTimeKind.Local).AddTicks(5302),
                             IsActive = true,
                             IsDeleted = false,
                             ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(9502),
+                            ModifiedDate = new DateTime(2024, 8, 15, 14, 54, 44, 502, DateTimeKind.Local).AddTicks(5304),
                             Name = "beginner",
                             Note = "CompetencyLevel(beginner)"
                         },
@@ -922,11 +922,11 @@ namespace CvBlog.Data.Migrations
                         {
                             Id = 2,
                             CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(9547),
+                            CreatedDate = new DateTime(2024, 8, 15, 14, 54, 44, 502, DateTimeKind.Local).AddTicks(5327),
                             IsActive = true,
                             IsDeleted = false,
                             ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(9549),
+                            ModifiedDate = new DateTime(2024, 8, 15, 14, 54, 44, 502, DateTimeKind.Local).AddTicks(5328),
                             Name = "elementary",
                             Note = "CompetencyLevel(elementary)"
                         },
@@ -934,11 +934,11 @@ namespace CvBlog.Data.Migrations
                         {
                             Id = 3,
                             CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(9558),
+                            CreatedDate = new DateTime(2024, 8, 15, 14, 54, 44, 502, DateTimeKind.Local).AddTicks(5334),
                             IsActive = true,
                             IsDeleted = false,
                             ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(9559),
+                            ModifiedDate = new DateTime(2024, 8, 15, 14, 54, 44, 502, DateTimeKind.Local).AddTicks(5334),
                             Name = "pre-intermediate",
                             Note = "CompetencyLevel(pre-intermediate)"
                         },
@@ -946,11 +946,11 @@ namespace CvBlog.Data.Migrations
                         {
                             Id = 4,
                             CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(9567),
+                            CreatedDate = new DateTime(2024, 8, 15, 14, 54, 44, 502, DateTimeKind.Local).AddTicks(5338),
                             IsActive = true,
                             IsDeleted = false,
                             ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(9568),
+                            ModifiedDate = new DateTime(2024, 8, 15, 14, 54, 44, 502, DateTimeKind.Local).AddTicks(5339),
                             Name = "intermediate",
                             Note = "CompetencyLevel(intermediate)"
                         },
@@ -958,11 +958,11 @@ namespace CvBlog.Data.Migrations
                         {
                             Id = 5,
                             CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(9575),
+                            CreatedDate = new DateTime(2024, 8, 15, 14, 54, 44, 502, DateTimeKind.Local).AddTicks(5343),
                             IsActive = true,
                             IsDeleted = false,
                             ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(9576),
+                            ModifiedDate = new DateTime(2024, 8, 15, 14, 54, 44, 502, DateTimeKind.Local).AddTicks(5344),
                             Name = "upper-intermediate",
                             Note = "CompetencyLevel(upper-intermediate)"
                         },
@@ -970,11 +970,11 @@ namespace CvBlog.Data.Migrations
                         {
                             Id = 6,
                             CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(9587),
+                            CreatedDate = new DateTime(2024, 8, 15, 14, 54, 44, 502, DateTimeKind.Local).AddTicks(5350),
                             IsActive = true,
                             IsDeleted = false,
                             ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(9588),
+                            ModifiedDate = new DateTime(2024, 8, 15, 14, 54, 44, 502, DateTimeKind.Local).AddTicks(5351),
                             Name = "advanced",
                             Note = "CompetencyLevel(advanced)"
                         },
@@ -982,11 +982,11 @@ namespace CvBlog.Data.Migrations
                         {
                             Id = 7,
                             CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(9595),
+                            CreatedDate = new DateTime(2024, 8, 15, 14, 54, 44, 502, DateTimeKind.Local).AddTicks(5355),
                             IsActive = true,
                             IsDeleted = false,
                             ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 7, 24, 10, 14, 21, 695, DateTimeKind.Local).AddTicks(9596),
+                            ModifiedDate = new DateTime(2024, 8, 15, 14, 54, 44, 502, DateTimeKind.Local).AddTicks(5356),
                             Name = "expert-proficency",
                             Note = "CompetencyLevel(expert-proficency)"
                         });
@@ -1470,14 +1470,14 @@ namespace CvBlog.Data.Migrations
                         new
                         {
                             Id = 1,
-                            ConcurrencyStamp = "b73d9685-4104-4d62-917a-e6fdbaca1073",
+                            ConcurrencyStamp = "83e98dec-b1dc-4188-8864-fefb6a46e18c",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = 2,
-                            ConcurrencyStamp = "30c61004-da11-4ce0-b417-32cee2ef34cb",
+                            ConcurrencyStamp = "dd921d34-c363-4482-a57d-f3bf54ef99f4",
                             Name = "Editor",
                             NormalizedName = "EDITOR"
                         });
@@ -1679,6 +1679,11 @@ namespace CvBlog.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<string>("About")
+                        .IsRequired()
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
+
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
@@ -1692,6 +1697,36 @@ namespace CvBlog.Data.Migrations
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
+
+                    b.Property<string>("FacebookLink")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<string>("GitHubLink")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("InstagramLink")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<string>("LinkedInLink")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
@@ -1724,12 +1759,27 @@ namespace CvBlog.Data.Migrations
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("TwitterLink")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("bit");
 
                     b.Property<string>("UserName")
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("WebsiteLink")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("YoutubeLink")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
 
                     b.HasKey("Id");
 
@@ -1747,38 +1797,58 @@ namespace CvBlog.Data.Migrations
                         new
                         {
                             Id = 1,
+                            About = "Admin User About...",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "af52ece0-0458-49e5-a5a6-2ba37255c246",
+                            ConcurrencyStamp = "a4f2aef7-eb96-4715-a8b9-da8a2c96280c",
                             Email = "admin@emreakdemir.net",
                             EmailConfirmed = true,
+                            FacebookLink = "https://facebook.com/",
+                            FirstName = "Admin",
+                            GitHubLink = "https://github.com/",
+                            InstagramLink = "https://instagram.com/",
+                            LastName = "Admin",
+                            LinkedInLink = "https://linkedin.com/",
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@EMREAKDEMIR.NET",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEIoZD+C7J6Tjm0JySZT3H9aHlYWNH5BH1Kvg3seqDVI3eW6s4b4sMNXUJrkW2a3Prg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEJ88W1hslKQXWkvSPulJat16Qx3bcElfrzv6C7uVw/vk3fKWSbEGPRac7qm7KkmqAg==",
                             PhoneNumber = "+901111111111",
                             PhoneNumberConfirmed = true,
                             Picture = "defaultUser.png",
-                            SecurityStamp = "53fe9d95-fda6-487b-b493-380eb39f9136",
+                            SecurityStamp = "57dd82ce-73ee-4d87-93c9-e94dfed5df39",
+                            TwitterLink = "https://twitter.com/",
                             TwoFactorEnabled = false,
-                            UserName = "admin"
+                            UserName = "admin",
+                            WebsiteLink = "https://emreakdemir.net.com/",
+                            YoutubeLink = "https://youtube.com/"
                         },
                         new
                         {
                             Id = 2,
+                            About = "Editor User About...",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "46357069-fd94-4338-b67d-aa687682ff85",
+                            ConcurrencyStamp = "0b0c1d5c-e167-443f-882a-4fe229b1ec32",
                             Email = "editor@emreakdemir.net",
                             EmailConfirmed = true,
+                            FacebookLink = "https://facebook.com/",
+                            FirstName = "Editor",
+                            GitHubLink = "https://github.com/",
+                            InstagramLink = "https://instagram.com/",
+                            LastName = "Editor",
+                            LinkedInLink = "https://linkedin.com/",
                             LockoutEnabled = false,
                             NormalizedEmail = "EDITOR@EMREAKDEMIR.NET",
                             NormalizedUserName = "EDITOR",
-                            PasswordHash = "AQAAAAEAACcQAAAAEBWa8I+7sQOByrEB6kg5TsikKYAWfDMgCQvCHP9p1EL5LebNJmz/d8nyzsCcbVSkFw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEMb2CQIvcdP2btmuPyREL//5Bd5RII/sp+TExOWLHdSMjStMMFvpaYrwon0FEa9hBw==",
                             PhoneNumber = "++902222222222",
                             PhoneNumberConfirmed = true,
                             Picture = "defaultUser.png",
-                            SecurityStamp = "e20fe5c2-692e-4dc6-baf1-e52faf9b0f2a",
+                            SecurityStamp = "bb721a8f-3b33-493c-a576-4a1b9c2f54a9",
+                            TwitterLink = "https://twitter.com/",
                             TwoFactorEnabled = false,
-                            UserName = "editor"
+                            UserName = "editor",
+                            WebsiteLink = "https://emreakdemir.net.com/",
+                            YoutubeLink = "https://youtube.com/"
                         });
                 });
 
