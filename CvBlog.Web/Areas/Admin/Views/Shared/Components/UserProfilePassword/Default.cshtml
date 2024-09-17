@@ -1,0 +1,145 @@
+﻿@model CvBlog.Entities.Dtos.UserProfilePasswordUpdateDto
+@* @model CvBlog.Web.Areas.Admin.Models.UserProfileViewModel *@
+<div class="tab-pane" id="password" role="tabpanel">
+    <!-- personal card start -->
+    <div class="card">
+        <div class="card-header">
+            <h5 class="card-header-text">Şifre Güncelleme Formu</h5>
+        </div>
+        <div class="card-block">
+            <div class="edit-info">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <form id="profilePasswordUpdateForm">
+                            <div class="general-info">
+                                <div class="row">
+                                    <div class="col-lg-12 text-danger" asp-validation-summary="All" id="validation-summary"></div>
+                                    <input type="hidden" asp-for="Id" />
+                                    <div class="col-lg-4">
+                                        <table class="table">
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon" asp-for="Password"><i class="icofont icofont-key"></i></span>
+                                                            <input asp-for="Password" type="password" class="form-control" placeholder="Lütfen, mevcut şifrenizi giriniz.">
+                                                            <span class="text-danger" asp-asp-validation-for="Password">
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!-- end of table col-lg-4 -->
+                                    <div class="col-lg-4">
+                                        <table class="table">
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon" asp-for="NewPassword"><i class="icofont icofont-key"></i></span>
+                                                            <input asp-for="NewPassword" type="password" class="form-control" placeholder="Lütfen, yeni şifrenizi giriniz.">
+                                                            <span class="text-danger" asp-asp-validation-for="NewPassword">
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!-- end of table col-lg-4 -->
+                                    <div class="col-lg-4">
+                                        <table class="table">
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon" asp-for="ReNewPassword"><i class="icofont icofont-key"></i></span>
+                                                            <input asp-for="ReNewPassword" type="password" class="form-control" placeholder="Lütfen, yeni şifrenizi tekrar giriniz.">
+                                                            <span class="text-danger" asp-asp-validation-for="ReNewPassword">
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!-- end of table col-lg-4 -->
+                                </div>
+                                <!-- end of row -->
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-primary waves-effect waves-light m-r-20" id="profilePasswordUpdateButton">Güncelle</button>
+                                </div>
+                            </div>
+                            <!-- end of edit info -->
+                            @* <div class="general-info">
+                                <div class="row">
+                                    <div class="col-lg-12 text-danger" asp-validation-summary="All" id="validation-summary"></div>
+                                    <input type="hidden" asp-for="UserProfilePasswordUpdateDto.Id" />
+                                    <div class="col-lg-4">
+                                        <table class="table">
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon" asp-for="UserProfilePasswordUpdateDto.Password"><i class="icofont icofont-key"></i></span>
+                                                            <input asp-for="UserProfilePasswordUpdateDto.Password" type="password" class="form-control" placeholder="Lütfen, mevcut şifrenizi giriniz.">
+                                                            <span class="text-danger" asp-asp-validation-for="UserProfilePasswordUpdateDto.Password">
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!-- end of table col-lg-4 -->
+                                    <div class="col-lg-4">
+                                        <table class="table">
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon" asp-for="UserProfilePasswordUpdateDto.NewPassword"><i class="icofont icofont-key"></i></span>
+                                                            <input asp-for="UserProfilePasswordUpdateDto.NewPassword" type="password" class="form-control" placeholder="Lütfen, yeni şifrenizi giriniz.">
+                                                            <span class="text-danger" asp-asp-validation-for="UserProfilePasswordUpdateDto.NewPassword">
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!-- end of table col-lg-4 -->
+                                    <div class="col-lg-4">
+                                        <table class="table">
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon" asp-for="UserProfilePasswordUpdateDto.ReNewPassword"><i class="icofont icofont-key"></i></span>
+                                                            <input asp-for="UserProfilePasswordUpdateDto.ReNewPassword" type="password" class="form-control" placeholder="Lütfen, yeni şifrenizi tekrar giriniz.">
+                                                            <span class="text-danger" asp-asp-validation-for="UserProfilePasswordUpdateDto.ReNewPassword">
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!-- end of table col-lg-4 -->
+                                </div>
+                                <!-- end of row -->
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-primary waves-effect waves-light m-r-20" id="profilePasswordUpdateButton">Güncelle</button>
+                                </div>
+                            </div>
+                            <!-- end of edit info --> *@
+
+                        </form>
+                    </div>
+                    <!-- end of col-lg-12 -->
+                </div>
+                <!-- end of row -->
+            </div>
+            <!-- end of edit-info -->
+        </div>
+        <!-- end of card-block -->
+    </div>
+
+    <!-- personal card end-->
+</div>

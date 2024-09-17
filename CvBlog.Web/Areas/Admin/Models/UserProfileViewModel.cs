@@ -6,6 +6,7 @@ namespace CvBlog.Web.Areas.Admin.Models
     public class UserProfileViewModel
     {
         public User User { get; set; }
-        public ProfileUpdateDto ProfileUpdateDto { get; set; }
+        public UserProfilePersonalUpdateDto UserProfilePersonalUpdateDto { get; set; }
+        public UserProfilePasswordUpdateDto UserProfilePasswordUpdateDto { get; set; }
     }
 }

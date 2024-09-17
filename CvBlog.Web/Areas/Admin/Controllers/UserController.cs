@@ -260,24 +260,25 @@ namespace CvBlog.Web.Areas.Admin.Controllers
         public async Task<ViewResult> Profile()
         {
             var user = await _userManager.GetUserAsync(HttpContext.User);
-            var profileUpdateDto = Mapper.Map<ProfileUpdateDto>(user);
-            return View(new UserProfileViewModel
+            var UuerProfileViewModel = new UserProfileViewModel
             {
                 User = user,
-                ProfileUpdateDto = profileUpdateDto
-            });
+                UserProfilePersonalUpdateDto = Mapper.Map<UserProfilePersonalUpdateDto>(user),
+                UserProfilePasswordUpdateDto = Mapper.Map<UserProfilePasswordUpdateDto>(user)
+            };
+            return View(UuerProfileViewModel);
         }
         [Authorize]
         [Route("profil-kisisel-bilgiler-guncelle")]
         [HttpPost]
-        public async Task<IActionResult> ProfilePersonalUpdate([FromBody]ProfileUpdateDto profileUpdateDto)
+        public async Task<IActionResult> ProfilePersonalUpdate([FromBody]UserProfilePersonalUpdateDto userProfilePersonalUpdateDto)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
                     var user = await _userManager.GetUserAsync(HttpContext.User);
-                    var updateDto = Mapper.Map<ProfileUpdateDto, User>(profileUpdateDto, user);
+                    var updateDto = Mapper.Map<UserProfilePersonalUpdateDto, User>(userProfilePersonalUpdateDto, user);
                     var result = await _userManager.UpdateAsync(updateDto);
                     if (result.Succeeded)
                     {
@@ -307,6 +308,54 @@ namespace CvBlog.Web.Areas.Admin.Controllers
                     message += "<br/>* " + error;
                 }
                 //IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                return Json(new { success = false, message = message });
+            }
+        }
+        [Authorize]
+        [Route("profil-sifre-guncelle")]
+        [HttpPost]
+        public async Task<IActionResult> ProfilePasswordUpdate([FromBody]UserProfilePasswordUpdateDto userProfilePasswordUpdateDto)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await _userManager.GetUserAsync(HttpContext.User);
+                var isVerified = await _userManager.CheckPasswordAsync(user, userProfilePasswordUpdateDto.Password);
+                if (isVerified)
+                {
+                    var result = await _userManager.ChangePasswordAsync(user, userProfilePasswordUpdateDto.Password, userProfilePasswordUpdateDto.NewPassword);
+                    if (result.Succeeded)
+                    {
+                        await _userManager.UpdateSecurityStampAsync(user);// userın güvenirliklik değeri
+                        await _signInManager.SignOutAsync(); // user a çıkış yaptırıldı.
+                        // giriş yaptırıldı =>>
+                        // true => remember me kısmı...
+                        // false => kullanıcı kilitleme kısmı
+                        await _signInManager.PasswordSignInAsync(user, userProfilePasswordUpdateDto.NewPassword, true, false);
+                        return Json(new { success = true, message = "Şifre başarıyla güncellendi." });
+                    }
+                    else
+                    {
+                        string message = string.Empty;
+                        foreach (var error in result.Errors)
+                        {
+                            message += "<br/>* " + error.Code+"("+error.Description+")";
+                        }
+                        return Json(new { success = false, message = message });
+                    }
+                }
+                else
+                {
+                    return Json(new { success = false, message = "Lütfen mevcut şifrenizi kontrol ediniz!" });
+                }
+            }
+            else
+            {
+                var errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage).ToList();
+                string message = string.Empty;
+                foreach (var error in errors)
+                {
+                    message += "<br/>* " + error;
+                }
                 return Json(new { success = false, message = message });
             }
         }

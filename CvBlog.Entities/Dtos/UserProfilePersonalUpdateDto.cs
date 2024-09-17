@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace CvBlog.Entities.Dtos
 {
-    public class ProfileUpdateDto
+    public class UserProfilePersonalUpdateDto
     {
         [Required]
         public int Id { get; set; }

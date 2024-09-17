@@ -11,8 +11,10 @@ namespace CvBlog.Web.AutoMapper.Profiles
             CreateMap<UserAddDto, User>();
             CreateMap<User, UserUpdateDto>();
             CreateMap<UserUpdateDto, User>();
-            CreateMap<User, ProfileUpdateDto>();
-            CreateMap<ProfileUpdateDto,User>();
+            CreateMap<User, UserProfilePersonalUpdateDto>();
+            CreateMap<UserProfilePersonalUpdateDto,User>();
+            CreateMap<User, UserProfilePasswordUpdateDto>().ReverseMap();// Reverse diyerek tersinede map işlemini yaptırabilmiş oluyoruz.
+            //CreateMap<UserProfilePasswordUpdateDto, User>();
         }
     }
 }

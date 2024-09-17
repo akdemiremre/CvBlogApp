@@ -1,4 +1,5 @@
 ﻿using CvBlog.Entities.Concrete;
+using Microsoft.AspNetCore.Identity;
 using Nancy.Json;
 using System;
 using System.Collections.Generic;
@@ -125,13 +126,11 @@ namespace CvBlog.Services.Utilities
             }
             return res.ToString();
         }
-        /*
         public static string CreatePasswordHash(User user, string password)
         {
             var passwordHasher = new PasswordHasher<User>();
             return passwordHasher.HashPassword(user, password);
         }
-        */
         public static string ImageToBase64String(string imgMapPath)
         {
             byte[] imageArray = System.IO.File.ReadAllBytes(imgMapPath);
