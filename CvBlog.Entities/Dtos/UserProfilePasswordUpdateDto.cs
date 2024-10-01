@@ -31,12 +31,16 @@ namespace CvBlog.Entities.Dtos
         [Required(ErrorMessage = "{0} boş geçilmemelidir.")]
         [MaxLength(30, ErrorMessage = "{0} alanı {1} karakterden büyük olmamalıdır.")]
         [MinLength(5, ErrorMessage = "{0} alanı {1} karakterinden küçük olmamalıdır.")]
+        [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^a-zA-Z0-9]).{6,}$",
+        ErrorMessage = "Şifre en az bir küçük harf, bir büyük harf, bir rakam ve bir özel karakter içermelidir.")]
         [DataType(DataType.Password)]
         public string NewPassword { get; set; }
         [DisplayName("Yeni Şifrenizin Tekrarı")]
         [Required(ErrorMessage = "{0} boş geçilmemelidir.")]
         [MaxLength(30, ErrorMessage = "{0} alanı {1} karakterden büyük olmamalıdır.")]
         [MinLength(5, ErrorMessage = "{0} alanı {1} karakterinden küçük olmamalıdır.")]
+        [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^a-zA-Z0-9]).{6,}$",
+        ErrorMessage = "Şifre en az bir küçük harf, bir büyük harf, bir rakam ve bir özel karakter içermelidir.")]
         [DataType(DataType.Password)]
         [Compare("NewPassword", ErrorMessage = "Girmiş olduğunuz Yeni Şifreniz ile Yeni Şifrenizin Tekrarı alanları birbiri ile uyuşmalıdır.")]
         public string ReNewPassword { get; set; }

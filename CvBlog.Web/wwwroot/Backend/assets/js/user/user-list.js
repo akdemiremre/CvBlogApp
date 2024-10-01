@@ -48,6 +48,7 @@
                                     console.log("userListDto.users = " + user);
                                     const newTableRow = dataTable.row.add([
                                         user.id,
+                                        user.firstName + " " + user.lastName,
                                         user.userName,
                                         user.email,
                                         user.phoneNumber,
@@ -138,6 +139,7 @@
                         placeHolderDiv.find('.modal').modal('hide');
                         const newTableRow = dataTable.row.add([
                             userAddAjaxModel.UserDto.User.Id,
+                            userAddAjaxModel.UserDto.User.FirstName + " " + userAddAjaxModel.UserDto.User.LastName,
                             userAddAjaxModel.UserDto.User.UserName,
                             userAddAjaxModel.UserDto.User.Email,
                             userAddAjaxModel.UserDto.User.PhoneNumber,
@@ -255,6 +257,7 @@
                         placeHolderDiv.find('.modal').modal('hide');
                         dataTable.row(tableRow).data([
                             userUpdateAjaxModel.UserDto.User.Id,
+                            userUpdateAjaxModel.UserDto.User.FirstName + " " + userUpdateAjaxModel.UserDto.User.LastName,
                             userUpdateAjaxModel.UserDto.User.UserName,
                             userUpdateAjaxModel.UserDto.User.Email,
                             userUpdateAjaxModel.UserDto.User.PhoneNumber,

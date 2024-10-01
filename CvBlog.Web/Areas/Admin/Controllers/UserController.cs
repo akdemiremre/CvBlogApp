@@ -9,6 +9,7 @@ using CvBlog.Shared.Utilities.Exttensions;
 using CvBlog.Shared.Utilities.Results.ComplexTypes;
 using CvBlog.Shared.Utilities.Results.Concrete;
 using CvBlog.Web.Areas.Admin.Models;
+using CvBlog.Web.Helpers.Abstract;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -25,12 +26,12 @@ namespace CvBlog.Web.Areas.Admin.Controllers
     {
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
-        private readonly IWebHostEnvironment _env;
-        public UserController(UserManager<User> userManager, IWebHostEnvironment env, IMapper mapper, SignInManager<User> signInManager) : base(mapper)
+        private readonly IImageHelper _imageHelper;
+        public UserController(UserManager<User> userManager, IMapper mapper, SignInManager<User> signInManager, IImageHelper imageHelper) : base(mapper)
         {
             _userManager = userManager;
-            _env = env;
             _signInManager = signInManager;
+            _imageHelper = imageHelper;
         }
         [Route("giris-yap")]
         [HttpGet]
@@ -112,36 +113,49 @@ namespace CvBlog.Web.Areas.Admin.Controllers
             ModelState.Remove("Picture");
             if (ModelState.IsValid)
             {
-                userAddDto.Picture = await ImageUpload(userAddDto.UserName,userAddDto.PictureFile);
-                var user = Mapper.Map<User>(userAddDto);
-                var result = await _userManager.CreateAsync(user, userAddDto.Password);
-                if (result.Succeeded)
+                try
                 {
-                    var userAddAjaxViewModel = JsonSerializer.Serialize(new UserAddAjaxViewModel
+                    var uploadedImageDtoResult = await _imageHelper.UploadUserImage(userAddDto.UserName, userAddDto.PictureFile);
+                    userAddDto.Picture = uploadedImageDtoResult.ResultStatus == ResultStatus.Success ? uploadedImageDtoResult.Data.FullName : "userImages/defaultUser.png";
+                    var user = Mapper.Map<User>(userAddDto);
+                    var result = await _userManager.CreateAsync(user, userAddDto.Password);
+                    if (result.Succeeded)
                     {
-                        UserDto = new UserDto
+                        var userAddAjaxViewModel = JsonSerializer.Serialize(new UserAddAjaxViewModel
                         {
-                            ResultStatus = ResultStatus.Success,
-                            Message = $"{user.UserName} adlı kullanıcı adına sahip kullanıcı başarıyla eklenmiştir.",
-                            User = user
-                        },
+                            UserDto = new UserDto
+                            {
+                                ResultStatus = ResultStatus.Success,
+                                Message = $"{user.UserName} adlı kullanıcı adına sahip kullanıcı başarıyla eklenmiştir.",
+                                User = user
+                            },
+                            UserAddPartial = await this.RenderViewToStringAsync("_UserAddModalPartial", userAddDto)
+                        });
+                        return Json(userAddAjaxViewModel);
+                    }
+                    else
+                    {
+                        foreach (var error in result.Errors)
+                        {
+                            // İlk parametre : Hatanın hangi alan için ekleneceğini belirtilir. -> summary e eklemesini istediğimiz için "" bıraktık.
+                            ModelState.AddModelError("", error.Description);
+                        }
+                        var userAddAjaxErrorViewModel = JsonSerializer.Serialize(new UserAddAjaxViewModel
+                        {
+                            UserAddDto = userAddDto, // Doldurulmuş alanların ve hataların geri dönemesi için gerekli.
+                            UserAddPartial = await this.RenderViewToStringAsync("_UserAddModalPartial", userAddDto)
+                        });
+                        return Json(userAddAjaxErrorViewModel);
+                    }
+                }
+                catch (Exception Ex)
+                {
+                    ModelState.AddModelError("", Ex.Message.ToString());
+                    var userAddAjaxExceptionErrorViewModel = JsonSerializer.Serialize(new UserAddAjaxViewModel { 
+                        UserAddDto = userAddDto,
                         UserAddPartial = await this.RenderViewToStringAsync("_UserAddModalPartial",userAddDto)
                     });
-                    return Json(userAddAjaxViewModel);
-                }
-                else
-                {
-                    foreach (var error in result.Errors)
-                    {
-                        // İlk parametre : Hatanın hangi alan için ekleneceğini belirtilir. -> summary e eklemesini istediğimiz için "" bıraktık.
-                        ModelState.AddModelError("", error.Description);
-                    }
-                    var userAddAjaxErrorViewModel = JsonSerializer.Serialize(new UserAddAjaxViewModel
-                    {
-                        UserAddDto = userAddDto, // Doldurulmuş alanların ve hataların geri dönemesi için gerekli.
-                        UserAddPartial = await this.RenderViewToStringAsync("_UserAddModalPartial", userAddDto)
-                    });
-                    return Json(userAddAjaxErrorViewModel);
+                    return Json(userAddAjaxExceptionErrorViewModel);
                 }
             }
             var userAddAjaxModelStateErrorViewModel = JsonSerializer.Serialize(new UserAddAjaxViewModel
@@ -206,7 +220,8 @@ namespace CvBlog.Web.Areas.Admin.Controllers
                 var oldUserPicture = oldUser.Picture;
                 if (userUpdateDto.PictureFile != null)
                 {
-                    userUpdateDto.Picture = await ImageUpload(userUpdateDto.UserName, userUpdateDto.PictureFile);
+                    var uploadedImageDtoResult = await _imageHelper.UploadUserImage(userUpdateDto.UserName, userUpdateDto.PictureFile);
+                    userUpdateDto.Picture = uploadedImageDtoResult.ResultStatus == ResultStatus.Success ? uploadedImageDtoResult.Data.FullName : "userImages/defaultUser.png";
                     isNewPictureUploaded = true;
                 }
                 var updatedUser = Mapper.Map<UserUpdateDto,User>(userUpdateDto, oldUser);
@@ -366,33 +381,20 @@ namespace CvBlog.Web.Areas.Admin.Controllers
             return View();
         }
         [Authorize(Roles = "Admin,Editor")]
-        public async Task<string> ImageUpload(string userName, IFormFile pictureFile)
-        {
-            string wwwroot = _env.WebRootPath;
-            string fileExtension = Path.GetExtension(pictureFile.FileName);
-            DateTime dateTime = DateTime.Now;
-            string fileName = $"{userName}_{dateTime.FullDateAndTimeStringWithUnderscore()}{fileExtension}";
-            var path = Path.Combine($"{wwwroot}/img", fileName);
-            await using (var stream = new FileStream(path,FileMode.Create))
-            {
-                await pictureFile.CopyToAsync(stream);
-            }
-            return fileName;
-        }
-        [Authorize(Roles = "Admin,Editor")]
         public bool ImageDelete(string pictureName)
         {
-            string wwwroot = _env.WebRootPath;
-            var fileToDelete = Path.Combine($"{wwwroot}/img",pictureName);
-            if (System.IO.File.Exists(fileToDelete))
-            {
-                System.IO.File.Delete(fileToDelete);
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            //string wwwroot = _env.WebRootPath;
+            //var fileToDelete = Path.Combine($"{wwwroot}/img",pictureName);
+            //if (System.IO.File.Exists(fileToDelete))
+            //{
+            //    System.IO.File.Delete(fileToDelete);
+            //    return true;
+            //}
+            //else
+            //{
+            //    return false;
+            //}
+            return true;
         }
     }
 }

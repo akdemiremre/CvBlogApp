@@ -11,6 +11,16 @@ namespace CvBlog.Entities.Dtos
 {
     public class UserAddDto
     {
+        [DisplayName("Ad")]
+        [Required(ErrorMessage = "{0} alanı boş geçilmemelidir.")]
+        [MaxLength(50, ErrorMessage ="{0} alanı {1} karakterden büyük olmamalıdır.")]
+        [MinLength(3, ErrorMessage ="{0} alanı {1} karakterden küçük olmamalıdır.")]
+        public string FirstName { get; set; }
+        [DisplayName("Soyad")]
+        [Required(ErrorMessage = "{0} alanı boş geçilmemelidir.")]
+        [MaxLength(50, ErrorMessage = "{0} alanı {1} karakterden büyük olmamalıdır.")]
+        [MinLength(3, ErrorMessage = "{0} alanı {1} karakterden küçük olmamalıdır.")]
+        public string LastName { get; set; }
         [DisplayName("Kullanıcı Adı")]
         [Required(ErrorMessage = "{0} alanı boş geçilmemelidir.")]
         [MaxLength(50, ErrorMessage = "{0} alanı {1} karakterden büyük olmamalıdır.")]
@@ -25,13 +35,15 @@ namespace CvBlog.Entities.Dtos
         [DisplayName("Şifre")]
         [Required(ErrorMessage = "{0} alanı boş geçilmemelidir.")]
         [MaxLength(30, ErrorMessage = "{0} alanı {1} karakterden büyük olmamalıdır.")]
-        [MinLength(5, ErrorMessage = "{0} alanı {1} karakterden küçük olmamalıdır.")]
+        [MinLength(6, ErrorMessage = "{0} alanı {1} karakterden küçük olmamalıdır.")]
+        [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^a-zA-Z0-9]).{6,}$",
+        ErrorMessage = "Şifre en az bir küçük harf, bir büyük harf, bir rakam ve bir özel karakter içermelidir.")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
         [DisplayName("Gsm")]
         [Required(ErrorMessage = "{0} alanı boş geçilmemelidir.")]
-        [MaxLength(13, ErrorMessage = "{0} alanı {1} karakterden büyük olmamalıdır.")] // +905555555555 // 13 characters
-        [MinLength(13, ErrorMessage = "{0} alanı {1} karakterden küçük olmamalıdır.")]
+        [MaxLength(10, ErrorMessage = "{0} alanı {1} karakterden büyük olmamalıdır.")] // 5554443322 // 10 characters
+        [MinLength(10, ErrorMessage = "{0} alanı {1} karakterden küçük olmamalıdır.")]
         [DataType(DataType.PhoneNumber)]
         public string PhoneNumber { get; set; }
         [DisplayName("Resim")]

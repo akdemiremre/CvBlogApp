@@ -14,6 +14,16 @@ namespace CvBlog.Entities.Dtos
     {
         [Required]
         public int Id { get; set; }
+        [DisplayName("Ad")]
+        [Required(ErrorMessage = "{0} alanı boş geçilmemelidir.")]
+        [MaxLength(50, ErrorMessage = "{0} alanı {1} karakterden büyük olmamalıdır.")]
+        [MinLength(3, ErrorMessage = "{0} alanı {1} karakterden küçük olmamalıdır.")]
+        public string FirstName { get; set; }
+        [DisplayName("Soyad")]
+        [Required(ErrorMessage = "{0} alanı boş geçilmemelidir.")]
+        [MaxLength(50, ErrorMessage = "{0} alanı {1} karakterden büyük olmamalıdır.")]
+        [MinLength(3, ErrorMessage = "{0} alanı {1} karakterden küçük olmamalıdır.")]
+        public string LastName { get; set; }
         [DisplayName("Kullanıcı Adı")]
         [Required(ErrorMessage = "{0} alanı boş geçilmemelidir.")]
         [MaxLength(50, ErrorMessage = "{0} alanı {1} karakterden büyük olmamalıdır.")]
@@ -27,8 +37,8 @@ namespace CvBlog.Entities.Dtos
         public string Email { get; set; }
         [DisplayName("Gsm")]
         [Required(ErrorMessage = "{0} alanı boş geçilmemelidir.")]
-        [MaxLength(13, ErrorMessage = "{0} alanı {1} karakterden büyük olmamalıdır.")] // +905555555555 // 13 characters
-        [MinLength(13, ErrorMessage = "{0} alanı {1} karakterden küçük olmamalıdır.")]
+        [MaxLength(10, ErrorMessage = "{0} alanı {1} karakterden büyük olmamalıdır.")] // 5555555555 // 13 characters
+        [MinLength(10, ErrorMessage = "{0} alanı {1} karakterden küçük olmamalıdır.")]
         [DataType(DataType.PhoneNumber)]
         public string PhoneNumber { get; set; }
         [DisplayName("Resim Ekle")]

@@ -10,8 +10,8 @@
         <div id="modalPlaceHolder" aria-hidden="true"></div>
         <div class="card p-3">
             <div class="card-header">
-                <h5>Kategori İşlemleri</h5>
-                <span>Kategori ekleme, güncelleme, silme ve gösterip/gizleme işlemlerini buradan yapabilirsiniz.</span>
+                <h5>Kullanıcı İşlemleri</h5>
+                <span>Kullanıcı ekleme, güncelleme, silme ve gösterip/gizleme işlemlerini buradan yapabilirsiniz.</span>
             </div>
             <div class="card-block" id="userCardBlock">
                 <div class="dt-responsive table-responsive">
@@ -19,6 +19,7 @@
                         <thead>
                             <tr>
                                 <th class="text-center">ID</th>
+                                <th class="text-center">Ad Soyad</th>
                                 <th class="text-center">Kullanıcı Adı</th>
                                 <th class="text-center">E-Posta Adresi</th>
                                 <th class="text-center">Telefon Numarası</th>
@@ -31,6 +32,7 @@
                             {
                                 <tr name="@user.Id">
                                     <td class="text-center">@user.Id</td>
+                                    <td class="text-center">@user.FirstName @user.LastName</td>
                                     <td class="text-center">@user.UserName</td>
                                     <td class="text-center">@user.Email</td>
                                     <td class="text-center">@user.PhoneNumber</td>

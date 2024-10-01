@@ -7,6 +7,8 @@ using CvBlog.Services.Abstract;
 using CvBlog.Services.AutoMapper.Profiles;
 using CvBlog.Services.Concrete;
 using CvBlog.Web.AutoMapper.Profiles;
+using CvBlog.Web.Helpers.Abstract;
+using CvBlog.Web.Helpers.Concrete;
 
 var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
@@ -29,7 +31,7 @@ builder.Services.AddIdentity<User, Role>(options =>
     // User Password Options
     options.Password.RequireDigit = true; // þifre sayýsal deðer içersin
     options.Password.RequiredLength = 6; // þifre en az 6 karakter olsun.
-    options.Password.RequiredUniqueChars = 2; // þifre içerisinde 2 farklý özel karakter olsun. Örneðin : özel karakter olarak 2 tane @ iþareti kullanmaya izin vermez. 
+    options.Password.RequiredUniqueChars = 1; // þifre içerisinde 1 farklý özel karakter olsun. Örneðin : özel karakter olarak 2 tane @ iþareti kullanmaya izin vermez. 
     options.Password.RequireNonAlphanumeric = true; // @,!,?,$ vb özel karakterlerin bulunmasýný saðlar.
     options.Password.RequireLowercase = true;
     options.Password.RequireUppercase = true;
@@ -47,6 +49,7 @@ builder.Services.AddScoped<IExperienceService, ExperienceManager>();
 builder.Services.AddScoped<IMyLanguageService, MyLanguageManager>();
 builder.Services.AddScoped<IPortfolioService, PortfolioManager>();
 builder.Services.AddScoped<IUserService, UserManager>();
+builder.Services.AddScoped<IImageHelper, ImageHelper>();
 #endregion
 builder.Services.ConfigureApplicationCookie(options =>
 {
