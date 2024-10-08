@@ -27,6 +27,7 @@ namespace CvBlog.Web.Areas.Admin.Controllers
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
         private readonly IImageHelper _imageHelper;
+
         public UserController(UserManager<User> userManager, IMapper mapper, SignInManager<User> signInManager, IImageHelper imageHelper) : base(mapper)
         {
             _userManager = userManager;
@@ -74,7 +75,7 @@ namespace CvBlog.Web.Areas.Admin.Controllers
             await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home", new { Area = "" });
         }
-        [Authorize(Roles ="Admin")]
+        [Authorize(Roles = "Admin")]
         [Route("liste")]
         [HttpGet]
         public async Task<IActionResult> Index()
@@ -135,6 +136,7 @@ namespace CvBlog.Web.Areas.Admin.Controllers
                     }
                     else
                     {
+                        _imageHelper.Delete(uploadedImageDtoResult.Data.FullName);
                         foreach (var error in result.Errors)
                         {
                             // İlk parametre : Hatanın hangi alan için ekleneceğini belirtilir. -> summary e eklemesini istediğimiz için "" bıraktık.
@@ -151,9 +153,10 @@ namespace CvBlog.Web.Areas.Admin.Controllers
                 catch (Exception Ex)
                 {
                     ModelState.AddModelError("", Ex.Message.ToString());
-                    var userAddAjaxExceptionErrorViewModel = JsonSerializer.Serialize(new UserAddAjaxViewModel { 
+                    var userAddAjaxExceptionErrorViewModel = JsonSerializer.Serialize(new UserAddAjaxViewModel
+                    {
                         UserAddDto = userAddDto,
-                        UserAddPartial = await this.RenderViewToStringAsync("_UserAddModalPartial",userAddDto)
+                        UserAddPartial = await this.RenderViewToStringAsync("_UserAddModalPartial", userAddDto)
                     });
                     return Json(userAddAjaxExceptionErrorViewModel);
                 }
@@ -180,7 +183,7 @@ namespace CvBlog.Web.Areas.Admin.Controllers
                     User = user,
                     Message = $"{user.UserName} kullanıcı adlı kayıt başarıyla silinmiştir."
                 });
-                ImageDelete(user.Picture);
+                _imageHelper.Delete(user.Picture);
                 return Json(deletedUser);
             }
             else
@@ -224,13 +227,13 @@ namespace CvBlog.Web.Areas.Admin.Controllers
                     userUpdateDto.Picture = uploadedImageDtoResult.ResultStatus == ResultStatus.Success ? uploadedImageDtoResult.Data.FullName : "userImages/defaultUser.png";
                     isNewPictureUploaded = true;
                 }
-                var updatedUser = Mapper.Map<UserUpdateDto,User>(userUpdateDto, oldUser);
+                var updatedUser = Mapper.Map<UserUpdateDto, User>(userUpdateDto, oldUser);
                 var result = await _userManager.UpdateAsync(updatedUser);
                 if (result.Succeeded)
                 {
                     if (isNewPictureUploaded)
                     {
-                        ImageDelete(oldUserPicture);
+                        _imageHelper.Delete(oldUserPicture);
                     }
                     var userUpdateViewModel = JsonSerializer.Serialize(new UserUpdateAjaxViewModel
                     {
@@ -286,7 +289,7 @@ namespace CvBlog.Web.Areas.Admin.Controllers
         [Authorize]
         [Route("profil-kisisel-bilgiler-guncelle")]
         [HttpPost]
-        public async Task<IActionResult> ProfilePersonalUpdate([FromBody]UserProfilePersonalUpdateDto userProfilePersonalUpdateDto)
+        public async Task<IActionResult> ProfilePersonalUpdate([FromBody] UserProfilePersonalUpdateDto userProfilePersonalUpdateDto)
         {
             if (ModelState.IsValid)
             {
@@ -297,7 +300,7 @@ namespace CvBlog.Web.Areas.Admin.Controllers
                     var result = await _userManager.UpdateAsync(updateDto);
                     if (result.Succeeded)
                     {
-                        return Json(new { success = true, message="Profil başarıyla güncellendi." });
+                        return Json(new { success = true, message = "Profil başarıyla güncellendi." });
                     }
                     else
                     {
@@ -329,7 +332,7 @@ namespace CvBlog.Web.Areas.Admin.Controllers
         [Authorize]
         [Route("profil-sifre-guncelle")]
         [HttpPost]
-        public async Task<IActionResult> ProfilePasswordUpdate([FromBody]UserProfilePasswordUpdateDto userProfilePasswordUpdateDto)
+        public async Task<IActionResult> ProfilePasswordUpdate([FromBody] UserProfilePasswordUpdateDto userProfilePasswordUpdateDto)
         {
             if (ModelState.IsValid)
             {
@@ -353,7 +356,7 @@ namespace CvBlog.Web.Areas.Admin.Controllers
                         string message = string.Empty;
                         foreach (var error in result.Errors)
                         {
-                            message += "<br/>* " + error.Code+"("+error.Description+")";
+                            message += "<br/>* " + error.Code + "(" + error.Description + ")";
                         }
                         return Json(new { success = false, message = message });
                     }
@@ -374,27 +377,56 @@ namespace CvBlog.Web.Areas.Admin.Controllers
                 return Json(new { success = false, message = message });
             }
         }
+        [Authorize]
+        [Route("profil-fotografi-guncelle")]
+        [HttpPost]
+        public async Task<IActionResult> ProfilePictureUpdate(IFormFile file)
+        {
+            var user = await _userManager.GetUserAsync(HttpContext.User);
+            string[] allowedExtensions = { ".jpg", ".jpeg", ".png", ".gif" };
+            long maxFileSize = 1 * 1024 * 1024;
+            if (file == null)
+            {
+                return Json(new { success = false, message = "Lütfen fotoğraf seçiniz!" });
+            }
+            var ext = Path.GetExtension(file.FileName).ToLowerInvariant();
+            if (string.IsNullOrEmpty(ext) || !allowedExtensions.Contains(ext))
+            {
+                return Json(new { success = false, message = "Geçersiz dosya uzantısı. Sadece .jpg, .jpeg, .png, .gif dosyaları kabul edilir." });
+            }
+            if (file.Length > maxFileSize)
+            {
+                return Json(new { success = false, message = "Dosya boyutu 1MB'ı geçemez." });
+            }
+            var uploadUserImage = await _imageHelper.UploadUserImage(user.UserName, file);
+            if (uploadUserImage.ResultStatus == ResultStatus.Success)
+            {
+                var oldPictureName = user.Picture;
+                user.Picture = uploadUserImage.Data.FullName;
+                var updateAsyncResult = await _userManager.UpdateAsync(user);
+                if (updateAsyncResult.Succeeded)
+                {
+                    if (oldPictureName != "userImages/defaultUser.png")
+                    {
+                        var deletedImageResult = _imageHelper.Delete(user.Picture);
+                    }
+                   return Json(new { success = true, message = uploadUserImage.Message, src = "/img/"+user.Picture });
+                }
+                else
+                {
+                    return Json(new { success = false, message = "Kayıt güncelleme işlemi yapılamadı." });
+                }
+            }
+            else
+            {
+                return Json(new { success = false, message = uploadUserImage.Message });
+            }
+        }
         [Route("yetkisiz-erisim")]
         [HttpGet]
         public ViewResult AccessDenied()
         {
             return View();
-        }
-        [Authorize(Roles = "Admin,Editor")]
-        public bool ImageDelete(string pictureName)
-        {
-            //string wwwroot = _env.WebRootPath;
-            //var fileToDelete = Path.Combine($"{wwwroot}/img",pictureName);
-            //if (System.IO.File.Exists(fileToDelete))
-            //{
-            //    System.IO.File.Delete(fileToDelete);
-            //    return true;
-            //}
-            //else
-            //{
-            //    return false;
-            //}
-            return true;
         }
     }
 }

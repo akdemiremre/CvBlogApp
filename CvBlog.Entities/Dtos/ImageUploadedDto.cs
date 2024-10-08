@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CvBlog.Entities.Dtos
 {
-    public class UploadedImageDto
+    public class ImageUploadedDto
     {
         public string FullName { get; set; } // YÜKELRKEN VERDİĞİMİZ İSİM
         public string OldName { get; set; } // BİZE GELEN İSİM
