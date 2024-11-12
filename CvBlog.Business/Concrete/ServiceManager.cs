@@ -3,6 +3,7 @@ using CvBlog.Data.Abstract;
 using CvBlog.Entities.Concrete;
 using CvBlog.Entities.Dtos;
 using CvBlog.Services.Abstract;
+using CvBlog.Services.Utilities;
 using CvBlog.Shared.Utilities.Results.Abstract;
 using CvBlog.Shared.Utilities.Results.ComplexTypes;
 using CvBlog.Shared.Utilities.Results.Concrete;
@@ -25,102 +26,158 @@ namespace CvBlog.Services.Concrete
         }
         public async Task<IResult> Add(ServiceAddDto serviceAddDto, string createdByName)
         {
-            var service = _mapper.Map<Service>(serviceAddDto);
-            service.CreatedByName = createdByName;
-            service.ModifiedByName = createdByName;
-            await _unitOfWork.Services.AddAsync(service).ContinueWith(t => { _unitOfWork.SaveAsync(); });
-            return new Result(ResultStatus.Success, "Başarılı");
+            try
+            {
+                var service = _mapper.Map<Service>(serviceAddDto);
+                service.CreatedByName = createdByName;
+                service.ModifiedByName = createdByName;
+                await _unitOfWork.Services.AddAsync(service).ContinueWith(t => { _unitOfWork.SaveAsync(); });
+                return new Result(ResultStatus.Success, Messages.Service.Add(true,service.Name));
+            }
+            catch (Exception Ex)
+            {
+                return new Result(ResultStatus.Success, Messages.Service.Error("Ekleme işlemi",Ex.Message.ToString()));
+            }
         }
 
         public async Task<IResult> Delete(int serviceId, string modifiedByName)
         {
-            var service = await _unitOfWork.Services.GetAsync(x => x.Id == serviceId);
-            if (service != null)
+            try
             {
-                service.IsDeleted = true;
-                service.ModifiedByName = modifiedByName;
-                service.ModifiedDate = DateTime.Now;
-                await _unitOfWork.Services.UpdateAsync(service).ContinueWith(t => { _unitOfWork.SaveAsync(); });
-                return new Result(ResultStatus.Success, $"{service.Name} adlı hizmet kaydı başarıyla silinmiştir.");
+                var service = await _unitOfWork.Services.GetAsync(x => x.Id == serviceId);
+                if (service != null)
+                {
+                    service.IsDeleted = true;
+                    service.ModifiedByName = modifiedByName;
+                    service.ModifiedDate = DateTime.Now;
+                    await _unitOfWork.Services.UpdateAsync(service).ContinueWith(t => { _unitOfWork.SaveAsync(); });
+                    return new Result(ResultStatus.Success, Messages.Service.Delete(true,service.Name));
+                }
+                return new Result(ResultStatus.Error, Messages.Service.NotFound(false));
             }
-            return new Result(ResultStatus.Error, "Böyle bir hizmet kaydı bulunamamıştır.");
+            catch (Exception Ex)
+            {
+                return new Result(ResultStatus.Success, Messages.Service.Error("Silme işlemi", Ex.Message.ToString()));
+            }
         }
 
         public async Task<IDataResult<ServiceDto>> Get(int serviceId)
         {
-            var service = await _unitOfWork.Services.GetAsync(x => x.Id == serviceId);
-            if (service != null)
+            try
             {
-                return new DataResult<ServiceDto>(ResultStatus.Success, new ServiceDto
+                var service = await _unitOfWork.Services.GetAsync(x => x.Id == serviceId);
+                if (service != null)
                 {
-                    ResultStatus = ResultStatus.Success,
-                    Service = service
-                });
+                    return new DataResult<ServiceDto>(ResultStatus.Success, new ServiceDto
+                    {
+                        ResultStatus = ResultStatus.Success,
+                        Service = service
+                    });
+                }
+                return new DataResult<ServiceDto>(ResultStatus.Error, Messages.Service.NotFound(false),null);
+
             }
-            return new DataResult<ServiceDto>(ResultStatus.Error, "Böyle bir hizmet kaydı bulunamadı", null);
+            catch (Exception Ex)
+            {
+                return new DataResult<ServiceDto>(ResultStatus.Success, Messages.Service.Error("Silme işlemi", Ex.Message.ToString()),null);
+            }
         }
 
         public async Task<IDataResult<ServiceListDto>> GetAll()
         {
-            var services = await _unitOfWork.Services.GetAllAsync();
-            if (services.Count > -1)
+            try
             {
-                return new DataResult<ServiceListDto>(ResultStatus.Success, new ServiceListDto
+                var services = await _unitOfWork.Services.GetAllAsync();
+                if (services.Count > -1)
                 {
-                    ResultStatus = ResultStatus.Success,
-                    Services = services
-                });
+                    return new DataResult<ServiceListDto>(ResultStatus.Success, new ServiceListDto
+                    {
+                        ResultStatus = ResultStatus.Success,
+                        Services = services
+                    });
+                }
+                return new DataResult<ServiceListDto>(ResultStatus.Error, Messages.Service.NotFound(true), null);
             }
-            return new DataResult<ServiceListDto>(ResultStatus.Error,"Herhangi bir hizmet kaydı bulunamadı.",null);
+            catch (Exception Ex)
+            {
+                return new DataResult<ServiceListDto>(ResultStatus.Error, Messages.Service.Error("Kayıtları çekme işlemi", Ex.Message.ToString()), null);
+            }
         }
 
         public async Task<IDataResult<ServiceListDto>> GetAllByNonDeleted()
         {
-            var services = await _unitOfWork.Services.GetAllAsync(x => !x.IsDeleted);
-            if (services.Count > -1)
+            try
             {
-                return new DataResult<ServiceListDto>(ResultStatus.Success, new ServiceListDto
+                var services = await _unitOfWork.Services.GetAllAsync(x => !x.IsDeleted);
+                if (services.Count > -1)
                 {
-                    ResultStatus = ResultStatus.Success,
-                    Services = services
-                });
+                    return new DataResult<ServiceListDto>(ResultStatus.Success, new ServiceListDto
+                    {
+                        ResultStatus = ResultStatus.Success,
+                        Services = services
+                    });
+                }
+                return new DataResult<ServiceListDto>(ResultStatus.Error, Messages.Service.NotFound(true), null);
             }
-            return new DataResult<ServiceListDto>(ResultStatus.Error, "Herhangi bir hizmet kaydı bulunamadı.", null);
+            catch (Exception Ex)
+            {
+                return new DataResult<ServiceListDto>(ResultStatus.Error, Messages.Service.Error("Kayıtları çekme işlemi", Ex.Message.ToString()), null);
+            }
         }
 
         public async Task<IDataResult<ServiceListDto>> GetAllByNonDeletedAndActive()
         {
-            var services = await _unitOfWork.Services.GetAllAsync(x => !x.IsDeleted && x.IsActive);
-            if (services.Count > -1)
+            try
             {
-                return new DataResult<ServiceListDto>(ResultStatus.Success, new ServiceListDto
+                var services = await _unitOfWork.Services.GetAllAsync(x => !x.IsDeleted && x.IsActive);
+                if (services.Count > -1)
                 {
-                    ResultStatus = ResultStatus.Success,
-                    Services = services
-                });
+                    return new DataResult<ServiceListDto>(ResultStatus.Success, new ServiceListDto
+                    {
+                        ResultStatus = ResultStatus.Success,
+                        Services = services
+                    });
+                }
+                return new DataResult<ServiceListDto>(ResultStatus.Error, Messages.Service.NotFound(true), null);
             }
-            return new DataResult<ServiceListDto>(ResultStatus.Error, "Herhangi bir hizmet kaydı bulunamadı.", null);
+            catch (Exception Ex)
+            {
+                return new DataResult<ServiceListDto>(ResultStatus.Error, Messages.Service.Error("Kayıtları çekme işlemi", Ex.Message.ToString()), null);
+            }
         }
 
         public async Task<IResult> HardDelete(int serviceId)
         {
-            var result = await _unitOfWork.Services.AnyAsync(x => x.Id == serviceId);
-            if (result)
+            try
             {
-                var service = await _unitOfWork.Services.GetAsync(x => x.Id == serviceId);
-                await _unitOfWork.Services.DeleteAsync(service).ContinueWith(t => { _unitOfWork.SaveAsync(); });
-                return new Result(ResultStatus.Success, $"{service.Name} adlı hizmet kaydı kalıcı olarak silinmiştir.");
+                var result = await _unitOfWork.Services.AnyAsync(x => x.Id == serviceId);
+                if (result)
+                {
+                    var service = await _unitOfWork.Services.GetAsync(x => x.Id == serviceId);
+                    await _unitOfWork.Services.DeleteAsync(service).ContinueWith(t => { _unitOfWork.SaveAsync(); });
+                    return new Result(ResultStatus.Success, Messages.Service.HardDelete(true,service.Name));
+                }
+                return new Result(ResultStatus.Error, Messages.Service.NotFound(false));
             }
-            return new Result(ResultStatus.Error, "Böyle bir hizmet kaydı bulunamamıştır.");
+            catch (Exception Ex)
+            {
+                return new Result(ResultStatus.Error, Messages.Service.Error("Hizmet kaydını kalıcı olarak silme işlemi",Ex.Message.ToString()));
+            }
         }
 
         public async Task<IResult> Update(ServiceUpdateDto serviceUpdateDto, string modifiedByName)
         {
-            var service = _mapper.Map<Service>(serviceUpdateDto);
-            service.ModifiedByName = modifiedByName;
-            await _unitOfWork.Services.UpdateAsync(service).ContinueWith(t => { _unitOfWork.SaveAsync(); });
-            return new Result(ResultStatus.Success, "Hizmet kaydı başarıyla güncellendi");
-
+            try
+            {
+                var service = _mapper.Map<Service>(serviceUpdateDto);
+                service.ModifiedByName = modifiedByName;
+                await _unitOfWork.Services.UpdateAsync(service).ContinueWith(t => { _unitOfWork.SaveAsync(); });
+                return new Result(ResultStatus.Success, Messages.Service.Update(true,service.Name));
+            }
+            catch (Exception Ex)
+            {
+                return new Result(ResultStatus.Error, Messages.Service.Error("Hizmet kaydını güncelleme işlemi", Ex.Message.ToString()));
+            }
         }
     }
 }

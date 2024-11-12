@@ -3,6 +3,7 @@ using CvBlog.Data.Abstract;
 using CvBlog.Entities.Concrete;
 using CvBlog.Entities.Dtos;
 using CvBlog.Services.Abstract;
+using CvBlog.Services.Utilities;
 using CvBlog.Shared.Utilities.Results.Abstract;
 using CvBlog.Shared.Utilities.Results.ComplexTypes;
 using CvBlog.Shared.Utilities.Results.Concrete;
@@ -25,101 +26,157 @@ namespace CvBlog.Services.Concrete
         }
         public async Task<IResult> Add(SkillAddDto skillAddDto, string createdByName)
         {
-            var skill = _mapper.Map<Skill>(skillAddDto);
-            skill.CreatedByName = createdByName;
-            skill.ModifiedByName = createdByName;
-            await _unitOfWork.Skills.AddAsync(skill).ContinueWith(t => { _unitOfWork.SaveAsync(); });
-            return new Result(ResultStatus.Success, $"{skillAddDto.Name} isimli yetenek başarıyla kaydedildi.");
+            try
+            {
+                var skill = _mapper.Map<Skill>(skillAddDto);
+                skill.CreatedByName = createdByName;
+                skill.ModifiedByName = createdByName;
+                await _unitOfWork.Skills.AddAsync(skill).ContinueWith(t => { _unitOfWork.SaveAsync(); });
+                return new Result(ResultStatus.Success,Messages.Skill.Add(true,skill.Name));
+            }
+            catch (Exception Ex)
+            {
+                return new Result(ResultStatus.Success, Messages.Skill.Error("Yetenek ekleme işlemi",Ex.Message.ToString()));
+            }
         }
 
         public async Task<IResult> Delete(int skillId, string modifiedByName)
         {
-            var reseult = await _unitOfWork.Skills.AnyAsync(x => x.Id == skillId);
-            if (reseult)
+            try
             {
-                var skill = await _unitOfWork.Skills.GetAsync(x => x.Id == skillId);
-                skill.IsDeleted = true;
-                skill.ModifiedByName = modifiedByName;
-                await _unitOfWork.Skills.UpdateAsync(skill).ContinueWith(t => { _unitOfWork.SaveAsync(); });
-                return new Result(ResultStatus.Success, $"{skill.Name} isimli yetenek başarıyla silindi.");
+                var reseult = await _unitOfWork.Skills.AnyAsync(x => x.Id == skillId);
+                if (reseult)
+                {
+                    var skill = await _unitOfWork.Skills.GetAsync(x => x.Id == skillId);
+                    skill.IsDeleted = true;
+                    skill.ModifiedByName = modifiedByName;
+                    await _unitOfWork.Skills.UpdateAsync(skill).ContinueWith(t => { _unitOfWork.SaveAsync(); });
+                    return new Result(ResultStatus.Success, Messages.Skill.Delete(true,skill.Name));
+                }
+                return new Result(ResultStatus.Error, Messages.Skill.NotFound(false));
             }
-            return new Result(ResultStatus.Error, "Böyle bir yetenek bulunamadı.");
+            catch (Exception Ex)
+            {
+                return new Result(ResultStatus.Success, Messages.Skill.Error("Yetenek silme işlemi", Ex.Message.ToString()));
+            }
         }
 
         public async Task<IDataResult<SkillDto>> Get(int skillId)
         {
-            var skill = await _unitOfWork.Skills.GetAsync(x => x.Id == skillId);
-            if(skill != null)
+            try
             {
-                return new DataResult<SkillDto>(ResultStatus.Success, new SkillDto
+                var skill = await _unitOfWork.Skills.GetAsync(x => x.Id == skillId);
+                if (skill != null)
                 {
-                    ResultStatus = ResultStatus.Success,
-                    Skill = skill
-                });
+                    return new DataResult<SkillDto>(ResultStatus.Success, new SkillDto
+                    {
+                        ResultStatus = ResultStatus.Success,
+                        Skill = skill
+                    });
+                }
+                return new DataResult<SkillDto>(ResultStatus.Error, Messages.Skill.NotFound(false), null);
             }
-            return new DataResult<SkillDto>(ResultStatus.Error, "Böyle bir yetenek bulunamadı.", null);
+            catch (Exception Ex)
+            {
+                return new DataResult<SkillDto>(ResultStatus.Error, Messages.Skill.Error("Yetenek çekme işlemi", Ex.Message.ToString()),null);
+            }
         }
 
         public async Task<IDataResult<SkillListDto>> GetAll()
         {
-            var skills = await _unitOfWork.Skills.GetAllAsync();
-            if(skills.Count > -1)
+            try
             {
-                return new DataResult<SkillListDto>(ResultStatus.Success, new SkillListDto
+                var skills = await _unitOfWork.Skills.GetAllAsync();
+                if (skills.Count > -1)
                 {
-                    ResultStatus = ResultStatus.Success,
-                    Skills = skills
-                });
+                    return new DataResult<SkillListDto>(ResultStatus.Success, new SkillListDto
+                    {
+                        ResultStatus = ResultStatus.Success,
+                        Skills = skills
+                    });
+                }
+                return new DataResult<SkillListDto>(ResultStatus.Error, Messages.Skill.NotFound(true), null);
             }
-            return new DataResult<SkillListDto>(ResultStatus.Error, "Hiç bir yetenek bulunamadı!", null);
+            catch (Exception Ex)
+            {
+                return new DataResult<SkillListDto>(ResultStatus.Error, Messages.Skill.Error("Yetenek kayıtlarını çekme işlemi", Ex.Message.ToString()), null);
+            }
         }
 
         public async Task<IDataResult<SkillListDto>> GetAllByNonDelete()
         {
-            var skills = await _unitOfWork.Skills.GetAllAsync(x => !x.IsDeleted);
-            if (skills.Count > -1)
+            try
             {
-                return new DataResult<SkillListDto>(ResultStatus.Success, new SkillListDto
+                var skills = await _unitOfWork.Skills.GetAllAsync(x => !x.IsDeleted);
+                if (skills.Count > -1)
                 {
-                    ResultStatus = ResultStatus.Success,
-                    Skills = skills
-                });
+                    return new DataResult<SkillListDto>(ResultStatus.Success, new SkillListDto
+                    {
+                        ResultStatus = ResultStatus.Success,
+                        Skills = skills
+                    });
+                }
+                return new DataResult<SkillListDto>(ResultStatus.Error, Messages.Skill.NotFound(true), null);
             }
-            return new DataResult<SkillListDto>(ResultStatus.Error, "Hiç bir yetenek bulunamadı!", null);
+            catch (Exception Ex)
+            {
+                return new DataResult<SkillListDto>(ResultStatus.Error, Messages.Skill.Error("Yetenek kayıtlarını çekme işlemi", Ex.Message.ToString()), null);
+            }
         }
 
         public async Task<IDataResult<SkillListDto>> GetAllByNonDeleteAndActive()
         {
-            var skills = await _unitOfWork.Skills.GetAllAsync(x => !x.IsDeleted && x.IsActive);
-            if (skills.Count > -1)
+            try
             {
-                return new DataResult<SkillListDto>(ResultStatus.Success, new SkillListDto
+                var skills = await _unitOfWork.Skills.GetAllAsync(x => !x.IsDeleted && x.IsActive);
+                if (skills.Count > -1)
                 {
-                    ResultStatus = ResultStatus.Success,
-                    Skills = skills
-                });
+                    return new DataResult<SkillListDto>(ResultStatus.Success, new SkillListDto
+                    {
+                        ResultStatus = ResultStatus.Success,
+                        Skills = skills
+                    });
+                }
+                return new DataResult<SkillListDto>(ResultStatus.Error, Messages.Skill.NotFound(true), null);
             }
-            return new DataResult<SkillListDto>(ResultStatus.Error, "Hiç bir yetenek bulunamadı.", null);
+            catch (Exception Ex)
+            {
+                return new DataResult<SkillListDto>(ResultStatus.Error, Messages.Skill.Error("Yetenek kayıtlarını çekme işlemi", Ex.Message.ToString()), null);
+            }
         }
 
         public async Task<IResult> HardDelete(int skillId)
         {
-            var result = await _unitOfWork.Skills.AnyAsync(x => x.Id == skillId);
-            if (result)
+            try
             {
-                var skill = await _unitOfWork.Skills.GetAsync(x => x.Id == skillId);
-                await _unitOfWork.Skills.DeleteAsync(skill).ContinueWith(t => { _unitOfWork.SaveAsync(); });
-                return new Result(ResultStatus.Success, $"{skill.Name} adlı yetenek başarıyla kalıcı olarak silinmiştir.");
+                var result = await _unitOfWork.Skills.AnyAsync(x => x.Id == skillId);
+                if (result)
+                {
+                    var skill = await _unitOfWork.Skills.GetAsync(x => x.Id == skillId);
+                    await _unitOfWork.Skills.DeleteAsync(skill).ContinueWith(t => { _unitOfWork.SaveAsync(); });
+                    return new Result(ResultStatus.Success,Messages.Skill.HardDelete(true,skill.Name));
+                }
+                return new Result(ResultStatus.Error, "Böyle bir yetenek bulunamadı.", null);
             }
-            return new Result(ResultStatus.Error, "Böyle bir yetenek bulunamadı.",null);
+            catch (Exception Ex)
+            {
+                return new Result(ResultStatus.Error, Messages.Skill.Error("Yetenek kaydını kalıcı olarak silme işlemi", Ex.Message.ToString()), null);
+            }
         }
 
         public async Task<IResult> Update(SkillUpdateDto skillUpdateDto, string modifiedByName)
         {
-            var skill = _mapper.Map<Skill>(skillUpdateDto);
-            skill.ModifiedByName = modifiedByName;
-            await _unitOfWork.Skills.UpdateAsync(skill).ContinueWith(t => { _unitOfWork.SaveAsync(); });
-            return new Result(ResultStatus.Success,$"{skill.Name} adlı yetenek kaydı başarıyla silinmiştir.");
+            try
+            {
+                var skill = _mapper.Map<Skill>(skillUpdateDto);
+                skill.ModifiedByName = modifiedByName;
+                await _unitOfWork.Skills.UpdateAsync(skill).ContinueWith(t => { _unitOfWork.SaveAsync(); });
+                return new Result(ResultStatus.Success, Messages.Skill.Update(true, skill.Name));
+            }
+            catch (Exception Ex)
+            {
+                return new Result(ResultStatus.Error, Messages.Skill.Error("Yetenek kaydını güncelleme işlemi", Ex.Message.ToString()), null);
+            }
         }
     }
 }

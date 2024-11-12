@@ -16,6 +16,7 @@ namespace CvBlog.Shared.Data.Concrete.EntityFramework
     {
         
         // Protected kullanma sebebim : EfEntityRepositoryBase dan türeyen diğer sınıflarda DbContext i kendi metotlarımızda implemente edebilmek için DbContext e erişebiliyor olmamız gerekir.
+        // Örneğin GetById vb. metoda ihtiyacımız olabilir. Erişebilmek için implemente edebilmemiz gerekir.Bu yüzden protected tanımladık.
         protected readonly DbContext _context;
         
         public EfEntityRepositoryBase(DbContext context)
@@ -79,10 +80,7 @@ namespace CvBlog.Shared.Data.Concrete.EntityFramework
         public async Task<TEntity> GetAsync(Expression<Func<TEntity, bool>> predicate, params Expression<Func<TEntity, object>>[] includeProperties)
         {
             IQueryable<TEntity> query = _context.Set<TEntity>();
-            if (predicate != null)
-            {
-                query = query.Where(predicate);
-            }
+            query = query.Where(predicate);
             if (includeProperties.Any())
             {
                 // gelen property leri queyr e include ediyoruz.

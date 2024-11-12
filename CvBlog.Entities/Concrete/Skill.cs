@@ -10,7 +10,7 @@ namespace CvBlog.Entities.Concrete
     // YETENEKLER
     public class Skill : EntityBase, IEntity
     {
-        public int Name { get; set; }
+        public string Name { get; set; }
         public string Logo { get; set; }
         public int CompetencyLevelId { get; set; }
         public CompetencyLevel CompetencyLevel { get; set; }
