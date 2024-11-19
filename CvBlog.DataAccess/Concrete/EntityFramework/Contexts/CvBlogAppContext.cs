@@ -12,6 +12,10 @@ namespace CvBlog.Data.Concrete.EntityFramework.Contexts
 {
     public class CvBlogAppContext : IdentityDbContext<User,Role,int,UserClaim,UserRole,UserLogin,RoleClaim,UserToken>
     {
+        public CvBlogAppContext(DbContextOptions<CvBlogAppContext> options) : base(options)
+        {
+            
+        }
         public DbSet<Article> Articles { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Comment> Comments { get; set; }
@@ -29,11 +33,11 @@ namespace CvBlog.Data.Concrete.EntityFramework.Contexts
         public DbSet<SocialMedia> SocialMedias { get; set; }
         public DbSet<User> Users { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            // @ -> içerisidndeki stringi tamamen string olarak almasını sağlar
-            optionsBuilder.UseSqlServer(@"Server=localhost\SQLEXPRESS;Database=CvBlogApp;Trusted_Connection=True;Connect Timeout=120;MultipleActiveResultSets=True;");
-        }
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    // @ -> içerisidndeki stringi tamamen string olarak almasını sağlar
+        //    optionsBuilder.UseSqlServer(@"Server=localhost\SQLEXPRESS;Database=CvBlogApp;Trusted_Connection=True;Connect Timeout=120;MultipleActiveResultSets=True;");
+        //}
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new ArticleMap());

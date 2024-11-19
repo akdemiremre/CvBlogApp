@@ -9,6 +9,8 @@ using CvBlog.Services.Concrete;
 using CvBlog.Web.AutoMapper.Profiles;
 using CvBlog.Web.Helpers.Abstract;
 using CvBlog.Web.Helpers.Concrete;
+using Microsoft.EntityFrameworkCore;
+
 
 var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
@@ -20,7 +22,9 @@ builder.Services.AddSession();
 //builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddAutoMapper(typeof(ArticleProfile),typeof(CategoryProfile), typeof(SkillProfile), typeof(SocialMediaProfile), typeof(ServiceProfile), typeof(EducationProfile), typeof(ExperienceMap), typeof(MyLanguageMap), typeof(PortfolioMap), typeof(UserProfile));
 #region serviceCollection
-builder.Services.AddDbContext<CvBlogAppContext>();// AddDbContext -> özünde bir scope dur.
+var connectionString = builder.Configuration.GetConnectionString("localDB");
+builder.Services.AddDbContext<CvBlogAppContext>(options =>
+    options.UseSqlServer(connectionString));// AddDbContext -> özünde bir scope dur.
 // scoped => Yapýlan her request'te nesne tekrar oluþur ve bir request içerisinde sadce bir tane nesne kullanýlýr. Bu yöntem için AddScoped() metodu kullanýlýr.
 // Transient ve scoped kullaným þekilleri nesne oluþturma zamanlarý açýsýndan biraz karýþtýrýlabilir.
 // Transient 'te her nesne çaðrýmýnda yeni bir instance oluþturulurken, Scoped'da ise request esnasýnda yeni bir instance oluþur ve o request sonlanana kadar ayný nesne kullanýlýr.
