@@ -6,7 +6,8 @@ using CvBlog.Services.Utilities;
 using CvBlog.Shared.Utilities.Exttensions;
 using CvBlog.Shared.Utilities.Results.ComplexTypes;
 using CvBlog.Shared.Utilities.Results.Concrete;
-using CvBlog.Web.Areas.Admin.Models;
+using CvBlog.Web.Areas.Admin.ViewComponents;
+using CvBlog.Web.Areas.Admin.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json.Linq;
@@ -30,7 +31,7 @@ namespace CvBlog.Web.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            var result = await _categoryService.GetAll();
+            var result = await _categoryService.GetAllAsync();
             if (result.ResultStatus == ResultStatus.Success) 
             {
                 return View(result.Data);
@@ -46,9 +47,17 @@ namespace CvBlog.Web.Areas.Admin.Controllers
             string orderColumn = (oc != null) ? oc : "Id";
             string orderType = (ot != null) ? ot : "Desc";
             int limit = (l != null) ? Convert.ToInt32(l) : 99999999;
-            var queryResult = await _categoryService.GetAll();
+            var queryResult = await _categoryService.GetAllAsync();
             return Json(queryResult.Data);
         }
+        /// <summary>
+        /// Parametrelere göre kayıtları filtreleyip sayfalama işlemi için listeyi döner.
+        /// </summary>
+        /// <param name="val"></param>
+        /// <param name="draw"></param>
+        /// <param name="start"></param>
+        /// <param name="length"></param>
+        /// <returns></returns>
         [Route("kategori-listesi")]
         [HttpPost]
         public async Task<JsonResult> CategoryList(string val, int draw, int start, int length)
@@ -99,7 +108,7 @@ namespace CvBlog.Web.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var result = await _categoryService.Add(categoryAddDto, "system");
+                var result = await _categoryService.AddAsync(categoryAddDto, "system");
                 if (result.ResultStatus == ResultStatus.Success)
                 {
                     //System.Text.Json; daki JsonSerializer
@@ -124,7 +133,7 @@ namespace CvBlog.Web.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> CategoryUpdateModal(string val)
         {
-            var result = await _categoryService.GetCategoryUpdateDto(Convert.ToInt32(Tool.Base64Decode(val)));
+            var result = await _categoryService.GetCategoryUpdateDtoAsync(Convert.ToInt32(Tool.Base64Decode(val)));
             if (result.ResultStatus == ResultStatus.Success)
             {
                 return PartialView("_CategoryUpdateModalPartial", result.Data);
@@ -137,7 +146,7 @@ namespace CvBlog.Web.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var result = await _categoryService.Update(categoryUpdateDto, "system");
+                var result = await _categoryService.UpdateAsync(categoryUpdateDto, "system");
                 if (result.ResultStatus == ResultStatus.Success)
                 {
                     var categpryUpdateAjaxModel = JsonSerializer.Serialize(new CategoryUpdateAjaxViewModel
@@ -160,7 +169,7 @@ namespace CvBlog.Web.Areas.Admin.Controllers
         {
             if (!string.IsNullOrEmpty(val))
             {
-                var result = await _categoryService.UpdateIsActive(Convert.ToInt32(Tool.Base64Decode(val)),"admin");
+                var result = await _categoryService.UpdateIsActiveAsync(Convert.ToInt32(Tool.Base64Decode(val)),"admin");
                 return new Result(result.ResultStatus, result.Message);
             }
             return new Result(ResultStatus.Error, "Lütfen işlem yapmak istediğiniz kategoriyi seçiniz.");
@@ -171,7 +180,7 @@ namespace CvBlog.Web.Areas.Admin.Controllers
         {
             if (!string.IsNullOrEmpty(val))
             {
-                var result = await _categoryService.Delete(Convert.ToInt32(Tool.Base64Decode(val)), "admin");
+                var result = await _categoryService.DeleteAsync(Convert.ToInt32(Tool.Base64Decode(val)), "admin");
                 return new Result(result.ResultStatus, result.Message);
             }
             return new Result(ResultStatus.Error, "Lütfen işlem yapmak istediğiniz kategoriyi seçiniz.");

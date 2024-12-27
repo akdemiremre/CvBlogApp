@@ -13,17 +13,17 @@ namespace CvBlog.Services.Abstract
 {
     public interface ICategoryService
     {
-        Task<IDataResult<CategoryDto>> Get(int categoryId);
-        Task<IDataResult<CategoryUpdateDto>> GetCategoryUpdateDto(int categoryId);
-        Task<IDataResult<CategoryListDto>> GetAll();
+        Task<IDataResult<CategoryDto>> GetAsync(int categoryId);
+        Task<IDataResult<CategoryUpdateDto>> GetCategoryUpdateDtoAsync(int categoryId);
+        Task<IDataResult<CategoryListDto>> GetAllAsync();
         Task<IDataResult<CategoryListDto>> GetPagingAllAsync(int pageNumber, int rowCount, string orderColumn, string orderType, string searchValue);
-        Task<IDataResult<CategoryListDto>> GetAllByNonDeleted();
+        Task<IDataResult<CategoryListDto>> GetAllByNonDeletedAsync();
         Task<int> CountAsync();
-        Task<IDataResult<CategoryListDto>> GetAllByNonDeletedAndActive();
-        Task<IDataResult<CategoryDto>> Add(CategoryAddDto categoryAddDto, string createdByName);
-        Task<IDataResult<CategoryDto>> Update(CategoryUpdateDto categoryUpdateDto, string modifiedByName);
-        Task<IResult> UpdateIsActive(int categoryId, string modifiedByName);
-        Task<IResult> Delete(int categoryId,string modifiedByName);
-        Task<IResult> HardDelete(int categoryId, string modifiedByName);
+        Task<IDataResult<CategoryListDto>> GetAllByNonDeletedAndActiveAsync();
+        Task<IDataResult<CategoryDto>> AddAsync(CategoryAddDto categoryAddDto, string createdByName);
+        Task<IDataResult<CategoryDto>> UpdateAsync(CategoryUpdateDto categoryUpdateDto, string modifiedByName);
+        Task<IResult> UpdateIsActiveAsync(int categoryId, string modifiedByName);
+        Task<IResult> DeleteAsync(int categoryId,string modifiedByName);
+        Task<IResult> HardDeleteAsync(int categoryId, string modifiedByName);
     }
 }

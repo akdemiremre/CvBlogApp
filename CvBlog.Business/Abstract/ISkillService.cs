@@ -11,13 +11,13 @@ namespace CvBlog.Services.Abstract
 {
     public interface ISkillService
     {
-        Task<IDataResult<SkillDto>> Get(int skillId); 
-        Task<IDataResult<SkillListDto>> GetAll(); 
-        Task<IDataResult<SkillListDto>> GetAllByNonDelete(); 
-        Task<IDataResult<SkillListDto>> GetAllByNonDeleteAndActive();
-        Task<IResult> Add(SkillAddDto skillAddDto, string createdByName);
-        Task<IResult> Update(SkillUpdateDto skillUpdateDto, string modifiedByName);
-        Task<IResult> Delete(int skillId, string modifiedByName);
-        Task<IResult> HardDelete(int skillId);
+        Task<IDataResult<SkillDto>> GetAsync(int skillId); 
+        Task<IDataResult<SkillListDto>> GetAllAsync(); 
+        Task<IDataResult<SkillListDto>> GetAllByNonDeleteAsync(); 
+        Task<IDataResult<SkillListDto>> GetAllByNonDeleteAndActiveAsync();
+        Task<IResult> AddAsync(SkillAddDto skillAddDto, string createdByName);
+        Task<IResult> UpdateAsync(SkillUpdateDto skillUpdateDto, string modifiedByName);
+        Task<IResult> DeleteAsync(int skillId, string modifiedByName);
+        Task<IResult> HardDeleteAsync(int skillId);
     }
 }

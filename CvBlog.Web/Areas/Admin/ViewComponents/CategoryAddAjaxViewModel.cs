@@ -1,6 +1,6 @@
 ﻿using CvBlog.Entities.Dtos;
 
-namespace CvBlog.Web.Areas.Admin.Models
+namespace CvBlog.Web.Areas.Admin.ViewComponents
 {
     public class CategoryAddAjaxViewModel
     {

@@ -22,7 +22,7 @@ namespace CvBlog.Services.Concrete
         {
         }
 
-        public async Task<IDataResult<CategoryDto>> Add(CategoryAddDto categoryAddDto, string createdByName)
+        public async Task<IDataResult<CategoryDto>> AddAsync(CategoryAddDto categoryAddDto, string createdByName)
         {
             try
             {
@@ -53,7 +53,7 @@ namespace CvBlog.Services.Concrete
             }
         }
 
-        public async Task<IResult> Delete(int categoryId,string modifiedByName)
+        public async Task<IResult> DeleteAsync(int categoryId,string modifiedByName)
         {
             try
             {
@@ -77,7 +77,7 @@ namespace CvBlog.Services.Concrete
             }
         }
 
-        public async Task<IDataResult<CategoryDto>> Get(int categoryId)
+        public async Task<IDataResult<CategoryDto>> GetAsync(int categoryId)
         {
             try
             {
@@ -103,7 +103,7 @@ namespace CvBlog.Services.Concrete
             }
         }
 
-        public async Task<IDataResult<CategoryListDto>> GetAll()
+        public async Task<IDataResult<CategoryListDto>> GetAllAsync()
         {
             try
             {
@@ -124,7 +124,7 @@ namespace CvBlog.Services.Concrete
             }
         }
 
-        public async Task<IDataResult<CategoryListDto>> GetAllByNonDeleted()
+        public async Task<IDataResult<CategoryListDto>> GetAllByNonDeletedAsync()
         {
             try
             {
@@ -144,7 +144,7 @@ namespace CvBlog.Services.Concrete
                 return new DataResult<CategoryListDto>(ResultStatus.Error, Messages.Category.Error("Kategori listesi çekme işlemi", Ex.Message.ToString()), null);
             }
         }
-        public async Task<IDataResult<CategoryListDto>> GetAllByNonDeletedAndActive()
+        public async Task<IDataResult<CategoryListDto>> GetAllByNonDeletedAndActiveAsync()
         {
             try
             {
@@ -192,7 +192,7 @@ namespace CvBlog.Services.Concrete
             }
         }
 
-        public async Task<IResult> HardDelete(int categoryId, string modifiedByName)
+        public async Task<IResult> HardDeleteAsync(int categoryId, string modifiedByName)
         {
             try
             {
@@ -211,7 +211,7 @@ namespace CvBlog.Services.Concrete
             }
         }
 
-        public async Task<IDataResult<CategoryDto>> Update(CategoryUpdateDto categoryUpdateDto, string modifiedByName)
+        public async Task<IDataResult<CategoryDto>> UpdateAsync(CategoryUpdateDto categoryUpdateDto, string modifiedByName)
         {
             try
             {
@@ -237,7 +237,7 @@ namespace CvBlog.Services.Concrete
             }
         }
 
-        public async Task<IDataResult<CategoryUpdateDto>> GetCategoryUpdateDto(int categoryId)
+        public async Task<IDataResult<CategoryUpdateDto>> GetCategoryUpdateDtoAsync(int categoryId)
         {
             try
             {
@@ -256,7 +256,7 @@ namespace CvBlog.Services.Concrete
             }
         }
 
-        public async Task<IResult> UpdateIsActive(int categoryId, string modifiedByName)
+        public async Task<IResult> UpdateIsActiveAsync(int categoryId, string modifiedByName)
         {
             try
             {
@@ -270,12 +270,12 @@ namespace CvBlog.Services.Concrete
                     if (category.IsActive)
                     {
                         category.IsActive = false;
-                        message = Messages.Category.IsActiveChange(true, category.Name, "aktif");
+                        message = Messages.Category.IsActiveChange(true, category.Name, "pasif");
                     }
                     else
                     {
                         category.IsActive = true;
-                        message = Messages.Category.IsActiveChange(true, category.Name, "pasif");
+                        message = Messages.Category.IsActiveChange(true, category.Name, "aktif");
                     }
                     category = await UnitOfWork.Categories.UpdateAsync(category);
                     await UnitOfWork.SaveAsync();

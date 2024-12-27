@@ -11,7 +11,7 @@ namespace CvBlog.Services.Abstract
     public interface IUserService 
     {
         Task<int> CountAsync();
-        Task<IDataResult<UserListDto>> GetAll();
+        Task<IDataResult<UserListDto>> GetAllAsync();
         Task<IDataResult<UserListDto>> GetPagingAllAsync(int pageNumber, int rowCount, string orderColumn, string orderType, string searchValue);
     }
 }

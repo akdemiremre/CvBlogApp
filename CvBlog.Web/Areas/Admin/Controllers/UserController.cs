@@ -8,7 +8,7 @@ using CvBlog.Services.Utilities;
 using CvBlog.Shared.Utilities.Exttensions;
 using CvBlog.Shared.Utilities.Results.ComplexTypes;
 using CvBlog.Shared.Utilities.Results.Concrete;
-using CvBlog.Web.Areas.Admin.Models;
+using CvBlog.Web.Areas.Admin.ViewModels;
 using CvBlog.Web.Helpers.Abstract;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;

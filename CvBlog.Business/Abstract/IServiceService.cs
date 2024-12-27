@@ -11,13 +11,13 @@ namespace CvBlog.Services.Abstract
 {
     public interface IServiceService
     {
-        Task<IDataResult<ServiceDto>> Get(int serviceId);
-        Task<IDataResult<ServiceListDto>> GetAll();
-        Task<IDataResult<ServiceListDto>> GetAllByNonDeleted();
-        Task<IDataResult<ServiceListDto>> GetAllByNonDeletedAndActive();
-        Task<IResult> Add(ServiceAddDto serviceAddDto, string createdByName);
-        Task<IResult> Update(ServiceUpdateDto serviceUpdateDto, string modifiedByName);
-        Task<IResult> Delete(int serviceId, string modifiedByName);
-        Task<IResult> HardDelete(int serviceId);
+        Task<IDataResult<ServiceDto>> GetAsync(int serviceId);
+        Task<IDataResult<ServiceListDto>> GetAllAsync();
+        Task<IDataResult<ServiceListDto>> GetAllByNonDeletedAsync();
+        Task<IDataResult<ServiceListDto>> GetAllByNonDeletedAndActiveAsync();
+        Task<IResult> AddAsync(ServiceAddDto serviceAddDto, string createdByName);
+        Task<IResult> UpdateAsync(ServiceUpdateDto serviceUpdateDto, string modifiedByName);
+        Task<IResult> DeleteAsync(int serviceId, string modifiedByName);
+        Task<IResult> HardDeleteAsync(int serviceId);
     }
 }

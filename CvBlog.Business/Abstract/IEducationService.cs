@@ -12,13 +12,13 @@ namespace CvBlog.Services.Abstract
 {
     public interface IEducationService
     {
-        Task<IDataResult<EducationDto>> Get(int educationId);
-        Task<IDataResult<EducationListDto>> GetAll();
-        Task<IDataResult<EducationListDto>> GetAllByNonDeleted();
-        Task<IDataResult<EducationListDto>> GetAlLByNonDeletedAndActive();
-        Task<IResult> Add(EducationAddDto educationAddDto, string createdByName);
-        Task<IResult> Update(EducationUpdateDto educationUpdateDto, string modifiedByName);
-        Task<IResult> Delete(int educationId, string modifiedByName);
-        Task<IResult> HardDelete(int educationId);
+        Task<IDataResult<EducationDto>> GetAsync(int educationId);
+        Task<IDataResult<EducationListDto>> GetAllAsync();
+        Task<IDataResult<EducationListDto>> GetAllByNonDeletedAsync();
+        Task<IDataResult<EducationListDto>> GetAlLByNonDeletedAndActiveAsync();
+        Task<IResult> AddAsync(EducationAddDto educationAddDto, string createdByName);
+        Task<IResult> UpdateAsync(EducationUpdateDto educationUpdateDto, string modifiedByName);
+        Task<IResult> DeleteAsync(int educationId, string modifiedByName);
+        Task<IResult> HardDeleteAsync(int educationId);
     }
 }

@@ -24,7 +24,7 @@ namespace CvBlog.Services.Concrete
             _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
-        public async Task<IResult> Add(SkillAddDto skillAddDto, string createdByName)
+        public async Task<IResult> AddAsync(SkillAddDto skillAddDto, string createdByName)
         {
             try
             {
@@ -40,7 +40,7 @@ namespace CvBlog.Services.Concrete
             }
         }
 
-        public async Task<IResult> Delete(int skillId, string modifiedByName)
+        public async Task<IResult> DeleteAsync(int skillId, string modifiedByName)
         {
             try
             {
@@ -61,7 +61,7 @@ namespace CvBlog.Services.Concrete
             }
         }
 
-        public async Task<IDataResult<SkillDto>> Get(int skillId)
+        public async Task<IDataResult<SkillDto>> GetAsync(int skillId)
         {
             try
             {
@@ -82,7 +82,7 @@ namespace CvBlog.Services.Concrete
             }
         }
 
-        public async Task<IDataResult<SkillListDto>> GetAll()
+        public async Task<IDataResult<SkillListDto>> GetAllAsync()
         {
             try
             {
@@ -103,7 +103,7 @@ namespace CvBlog.Services.Concrete
             }
         }
 
-        public async Task<IDataResult<SkillListDto>> GetAllByNonDelete()
+        public async Task<IDataResult<SkillListDto>> GetAllByNonDeleteAsync()
         {
             try
             {
@@ -124,7 +124,7 @@ namespace CvBlog.Services.Concrete
             }
         }
 
-        public async Task<IDataResult<SkillListDto>> GetAllByNonDeleteAndActive()
+        public async Task<IDataResult<SkillListDto>> GetAllByNonDeleteAndActiveAsync()
         {
             try
             {
@@ -145,7 +145,7 @@ namespace CvBlog.Services.Concrete
             }
         }
 
-        public async Task<IResult> HardDelete(int skillId)
+        public async Task<IResult> HardDeleteAsync(int skillId)
         {
             try
             {
@@ -164,7 +164,7 @@ namespace CvBlog.Services.Concrete
             }
         }
 
-        public async Task<IResult> Update(SkillUpdateDto skillUpdateDto, string modifiedByName)
+        public async Task<IResult> UpdateAsync(SkillUpdateDto skillUpdateDto, string modifiedByName)
         {
             try
             {

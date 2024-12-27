@@ -11,13 +11,13 @@ namespace CvBlog.Services.Abstract
 {
     public interface IMyLanguageService
     {
-        Task<IDataResult<MyLanguageDto>> Get(int myLanguageId);
-        Task<IDataResult<MyLanguageListDto>> GetAll();
-        Task<IDataResult<MyLanguageListDto>> GetAllByNonDeleted();
-        Task<IDataResult<MyLanguageListDto>> GetAllByNonDeletedAndActive();
-        Task<IResult> Add(MyLanguageAddDto myLanguageAddDto, string createdByName);
-        Task<IResult> Update(MyLanguageUpdateDto myLanguageUpdateDto, string modifiedByName);
-        Task<IResult> Delete(int myLanguageId, string modifiedByName);
-        Task<IResult> HardDelete(int myLanguageId);
+        Task<IDataResult<MyLanguageDto>> GetAsync(int myLanguageId);
+        Task<IDataResult<MyLanguageListDto>> GetAllAsync();
+        Task<IDataResult<MyLanguageListDto>> GetAllByNonDeletedAsync();
+        Task<IDataResult<MyLanguageListDto>> GetAllByNonDeletedAndActiveAsync();
+        Task<IResult> AddAsync(MyLanguageAddDto myLanguageAddDto, string createdByName);
+        Task<IResult> UpdateAsync(MyLanguageUpdateDto myLanguageUpdateDto, string modifiedByName);
+        Task<IResult> DeleteAsync(int myLanguageId, string modifiedByName);
+        Task<IResult> HardDeleteAsync(int myLanguageId);
     }
 }

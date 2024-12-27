@@ -26,7 +26,7 @@ namespace CvBlog.Services.Concrete
             _mapper = mapper;
         }
 
-        public async Task<IResult> Add(EducationAddDto educationAddDto, string createdByName)
+        public async Task<IResult> AddAsync(EducationAddDto educationAddDto, string createdByName)
         {
             try
             {
@@ -42,7 +42,7 @@ namespace CvBlog.Services.Concrete
             }
         }
 
-        public async Task<IResult> Delete(int educationId, string modifiedByName)
+        public async Task<IResult> DeleteAsync(int educationId, string modifiedByName)
         {
             try
             {
@@ -63,7 +63,7 @@ namespace CvBlog.Services.Concrete
             }
         }
 
-        public async Task<IDataResult<EducationListDto>> GetAll()
+        public async Task<IDataResult<EducationListDto>> GetAllAsync()
         {
             try
             {
@@ -84,7 +84,7 @@ namespace CvBlog.Services.Concrete
             }
         }
 
-        public async Task<IDataResult<EducationListDto>> GetAllByNonDeleted()
+        public async Task<IDataResult<EducationListDto>> GetAllByNonDeletedAsync()
         {
             try
             {
@@ -105,7 +105,7 @@ namespace CvBlog.Services.Concrete
             }
         }
 
-        public async Task<IDataResult<EducationListDto>> GetAlLByNonDeletedAndActive()
+        public async Task<IDataResult<EducationListDto>> GetAlLByNonDeletedAndActiveAsync()
         {
             try
             {
@@ -126,7 +126,7 @@ namespace CvBlog.Services.Concrete
             }
         }
 
-        public async Task<IDataResult<EducationDto>> Get(int educationId)
+        public async Task<IDataResult<EducationDto>> GetAsync(int educationId)
         {
             try
             {
@@ -147,7 +147,7 @@ namespace CvBlog.Services.Concrete
             }
         }
 
-        public async Task<IResult> HardDelete(int educationId)
+        public async Task<IResult> HardDeleteAsync(int educationId)
         {
             try
             {
@@ -166,7 +166,7 @@ namespace CvBlog.Services.Concrete
             }
         }
 
-        public async Task<IResult> Update(EducationUpdateDto educationUpdateDto, string modifiedByName)
+        public async Task<IResult> UpdateAsync(EducationUpdateDto educationUpdateDto, string modifiedByName)
         {
             var education = _mapper.Map<Education>(educationUpdateDto);
             education.ModifiedByName = modifiedByName;

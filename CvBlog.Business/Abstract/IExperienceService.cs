@@ -11,13 +11,13 @@ namespace CvBlog.Services.Abstract
 {
     public interface IExperienceService
     {
-        Task<IDataResult<ExperienceDto>> Get(int experienceId);
-        Task<IDataResult<ExperienceListDto>> GetAll();
-        Task<IDataResult<ExperienceListDto>> GetAllByNonDeleted();
-        Task<IDataResult<ExperienceListDto>> GetAllByNonDeletedAndActive();
-        Task<IResult> Add(ExperienceAddDto experienceAddDto, string createdByName);
-        Task<IResult> Update(ExperienceUpdateDto experienceUpdateDto, string modifiedByName);
-        Task<IResult> Delete(int experienceId, string modifiedByName);
-        Task<IResult> HardDekete(int experienceId);
+        Task<IDataResult<ExperienceDto>> GetAsync(int experienceId);
+        Task<IDataResult<ExperienceListDto>> GetAllAsync();
+        Task<IDataResult<ExperienceListDto>> GetAllByNonDeletedAsync();
+        Task<IDataResult<ExperienceListDto>> GetAllByNonDeletedAndActiveAsync();
+        Task<IResult> AddAsync(ExperienceAddDto experienceAddDto, string createdByName);
+        Task<IResult> UpdateAsync(ExperienceUpdateDto experienceUpdateDto, string modifiedByName);
+        Task<IResult> DeleteAsync(int experienceId, string modifiedByName);
+        Task<IResult> HardDeketeAsync(int experienceId);
     }
 }

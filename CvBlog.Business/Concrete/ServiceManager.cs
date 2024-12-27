@@ -24,7 +24,7 @@ namespace CvBlog.Services.Concrete
             _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
-        public async Task<IResult> Add(ServiceAddDto serviceAddDto, string createdByName)
+        public async Task<IResult> AddAsync(ServiceAddDto serviceAddDto, string createdByName)
         {
             try
             {
@@ -40,7 +40,7 @@ namespace CvBlog.Services.Concrete
             }
         }
 
-        public async Task<IResult> Delete(int serviceId, string modifiedByName)
+        public async Task<IResult> DeleteAsync(int serviceId, string modifiedByName)
         {
             try
             {
@@ -61,7 +61,7 @@ namespace CvBlog.Services.Concrete
             }
         }
 
-        public async Task<IDataResult<ServiceDto>> Get(int serviceId)
+        public async Task<IDataResult<ServiceDto>> GetAsync(int serviceId)
         {
             try
             {
@@ -83,7 +83,7 @@ namespace CvBlog.Services.Concrete
             }
         }
 
-        public async Task<IDataResult<ServiceListDto>> GetAll()
+        public async Task<IDataResult<ServiceListDto>> GetAllAsync()
         {
             try
             {
@@ -104,7 +104,7 @@ namespace CvBlog.Services.Concrete
             }
         }
 
-        public async Task<IDataResult<ServiceListDto>> GetAllByNonDeleted()
+        public async Task<IDataResult<ServiceListDto>> GetAllByNonDeletedAsync()
         {
             try
             {
@@ -125,7 +125,7 @@ namespace CvBlog.Services.Concrete
             }
         }
 
-        public async Task<IDataResult<ServiceListDto>> GetAllByNonDeletedAndActive()
+        public async Task<IDataResult<ServiceListDto>> GetAllByNonDeletedAndActiveAsync()
         {
             try
             {
@@ -146,7 +146,7 @@ namespace CvBlog.Services.Concrete
             }
         }
 
-        public async Task<IResult> HardDelete(int serviceId)
+        public async Task<IResult> HardDeleteAsync(int serviceId)
         {
             try
             {
@@ -165,7 +165,7 @@ namespace CvBlog.Services.Concrete
             }
         }
 
-        public async Task<IResult> Update(ServiceUpdateDto serviceUpdateDto, string modifiedByName)
+        public async Task<IResult> UpdateAsync(ServiceUpdateDto serviceUpdateDto, string modifiedByName)
         {
             try
             {

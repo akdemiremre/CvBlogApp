@@ -26,7 +26,7 @@ namespace CvBlog.Services.Concrete
             _mapper = mapper;
         }
 
-        public async Task<IDataResult<SocialMediaDto>> Get(int socialMediaId)
+        public async Task<IDataResult<SocialMediaDto>> GetAsync(int socialMediaId)
         {
             try
             {
@@ -47,7 +47,7 @@ namespace CvBlog.Services.Concrete
             }
         }
 
-        public async Task<IDataResult<SocialMediaListDto>> GetAll()
+        public async Task<IDataResult<SocialMediaListDto>> GetAllAsync()
         {
             try
             {
@@ -68,7 +68,7 @@ namespace CvBlog.Services.Concrete
             }
         }
 
-        public async Task<IDataResult<SocialMediaListDto>> GetAllByNonDelete()
+        public async Task<IDataResult<SocialMediaListDto>> GetAllByNonDeleteAsync()
         {
             try
             {
@@ -89,7 +89,7 @@ namespace CvBlog.Services.Concrete
             }
         }
 
-        public async Task<IDataResult<SocialMediaListDto>> GetAllByNonDeleteAndActive()
+        public async Task<IDataResult<SocialMediaListDto>> GetAllByNonDeleteAndActiveAsync()
         {
             try
             {
@@ -110,7 +110,7 @@ namespace CvBlog.Services.Concrete
             }
         }
 
-        public async Task<IResult> Add(SocialMediaAddDto socialMediaAddDto, string createdByName)
+        public async Task<IResult> AddAsync(SocialMediaAddDto socialMediaAddDto, string createdByName)
         {
             try
             {
@@ -126,7 +126,7 @@ namespace CvBlog.Services.Concrete
             }
         }
 
-        public async Task<IResult> Update(SocialMediaUpdateDto socialMediaUpdateDto, string modifiedByName)
+        public async Task<IResult> UpdateAsync(SocialMediaUpdateDto socialMediaUpdateDto, string modifiedByName)
         {
             try
             {
@@ -141,7 +141,7 @@ namespace CvBlog.Services.Concrete
             }
         }
 
-        public async Task<IResult> Delete(int socialMediaId, string modifiedByName)
+        public async Task<IResult> DeleteAsync(int socialMediaId, string modifiedByName)
         {
             try
             {
@@ -163,7 +163,7 @@ namespace CvBlog.Services.Concrete
             }
         }
 
-        public async Task<IResult> HardDelete(int socialMediaId)
+        public async Task<IResult> HardDeleteAsync(int socialMediaId)
         {
             try
             {

@@ -1,7 +1,7 @@
 ﻿using CvBlog.Entities.Concrete;
 using Microsoft.AspNetCore.Identity;
 
-namespace CvBlog.Web.Areas.Admin.Models
+namespace CvBlog.Web.Areas.Admin.ViewModels
 {
     public class UserMenuViewModel
     {

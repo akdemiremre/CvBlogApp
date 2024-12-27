@@ -24,7 +24,7 @@ namespace CvBlog.Services.Concrete
             _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
-        public async Task<IResult> Add(PortfolioAddDto portfolioAddDto, string createdByName)
+        public async Task<IResult> AddAsync(PortfolioAddDto portfolioAddDto, string createdByName)
         {
             try
             {
@@ -40,7 +40,7 @@ namespace CvBlog.Services.Concrete
             }
         }
 
-        public async Task<IResult> Delete(int portfolioId, string modifiedByName)
+        public async Task<IResult> DeleteAsync(int portfolioId, string modifiedByName)
         {
             try
             {
@@ -62,7 +62,7 @@ namespace CvBlog.Services.Concrete
             }
         }
 
-        public async Task<IDataResult<PortfolioDto>> Get(int portfolioId)
+        public async Task<IDataResult<PortfolioDto>> GetAsync(int portfolioId)
         {
             try
             {
@@ -83,7 +83,7 @@ namespace CvBlog.Services.Concrete
             }
         }
 
-        public async Task<IDataResult<PortfolioListDto>> GetAll()
+        public async Task<IDataResult<PortfolioListDto>> GetAllAsync()
         {
             try
             {
@@ -104,7 +104,7 @@ namespace CvBlog.Services.Concrete
             }
         }
 
-        public async Task<IDataResult<PortfolioListDto>> GetAllByNonDeleted()
+        public async Task<IDataResult<PortfolioListDto>> GetAllByNonDeletedAsync()
         {
             try
             {
@@ -125,7 +125,7 @@ namespace CvBlog.Services.Concrete
             }
         }
 
-        public async Task<IDataResult<PortfolioListDto>> GetAllByNonDeletedAndActive()
+        public async Task<IDataResult<PortfolioListDto>> GetAllByNonDeletedAndActiveAsync()
         {
             try
             {
@@ -146,7 +146,7 @@ namespace CvBlog.Services.Concrete
             }
         }
 
-        public async Task<IResult> HardDelete(int portfolioId)
+        public async Task<IResult> HardDeleteAsync(int portfolioId)
         {
             try
             {
@@ -165,7 +165,7 @@ namespace CvBlog.Services.Concrete
             }
         }
 
-        public async Task<IResult> Update(PortfolioUpdateDto portfolioUpdateDto, string modifiedByName)
+        public async Task<IResult> UpdateAsync(PortfolioUpdateDto portfolioUpdateDto, string modifiedByName)
         {
             try
             {

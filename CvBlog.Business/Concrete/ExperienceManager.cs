@@ -25,7 +25,7 @@ namespace CvBlog.Services.Concrete
             _mapper = mapper;
         }
 
-        public async Task<IResult> Add(ExperienceAddDto experienceAddDto, string createdByName)
+        public async Task<IResult> AddAsync(ExperienceAddDto experienceAddDto, string createdByName)
         {
             try
             {
@@ -41,7 +41,7 @@ namespace CvBlog.Services.Concrete
             }
         }
 
-        public async Task<IResult> Delete(int experienceId, string modifiedByName)
+        public async Task<IResult> DeleteAsync(int experienceId, string modifiedByName)
         {
             try
             {
@@ -63,7 +63,7 @@ namespace CvBlog.Services.Concrete
             }
         }
 
-        public async Task<IDataResult<ExperienceDto>> Get(int experienceId)
+        public async Task<IDataResult<ExperienceDto>> GetAsync(int experienceId)
         {
             try
             {
@@ -84,7 +84,7 @@ namespace CvBlog.Services.Concrete
             }
         }
 
-        public async Task<IDataResult<ExperienceListDto>> GetAll()
+        public async Task<IDataResult<ExperienceListDto>> GetAllAsync()
         {
             try
             {
@@ -105,7 +105,7 @@ namespace CvBlog.Services.Concrete
             }
         }
 
-        public async Task<IDataResult<ExperienceListDto>> GetAllByNonDeleted()
+        public async Task<IDataResult<ExperienceListDto>> GetAllByNonDeletedAsync()
         {
             try
             {
@@ -126,7 +126,7 @@ namespace CvBlog.Services.Concrete
             }
         }
 
-        public async Task<IDataResult<ExperienceListDto>> GetAllByNonDeletedAndActive()
+        public async Task<IDataResult<ExperienceListDto>> GetAllByNonDeletedAndActiveAsync()
         {
             try
             {
@@ -147,7 +147,7 @@ namespace CvBlog.Services.Concrete
             }
         }
 
-        public async Task<IResult> HardDekete(int experienceId)
+        public async Task<IResult> HardDeketeAsync(int experienceId)
         {
             try
             {
@@ -166,7 +166,7 @@ namespace CvBlog.Services.Concrete
             }
         }
 
-        public async Task<IResult> Update(ExperienceUpdateDto experienceUpdateDto, string modifiedByName)
+        public async Task<IResult> UpdateAsync(ExperienceUpdateDto experienceUpdateDto, string modifiedByName)
         {
             try
             {

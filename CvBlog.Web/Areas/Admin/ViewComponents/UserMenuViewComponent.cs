@@ -1,5 +1,5 @@
 ﻿using CvBlog.Entities.Concrete;
-using CvBlog.Web.Areas.Admin.Models;
+using CvBlog.Web.Areas.Admin.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ViewComponents;

@@ -10,13 +10,13 @@ namespace CvBlog.Services.Abstract
 {
     public interface ISocialMediaService
     {
-        Task<IDataResult<SocialMediaDto>> Get(int socialMediaId);
-        Task<IDataResult<SocialMediaListDto>> GetAll();
-        Task<IDataResult<SocialMediaListDto>> GetAllByNonDelete();
-        Task<IDataResult<SocialMediaListDto>> GetAllByNonDeleteAndActive();
-        Task<IResult> Add(SocialMediaAddDto socialMediaAddDto, string createdByName);
-        Task<IResult> Update(SocialMediaUpdateDto socialMediaUpdateDto, string modifiedByName);
-        Task<IResult> Delete(int socialMediaId, string modifiedByName);
-        Task<IResult> HardDelete(int socialMediaId);
+        Task<IDataResult<SocialMediaDto>> GetAsync(int socialMediaId);
+        Task<IDataResult<SocialMediaListDto>> GetAllAsync();
+        Task<IDataResult<SocialMediaListDto>> GetAllByNonDeleteAsync();
+        Task<IDataResult<SocialMediaListDto>> GetAllByNonDeleteAndActiveAsync();
+        Task<IResult> AddAsync(SocialMediaAddDto socialMediaAddDto, string createdByName);
+        Task<IResult> UpdateAsync(SocialMediaUpdateDto socialMediaUpdateDto, string modifiedByName);
+        Task<IResult> DeleteAsync(int socialMediaId, string modifiedByName);
+        Task<IResult> HardDeleteAsync(int socialMediaId);
     }
 }

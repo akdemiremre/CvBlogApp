@@ -29,7 +29,7 @@ namespace CvBlog.Services.Concrete
             return await UnitOfWork.Users.CountAsync();
         }
 
-        public async Task<IDataResult<UserListDto>> GetAll()
+        public async Task<IDataResult<UserListDto>> GetAllAsync()
         {
             try
             {
