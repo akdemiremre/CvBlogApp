@@ -20,7 +20,6 @@ namespace CvBlog.Entities.Concrete
         public string Description { get; set; }
         public string ProfileImage { get; set; }
         public string HeaderImage { get; set; }
-        public ICollection<Customer> Customers { get; set; }
         public ICollection<Education> Educations { get; set; }
         public ICollection<Experience> Experiences { get; set; }
         public ICollection<Skill> Skills { get; set; }

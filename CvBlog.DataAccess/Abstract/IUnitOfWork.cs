@@ -22,6 +22,7 @@ namespace CvBlog.Data.Abstract
         ICustomerRepository Customers { get; }
         ICvRepository Cvs { get; }
         IEducationRepository Educations { get; }
+        IEducationLevelRepository EducationLevels { get; }
         IExperienceRepository Experiences { get; }
         IMyLanguageRepository MyLanguages { get; }
         IPortfolioRepository Portfolios { get; }

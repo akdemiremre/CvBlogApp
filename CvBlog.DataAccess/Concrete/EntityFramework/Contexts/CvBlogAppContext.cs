@@ -23,6 +23,7 @@ namespace CvBlog.Data.Concrete.EntityFramework.Contexts
         public DbSet<Customer> Customer { get; set; }
         public DbSet<Cv> Cvs { get; set; }
         public DbSet<Education> Educations { get; set; }
+        public DbSet<EducationLevel> EducationLevels { get; set; }
         public DbSet<Experience> Experiences { get; set; }
         public DbSet<MyLanguage> MyLanguageS { get; set; }
         public DbSet<Portfolio> Portfolios { get; set; }
@@ -47,6 +48,7 @@ namespace CvBlog.Data.Concrete.EntityFramework.Contexts
             modelBuilder.ApplyConfiguration(new CustomerMap());
             modelBuilder.ApplyConfiguration(new CvMap());
             modelBuilder.ApplyConfiguration(new EducationMap());
+            modelBuilder.ApplyConfiguration(new EducationLevelMap());
             modelBuilder.ApplyConfiguration(new ExperienceMap());
             modelBuilder.ApplyConfiguration(new MyLanguageMap());
             modelBuilder.ApplyConfiguration(new PortfolioMap());

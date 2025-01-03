@@ -122,6 +122,18 @@ namespace CvBlog.Services.Utilities
                 return "Eğitim bilgisi durumu güncellenemedi.";
             }
         }
+        public static class EducationLevel
+        {
+            public static string Error(string proc, string errorMessage)
+            {
+                return $"{proc} yapılırken hata oluştu ! Hata : "+errorMessage;
+            }
+            public static string NotFound(bool isPlural)
+            {
+                if (isPlural) return "Hiç bir eğitim seviye bilgisi bulunamadı.";
+                return "Böyle bir eğitim seviye bilgisi bulunamadı.";
+            }
+        }
         public static class Experience
         {
             public static string Error(string proc, string errorMessage)

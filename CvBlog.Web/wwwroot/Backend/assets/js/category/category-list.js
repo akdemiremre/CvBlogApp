@@ -32,6 +32,14 @@ $(document).ready(function () {
             },
             columns: [
                 {
+                    "data": null,
+                    "searchable": false,
+                    "sortable": false,
+                    "render": function (data, type, row, order) {
+                        return `<div class="text-center">${order.row + 1}</div>`;
+                    }
+                },
+                {
                     "data": "0",
                     "searchable": true,
                     "sortable": false,
@@ -39,7 +47,7 @@ $(document).ready(function () {
                         if (data == null) {
                             return "-";
                         } else {
-                            return data;
+                            return `<div class="text-center">${data}</div>`;
                         }
                     }
                 },
@@ -63,7 +71,7 @@ $(document).ready(function () {
                         if (data == null) {
                             return "-";
                         } else {
-                            return data;
+                            return `<div class="text-center">${data}</div>`;
                         }
                     }
                 },
@@ -75,7 +83,7 @@ $(document).ready(function () {
                         if (data == null) {
                             return "-";
                         } else {
-                            return data;
+                            return `<div class="text-center">${data}</div>`;
                         }
                     }
                 },
@@ -87,7 +95,7 @@ $(document).ready(function () {
                         if (data == null) {
                             return "-";
                         } else {
-                            return data;
+                            return `<div class="text-center">${data}</div>`;
                         }
                     }
                 },
@@ -99,7 +107,7 @@ $(document).ready(function () {
                         if (data == null) {
                             return "-";
                         } else {
-                            return data;
+                            return `<div class="text-center">${data}</div>`;
                         }
                     }
                 },

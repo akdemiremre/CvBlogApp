@@ -28,9 +28,9 @@ namespace CvBlog.Data.Concrete.EntityFramework.Mappings
             builder.Property(c => c.Phone).HasMaxLength(21);
             builder.Property(c => c.IsFreelance).IsRequired();
             builder.Property(c => c.ProfileImage).IsRequired();
-            builder.Property(c => c.ProfileImage).HasMaxLength(250);
+            builder.Property(c => c.ProfileImage).HasMaxLength(500);
             builder.Property(c => c.HeaderImage).IsRequired();
-            builder.Property(c => c.HeaderImage).HasMaxLength(250);
+            builder.Property(c => c.HeaderImage).HasMaxLength(500);
             builder.Property(c => c.Description).IsRequired();
             builder.Property(c => c.Description).HasColumnType("NVARCHAR(MAX)");
             builder.Property(c => c.CreatedByName).IsRequired();
@@ -43,6 +43,11 @@ namespace CvBlog.Data.Concrete.EntityFramework.Mappings
             builder.Property(c => c.IsDeleted).IsRequired();
             builder.Property(c => c.Note).HasMaxLength(500);
             builder.ToTable("Cvs");
+            // Cv ve Education arasındaki ilişkiyi tanımlıyoruz
+            builder.HasMany(c => c.Educations)  // Cv, birçok Education'a sahip olabilir
+                   .WithOne(e => e.Cv)  // Her Education bir Cv'ye ait olmalı
+                   .HasForeignKey(e => e.CvId)  // Foreign key olarak CvId kullanıyoruz
+                   .OnDelete(DeleteBehavior.SetNull);  // Cv silindiğinde, Education'daki CvId null yapılacak
         }
     }
 }

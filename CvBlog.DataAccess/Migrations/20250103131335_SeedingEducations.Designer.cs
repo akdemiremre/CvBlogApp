@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CvBlog.Data.Migrations
 {
     [DbContext(typeof(CvBlogAppContext))]
-    [Migration("20241224080127_SeedingCategories")]
-    partial class SeedingCategories
+    [Migration("20250103131335_SeedingEducations")]
+    partial class SeedingEducations
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -159,658 +159,6 @@ namespace CvBlog.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Categories", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7189),
-                            Description = "Açıklama1",
-                            IsActive = true,
-                            IsDeleted = false,
-                            ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7190),
-                            Name = "Kategori1",
-                            Note = "CategoryMap'ten kaydedildi."
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7209),
-                            Description = "Açıklama2",
-                            IsActive = true,
-                            IsDeleted = false,
-                            ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7210),
-                            Name = "Kategori2",
-                            Note = "CategoryMap'ten kaydedildi."
-                        },
-                        new
-                        {
-                            Id = 3,
-                            CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7213),
-                            Description = "Açıklama3",
-                            IsActive = true,
-                            IsDeleted = false,
-                            ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7214),
-                            Name = "Kategori3",
-                            Note = "CategoryMap'ten kaydedildi."
-                        },
-                        new
-                        {
-                            Id = 4,
-                            CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7217),
-                            Description = "Açıklama4",
-                            IsActive = true,
-                            IsDeleted = false,
-                            ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7218),
-                            Name = "Kategori4",
-                            Note = "CategoryMap'ten kaydedildi."
-                        },
-                        new
-                        {
-                            Id = 5,
-                            CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7221),
-                            Description = "Açıklama5",
-                            IsActive = true,
-                            IsDeleted = false,
-                            ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7221),
-                            Name = "Kategori5",
-                            Note = "CategoryMap'ten kaydedildi."
-                        },
-                        new
-                        {
-                            Id = 6,
-                            CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7226),
-                            Description = "Açıklama6",
-                            IsActive = true,
-                            IsDeleted = false,
-                            ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7227),
-                            Name = "Kategori6",
-                            Note = "CategoryMap'ten kaydedildi."
-                        },
-                        new
-                        {
-                            Id = 7,
-                            CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7230),
-                            Description = "Açıklama7",
-                            IsActive = true,
-                            IsDeleted = false,
-                            ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7231),
-                            Name = "Kategori7",
-                            Note = "CategoryMap'ten kaydedildi."
-                        },
-                        new
-                        {
-                            Id = 8,
-                            CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7233),
-                            Description = "Açıklama8",
-                            IsActive = true,
-                            IsDeleted = false,
-                            ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7234),
-                            Name = "Kategori8",
-                            Note = "CategoryMap'ten kaydedildi."
-                        },
-                        new
-                        {
-                            Id = 9,
-                            CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7237),
-                            Description = "Açıklama9",
-                            IsActive = true,
-                            IsDeleted = false,
-                            ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7237),
-                            Name = "Kategori9",
-                            Note = "CategoryMap'ten kaydedildi."
-                        },
-                        new
-                        {
-                            Id = 10,
-                            CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7242),
-                            Description = "Açıklama10",
-                            IsActive = true,
-                            IsDeleted = false,
-                            ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7242),
-                            Name = "Kategori10",
-                            Note = "CategoryMap'ten kaydedildi."
-                        },
-                        new
-                        {
-                            Id = 11,
-                            CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7245),
-                            Description = "Açıklama11",
-                            IsActive = true,
-                            IsDeleted = false,
-                            ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7246),
-                            Name = "Kategori11",
-                            Note = "CategoryMap'ten kaydedildi."
-                        },
-                        new
-                        {
-                            Id = 12,
-                            CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7249),
-                            Description = "Açıklama12",
-                            IsActive = true,
-                            IsDeleted = false,
-                            ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7249),
-                            Name = "Kategori12",
-                            Note = "CategoryMap'ten kaydedildi."
-                        },
-                        new
-                        {
-                            Id = 13,
-                            CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7252),
-                            Description = "Açıklama13",
-                            IsActive = true,
-                            IsDeleted = false,
-                            ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7253),
-                            Name = "Kategori13",
-                            Note = "CategoryMap'ten kaydedildi."
-                        },
-                        new
-                        {
-                            Id = 14,
-                            CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7256),
-                            Description = "Açıklama14",
-                            IsActive = true,
-                            IsDeleted = false,
-                            ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7256),
-                            Name = "Kategori14",
-                            Note = "CategoryMap'ten kaydedildi."
-                        },
-                        new
-                        {
-                            Id = 15,
-                            CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7259),
-                            Description = "Açıklama15",
-                            IsActive = true,
-                            IsDeleted = false,
-                            ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7260),
-                            Name = "Kategori15",
-                            Note = "CategoryMap'ten kaydedildi."
-                        },
-                        new
-                        {
-                            Id = 16,
-                            CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7263),
-                            Description = "Açıklama16",
-                            IsActive = true,
-                            IsDeleted = false,
-                            ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7263),
-                            Name = "Kategori16",
-                            Note = "CategoryMap'ten kaydedildi."
-                        },
-                        new
-                        {
-                            Id = 17,
-                            CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7299),
-                            Description = "Açıklama17",
-                            IsActive = true,
-                            IsDeleted = false,
-                            ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7300),
-                            Name = "Kategori17",
-                            Note = "CategoryMap'ten kaydedildi."
-                        },
-                        new
-                        {
-                            Id = 18,
-                            CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7304),
-                            Description = "Açıklama18",
-                            IsActive = true,
-                            IsDeleted = false,
-                            ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7305),
-                            Name = "Kategori18",
-                            Note = "CategoryMap'ten kaydedildi."
-                        },
-                        new
-                        {
-                            Id = 19,
-                            CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7308),
-                            Description = "Açıklama19",
-                            IsActive = true,
-                            IsDeleted = false,
-                            ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7308),
-                            Name = "Kategori19",
-                            Note = "CategoryMap'ten kaydedildi."
-                        },
-                        new
-                        {
-                            Id = 20,
-                            CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7311),
-                            Description = "Açıklama20",
-                            IsActive = true,
-                            IsDeleted = false,
-                            ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7312),
-                            Name = "Kategori20",
-                            Note = "CategoryMap'ten kaydedildi."
-                        },
-                        new
-                        {
-                            Id = 21,
-                            CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7315),
-                            Description = "Açıklama21",
-                            IsActive = true,
-                            IsDeleted = false,
-                            ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7315),
-                            Name = "Kategori21",
-                            Note = "CategoryMap'ten kaydedildi."
-                        },
-                        new
-                        {
-                            Id = 22,
-                            CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7318),
-                            Description = "Açıklama22",
-                            IsActive = true,
-                            IsDeleted = false,
-                            ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7319),
-                            Name = "Kategori22",
-                            Note = "CategoryMap'ten kaydedildi."
-                        },
-                        new
-                        {
-                            Id = 23,
-                            CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7322),
-                            Description = "Açıklama23",
-                            IsActive = true,
-                            IsDeleted = false,
-                            ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7322),
-                            Name = "Kategori23",
-                            Note = "CategoryMap'ten kaydedildi."
-                        },
-                        new
-                        {
-                            Id = 24,
-                            CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7325),
-                            Description = "Açıklama24",
-                            IsActive = true,
-                            IsDeleted = false,
-                            ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7326),
-                            Name = "Kategori24",
-                            Note = "CategoryMap'ten kaydedildi."
-                        },
-                        new
-                        {
-                            Id = 25,
-                            CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7329),
-                            Description = "Açıklama25",
-                            IsActive = true,
-                            IsDeleted = false,
-                            ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7329),
-                            Name = "Kategori25",
-                            Note = "CategoryMap'ten kaydedildi."
-                        },
-                        new
-                        {
-                            Id = 26,
-                            CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7332),
-                            Description = "Açıklama26",
-                            IsActive = true,
-                            IsDeleted = false,
-                            ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7332),
-                            Name = "Kategori26",
-                            Note = "CategoryMap'ten kaydedildi."
-                        },
-                        new
-                        {
-                            Id = 27,
-                            CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7335),
-                            Description = "Açıklama27",
-                            IsActive = true,
-                            IsDeleted = false,
-                            ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7336),
-                            Name = "Kategori27",
-                            Note = "CategoryMap'ten kaydedildi."
-                        },
-                        new
-                        {
-                            Id = 28,
-                            CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7339),
-                            Description = "Açıklama28",
-                            IsActive = true,
-                            IsDeleted = false,
-                            ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7339),
-                            Name = "Kategori28",
-                            Note = "CategoryMap'ten kaydedildi."
-                        },
-                        new
-                        {
-                            Id = 29,
-                            CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7342),
-                            Description = "Açıklama29",
-                            IsActive = true,
-                            IsDeleted = false,
-                            ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7343),
-                            Name = "Kategori29",
-                            Note = "CategoryMap'ten kaydedildi."
-                        },
-                        new
-                        {
-                            Id = 30,
-                            CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7346),
-                            Description = "Açıklama30",
-                            IsActive = true,
-                            IsDeleted = false,
-                            ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7346),
-                            Name = "Kategori30",
-                            Note = "CategoryMap'ten kaydedildi."
-                        },
-                        new
-                        {
-                            Id = 31,
-                            CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7349),
-                            Description = "Açıklama31",
-                            IsActive = true,
-                            IsDeleted = false,
-                            ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7350),
-                            Name = "Kategori31",
-                            Note = "CategoryMap'ten kaydedildi."
-                        },
-                        new
-                        {
-                            Id = 32,
-                            CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7353),
-                            Description = "Açıklama32",
-                            IsActive = true,
-                            IsDeleted = false,
-                            ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7353),
-                            Name = "Kategori32",
-                            Note = "CategoryMap'ten kaydedildi."
-                        },
-                        new
-                        {
-                            Id = 33,
-                            CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7356),
-                            Description = "Açıklama33",
-                            IsActive = true,
-                            IsDeleted = false,
-                            ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7357),
-                            Name = "Kategori33",
-                            Note = "CategoryMap'ten kaydedildi."
-                        },
-                        new
-                        {
-                            Id = 34,
-                            CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7360),
-                            Description = "Açıklama34",
-                            IsActive = true,
-                            IsDeleted = false,
-                            ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7361),
-                            Name = "Kategori34",
-                            Note = "CategoryMap'ten kaydedildi."
-                        },
-                        new
-                        {
-                            Id = 35,
-                            CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7364),
-                            Description = "Açıklama35",
-                            IsActive = true,
-                            IsDeleted = false,
-                            ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7364),
-                            Name = "Kategori35",
-                            Note = "CategoryMap'ten kaydedildi."
-                        },
-                        new
-                        {
-                            Id = 36,
-                            CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7367),
-                            Description = "Açıklama36",
-                            IsActive = true,
-                            IsDeleted = false,
-                            ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7368),
-                            Name = "Kategori36",
-                            Note = "CategoryMap'ten kaydedildi."
-                        },
-                        new
-                        {
-                            Id = 37,
-                            CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7378),
-                            Description = "Açıklama37",
-                            IsActive = true,
-                            IsDeleted = false,
-                            ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7379),
-                            Name = "Kategori37",
-                            Note = "CategoryMap'ten kaydedildi."
-                        },
-                        new
-                        {
-                            Id = 38,
-                            CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7382),
-                            Description = "Açıklama38",
-                            IsActive = true,
-                            IsDeleted = false,
-                            ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7382),
-                            Name = "Kategori38",
-                            Note = "CategoryMap'ten kaydedildi."
-                        },
-                        new
-                        {
-                            Id = 39,
-                            CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7385),
-                            Description = "Açıklama39",
-                            IsActive = true,
-                            IsDeleted = false,
-                            ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7386),
-                            Name = "Kategori39",
-                            Note = "CategoryMap'ten kaydedildi."
-                        },
-                        new
-                        {
-                            Id = 40,
-                            CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7389),
-                            Description = "Açıklama40",
-                            IsActive = true,
-                            IsDeleted = false,
-                            ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7389),
-                            Name = "Kategori40",
-                            Note = "CategoryMap'ten kaydedildi."
-                        },
-                        new
-                        {
-                            Id = 41,
-                            CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7392),
-                            Description = "Açıklama41",
-                            IsActive = true,
-                            IsDeleted = false,
-                            ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7393),
-                            Name = "Kategori41",
-                            Note = "CategoryMap'ten kaydedildi."
-                        },
-                        new
-                        {
-                            Id = 42,
-                            CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7396),
-                            Description = "Açıklama42",
-                            IsActive = true,
-                            IsDeleted = false,
-                            ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7396),
-                            Name = "Kategori42",
-                            Note = "CategoryMap'ten kaydedildi."
-                        },
-                        new
-                        {
-                            Id = 43,
-                            CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7399),
-                            Description = "Açıklama43",
-                            IsActive = true,
-                            IsDeleted = false,
-                            ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7400),
-                            Name = "Kategori43",
-                            Note = "CategoryMap'ten kaydedildi."
-                        },
-                        new
-                        {
-                            Id = 44,
-                            CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7403),
-                            Description = "Açıklama44",
-                            IsActive = true,
-                            IsDeleted = false,
-                            ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7403),
-                            Name = "Kategori44",
-                            Note = "CategoryMap'ten kaydedildi."
-                        },
-                        new
-                        {
-                            Id = 45,
-                            CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7406),
-                            Description = "Açıklama45",
-                            IsActive = true,
-                            IsDeleted = false,
-                            ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7406),
-                            Name = "Kategori45",
-                            Note = "CategoryMap'ten kaydedildi."
-                        },
-                        new
-                        {
-                            Id = 46,
-                            CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7410),
-                            Description = "Açıklama46",
-                            IsActive = true,
-                            IsDeleted = false,
-                            ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7410),
-                            Name = "Kategori46",
-                            Note = "CategoryMap'ten kaydedildi."
-                        },
-                        new
-                        {
-                            Id = 47,
-                            CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7413),
-                            Description = "Açıklama47",
-                            IsActive = true,
-                            IsDeleted = false,
-                            ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7414),
-                            Name = "Kategori47",
-                            Note = "CategoryMap'ten kaydedildi."
-                        },
-                        new
-                        {
-                            Id = 48,
-                            CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7418),
-                            Description = "Açıklama48",
-                            IsActive = true,
-                            IsDeleted = false,
-                            ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7418),
-                            Name = "Kategori48",
-                            Note = "CategoryMap'ten kaydedildi."
-                        },
-                        new
-                        {
-                            Id = 49,
-                            CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7421),
-                            Description = "Açıklama49",
-                            IsActive = true,
-                            IsDeleted = false,
-                            ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7422),
-                            Name = "Kategori49",
-                            Note = "CategoryMap'ten kaydedildi."
-                        },
-                        new
-                        {
-                            Id = 50,
-                            CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7425),
-                            Description = "Açıklama50",
-                            IsActive = true,
-                            IsDeleted = false,
-                            ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 12, 24, 11, 1, 26, 67, DateTimeKind.Local).AddTicks(7425),
-                            Name = "Kategori50",
-                            Note = "CategoryMap'ten kaydedildi."
-                        });
                 });
 
             modelBuilder.Entity("CvBlog.Entities.Concrete.Comment", b =>
@@ -906,92 +254,6 @@ namespace CvBlog.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("CompetencyLevels", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 12, 24, 11, 1, 26, 68, DateTimeKind.Local).AddTicks(1785),
-                            IsActive = true,
-                            IsDeleted = false,
-                            ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 12, 24, 11, 1, 26, 68, DateTimeKind.Local).AddTicks(1786),
-                            Name = "beginner",
-                            Note = "CompetencyLevel(beginner)"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 12, 24, 11, 1, 26, 68, DateTimeKind.Local).AddTicks(1812),
-                            IsActive = true,
-                            IsDeleted = false,
-                            ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 12, 24, 11, 1, 26, 68, DateTimeKind.Local).AddTicks(1812),
-                            Name = "elementary",
-                            Note = "CompetencyLevel(elementary)"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 12, 24, 11, 1, 26, 68, DateTimeKind.Local).AddTicks(1816),
-                            IsActive = true,
-                            IsDeleted = false,
-                            ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 12, 24, 11, 1, 26, 68, DateTimeKind.Local).AddTicks(1817),
-                            Name = "pre-intermediate",
-                            Note = "CompetencyLevel(pre-intermediate)"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 12, 24, 11, 1, 26, 68, DateTimeKind.Local).AddTicks(1820),
-                            IsActive = true,
-                            IsDeleted = false,
-                            ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 12, 24, 11, 1, 26, 68, DateTimeKind.Local).AddTicks(1821),
-                            Name = "intermediate",
-                            Note = "CompetencyLevel(intermediate)"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 12, 24, 11, 1, 26, 68, DateTimeKind.Local).AddTicks(1824),
-                            IsActive = true,
-                            IsDeleted = false,
-                            ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 12, 24, 11, 1, 26, 68, DateTimeKind.Local).AddTicks(1825),
-                            Name = "upper-intermediate",
-                            Note = "CompetencyLevel(upper-intermediate)"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 12, 24, 11, 1, 26, 68, DateTimeKind.Local).AddTicks(1831),
-                            IsActive = true,
-                            IsDeleted = false,
-                            ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 12, 24, 11, 1, 26, 68, DateTimeKind.Local).AddTicks(1831),
-                            Name = "advanced",
-                            Note = "CompetencyLevel(advanced)"
-                        },
-                        new
-                        {
-                            Id = 7,
-                            CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2024, 12, 24, 11, 1, 26, 68, DateTimeKind.Local).AddTicks(1834),
-                            IsActive = true,
-                            IsDeleted = false,
-                            ModifiedByName = "InitialCreate",
-                            ModifiedDate = new DateTime(2024, 12, 24, 11, 1, 26, 68, DateTimeKind.Local).AddTicks(1835),
-                            Name = "expert-proficency",
-                            Note = "CompetencyLevel(expert-proficency)"
-                        });
                 });
 
             modelBuilder.Entity("CvBlog.Entities.Concrete.Customer", b =>
@@ -1009,9 +271,6 @@ namespace CvBlog.Data.Migrations
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
-
-                    b.Property<int?>("CvId")
-                        .HasColumnType("int");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
@@ -1048,8 +307,6 @@ namespace CvBlog.Data.Migrations
                         .HasColumnType("nvarchar(250)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CvId");
 
                     b.ToTable("Customers", (string)null);
                 });
@@ -1094,8 +351,8 @@ namespace CvBlog.Data.Migrations
 
                     b.Property<string>("HeaderImage")
                         .IsRequired()
-                        .HasMaxLength(250)
-                        .HasColumnType("nvarchar(250)");
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
@@ -1131,8 +388,8 @@ namespace CvBlog.Data.Migrations
 
                     b.Property<string>("ProfileImage")
                         .IsRequired()
-                        .HasMaxLength(250)
-                        .HasColumnType("nvarchar(250)");
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
 
                     b.HasKey("Id");
 
@@ -1168,6 +425,10 @@ namespace CvBlog.Data.Migrations
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 
+                    b.Property<int?>("EducationLevelId")
+                        .IsRequired()
+                        .HasColumnType("int");
+
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
@@ -1187,11 +448,6 @@ namespace CvBlog.Data.Migrations
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 
-                    b.Property<string>("SchoolDegree")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
                     b.Property<string>("SchoolName")
                         .IsRequired()
                         .HasMaxLength(100)
@@ -1201,7 +457,54 @@ namespace CvBlog.Data.Migrations
 
                     b.HasIndex("CvId");
 
+                    b.HasIndex("EducationLevelId");
+
                     b.ToTable("Educations", (string)null);
+                });
+
+            modelBuilder.Entity("CvBlog.Entities.Concrete.EducationLevel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("CreatedByName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("ModifiedByName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<DateTime>("ModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Note")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("EducationLevels", (string)null);
                 });
 
             modelBuilder.Entity("CvBlog.Entities.Concrete.Experience", b =>
@@ -1472,14 +775,14 @@ namespace CvBlog.Data.Migrations
                         new
                         {
                             Id = 1,
-                            ConcurrencyStamp = "111517eb-b2f6-4d91-8839-56f38ffc7b8f",
+                            ConcurrencyStamp = "83df96f3-4156-45f7-8dd7-ae5ec54680dc",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = 2,
-                            ConcurrencyStamp = "75f8de0a-921b-4239-a9d9-c608f3ba7b47",
+                            ConcurrencyStamp = "17cddb53-9054-42ac-9aef-441b42a0fe6a",
                             Name = "Editor",
                             NormalizedName = "EDITOR"
                         });
@@ -1794,7 +1097,7 @@ namespace CvBlog.Data.Migrations
                             Id = 1,
                             About = "Admin User About...",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "04c33ccd-faf2-48ce-b441-d033d86864dc",
+                            ConcurrencyStamp = "be991584-c470-40f9-b6a9-8d808fefd540",
                             Email = "admin@emreakdemir.net",
                             EmailConfirmed = true,
                             FacebookLink = "https://facebook.com/",
@@ -1806,11 +1109,11 @@ namespace CvBlog.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@EMREAKDEMIR.NET",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAIAAYagAAAAEEPHM9PJx1C3oPlyTAiM3/OUQ7atMe8odQcuvC7We1nfvi9mY+GbwLkybKei028IBA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEAayLRuc5hY1HJkXst5E731L0KPSMA5oGEmQqwXzan56ash1wnCLJM1fUIbegA5QnA==",
                             PhoneNumber = "5551112233",
                             PhoneNumberConfirmed = true,
                             Picture = "defaultUser.png",
-                            SecurityStamp = "466f9983-e2b7-4177-95b6-e10b77496286",
+                            SecurityStamp = "c347555b-3ea4-4b6a-822e-4861b072b1a9",
                             TwitterLink = "https://twitter.com/",
                             TwoFactorEnabled = false,
                             UserName = "admin",
@@ -1822,7 +1125,7 @@ namespace CvBlog.Data.Migrations
                             Id = 2,
                             About = "Editor User About...",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "6663cab0-dcab-42e0-ae16-c31caff7f1e6",
+                            ConcurrencyStamp = "4539412b-9621-4ad6-b726-0fdcd4d8be9e",
                             Email = "editor@emreakdemir.net",
                             EmailConfirmed = true,
                             FacebookLink = "https://facebook.com/",
@@ -1834,11 +1137,11 @@ namespace CvBlog.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "EDITOR@EMREAKDEMIR.NET",
                             NormalizedUserName = "EDITOR",
-                            PasswordHash = "AQAAAAIAAYagAAAAEJfKPz3+lTmbFwjfY9OyTYqi0MgEJYE7EEXdyhXMSjP6Y880t/SFsk5E0Dl1/5m7MA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEPkGC8pnqUrRJgPQRbty7zlVVa7TYo05IX0Yup0z7WS7WHDr1rYgigjIH0ofqakL8w==",
                             PhoneNumber = "5551112234",
                             PhoneNumberConfirmed = true,
                             Picture = "defaultUser.png",
-                            SecurityStamp = "d9122a3a-6c92-45ad-ae43-c48eb37001ad",
+                            SecurityStamp = "66adf326-580f-400a-83b9-7a475e0925c1",
                             TwitterLink = "https://twitter.com/",
                             TwoFactorEnabled = false,
                             UserName = "editor",
@@ -1972,18 +1275,22 @@ namespace CvBlog.Data.Migrations
                     b.Navigation("Article");
                 });
 
-            modelBuilder.Entity("CvBlog.Entities.Concrete.Customer", b =>
-                {
-                    b.HasOne("CvBlog.Entities.Concrete.Cv", null)
-                        .WithMany("Customers")
-                        .HasForeignKey("CvId");
-                });
-
             modelBuilder.Entity("CvBlog.Entities.Concrete.Education", b =>
                 {
-                    b.HasOne("CvBlog.Entities.Concrete.Cv", null)
+                    b.HasOne("CvBlog.Entities.Concrete.Cv", "Cv")
                         .WithMany("Educations")
-                        .HasForeignKey("CvId");
+                        .HasForeignKey("CvId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.HasOne("CvBlog.Entities.Concrete.EducationLevel", "EducationLevel")
+                        .WithMany("Educations")
+                        .HasForeignKey("EducationLevelId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Cv");
+
+                    b.Navigation("EducationLevel");
                 });
 
             modelBuilder.Entity("CvBlog.Entities.Concrete.Experience", b =>
@@ -2123,8 +1430,6 @@ namespace CvBlog.Data.Migrations
 
             modelBuilder.Entity("CvBlog.Entities.Concrete.Cv", b =>
                 {
-                    b.Navigation("Customers");
-
                     b.Navigation("Educations");
 
                     b.Navigation("Experiences");
@@ -2134,6 +1439,11 @@ namespace CvBlog.Data.Migrations
                     b.Navigation("Skills");
 
                     b.Navigation("SocialMedias");
+                });
+
+            modelBuilder.Entity("CvBlog.Entities.Concrete.EducationLevel", b =>
+                {
+                    b.Navigation("Educations");
                 });
 
             modelBuilder.Entity("CvBlog.Entities.Concrete.Portfolio", b =>

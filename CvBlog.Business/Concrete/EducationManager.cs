@@ -15,25 +15,22 @@ using System.Threading.Tasks;
 
 namespace CvBlog.Services.Concrete
 {
-    public class EducationManager : IEducationService
+    public class EducationManager : ManagerBase,IEducationService
     {
-        private readonly IUnitOfWork _unitOfWork;
-        private readonly IMapper _mapper;
 
-        public EducationManager(IUnitOfWork unitOfWork, IMapper mapper)
+        public EducationManager(IUnitOfWork unitOfWork, IMapper mapper) : base(unitOfWork,mapper)
         {
-            _unitOfWork = unitOfWork;
-            _mapper = mapper;
+
         }
 
         public async Task<IResult> AddAsync(EducationAddDto educationAddDto, string createdByName)
         {
             try
             {
-                var education = _mapper.Map<Education>(educationAddDto);
+                var education = Mapper.Map<Education>(educationAddDto);
                 education.CreatedByName = createdByName;
                 education.ModifiedByName = createdByName;
-                await _unitOfWork.Educations.AddAsync(education).ContinueWith(t => { _unitOfWork.SaveAsync(); });
+                await UnitOfWork.Educations.AddAsync(education).ContinueWith(t => { UnitOfWork.SaveAsync(); });
                 return new Result(ResultStatus.Success, Messages.Education.Add(true));
             }
             catch (Exception Ex)
@@ -46,13 +43,13 @@ namespace CvBlog.Services.Concrete
         {
             try
             {
-                var result = await _unitOfWork.Educations.AnyAsync(x => x.Id == educationId);
+                var result = await UnitOfWork.Educations.AnyAsync(x => x.Id == educationId);
                 if (result)
                 {
-                    var education = await _unitOfWork.Educations.GetAsync(x => x.Id == educationId);
+                    var education = await UnitOfWork.Educations.GetAsync(x => x.Id == educationId);
                     education.ModifiedByName = modifiedByName;
                     education.ModifiedDate = DateTime.Now;
-                    await _unitOfWork.Educations.UpdateAsync(education).ContinueWith(t => { _unitOfWork.SaveAsync(); });
+                    await UnitOfWork.Educations.UpdateAsync(education).ContinueWith(t => { UnitOfWork.SaveAsync(); });
                     return new Result(ResultStatus.Success,Messages.Education.Delete(true));
                 }
                 return new Result(ResultStatus.Error, Messages.Education.NotFound(false));
@@ -67,7 +64,7 @@ namespace CvBlog.Services.Concrete
         {
             try
             {
-                var educations = await _unitOfWork.Educations.GetAllAsync();
+                var educations = await UnitOfWork.Educations.GetAllAsync();
                 if (educations.Count > -1)
                 {
                     return new DataResult<EducationListDto>(ResultStatus.Success, new EducationListDto
@@ -88,7 +85,7 @@ namespace CvBlog.Services.Concrete
         {
             try
             {
-                var educations = await _unitOfWork.Educations.GetAllAsync(x => !x.IsDeleted);
+                var educations = await UnitOfWork.Educations.GetAllAsync(x => !x.IsDeleted);
                 if (educations.Count > -1)
                 {
                     return new DataResult<EducationListDto>(ResultStatus.Success, new EducationListDto
@@ -109,7 +106,7 @@ namespace CvBlog.Services.Concrete
         {
             try
             {
-                var educations = await _unitOfWork.Educations.GetAllAsync(x => !x.IsDeleted && x.IsActive);
+                var educations = await UnitOfWork.Educations.GetAllAsync(x => !x.IsDeleted && x.IsActive);
                 if (educations.Count > -1)
                 {
                     return new DataResult<EducationListDto>(ResultStatus.Success, new EducationListDto
@@ -130,7 +127,7 @@ namespace CvBlog.Services.Concrete
         {
             try
             {
-                var education = await _unitOfWork.Educations.GetAsync(x => x.Id == educationId);
+                var education = await UnitOfWork.Educations.GetAsync(x => x.Id == educationId);
                 if (education != null)
                 {
                     return new DataResult<EducationDto>(ResultStatus.Success, new EducationDto
@@ -151,11 +148,11 @@ namespace CvBlog.Services.Concrete
         {
             try
             {
-                var result = await _unitOfWork.Educations.AnyAsync(x => x.Id == educationId);
+                var result = await UnitOfWork.Educations.AnyAsync(x => x.Id == educationId);
                 if (result)
                 {
-                    var education = await _unitOfWork.Educations.GetAsync(x => x.Id == educationId);
-                    await _unitOfWork.Educations.DeleteAsync(education).ContinueWith(t => { _unitOfWork.SaveAsync(); });
+                    var education = await UnitOfWork.Educations.GetAsync(x => x.Id == educationId);
+                    await UnitOfWork.Educations.DeleteAsync(education).ContinueWith(t => { UnitOfWork.SaveAsync(); });
                     return new Result(ResultStatus.Success,Messages.Education.HardDelete(true));
                 }
                 return new Result(ResultStatus.Error, Messages.Education.NotFound(false));
@@ -168,10 +165,35 @@ namespace CvBlog.Services.Concrete
 
         public async Task<IResult> UpdateAsync(EducationUpdateDto educationUpdateDto, string modifiedByName)
         {
-            var education = _mapper.Map<Education>(educationUpdateDto);
+            var education = Mapper.Map<Education>(educationUpdateDto);
             education.ModifiedByName = modifiedByName;
-            await _unitOfWork.Educations.UpdateAsync(education).ContinueWith(t => { _unitOfWork.SaveAsync(); });
+            await UnitOfWork.Educations.UpdateAsync(education).ContinueWith(t => { UnitOfWork.SaveAsync(); });
             return new Result(ResultStatus.Success, $"{education.SchoolName} isimli okula ait kayıt başarıyla güncellenmiştir.");
+        }
+
+        public async Task<IDataResult<EducationListDto>> GetPagingAllAsync(int pageNumber, int rowCount, string orderColumn, string orderType, string searchValue)
+        {
+            try
+            {
+                var educations = await UnitOfWork.Educations.GetPagingAllAsync(pageNumber, rowCount, orderColumn, orderType, x => !x.IsDeleted && x.SchoolName.Contains(searchValue));
+                if (educations.Count > -1)
+                {
+                    return new DataResult<EducationListDto>(ResultStatus.Success, new EducationListDto
+                    {
+                        Educations = educations,
+                        ResultStatus = ResultStatus.Success
+                    });
+                }
+                return new DataResult<EducationListDto>(ResultStatus.Error, Messages.Education.NotFound(true), null);
+            }
+            catch (Exception Ex)
+            {
+                return new DataResult<EducationListDto>(ResultStatus.Error, Messages.Education.Error("Veri çekme işlemi", Ex.Message.ToString()),null);
+            }
+        }
+        public async Task<int> CountAsync()
+        {
+            return await UnitOfWork.Educations.CountAsync();
         }
     }
 }

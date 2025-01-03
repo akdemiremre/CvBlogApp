@@ -16,9 +16,11 @@ namespace CvBlog.Services.Abstract
         Task<IDataResult<EducationListDto>> GetAllAsync();
         Task<IDataResult<EducationListDto>> GetAllByNonDeletedAsync();
         Task<IDataResult<EducationListDto>> GetAlLByNonDeletedAndActiveAsync();
+        Task<IDataResult<EducationListDto>> GetPagingAllAsync(int pageNumber, int rowCount, string orderColumn, string orderType, string searchValue);
         Task<IResult> AddAsync(EducationAddDto educationAddDto, string createdByName);
         Task<IResult> UpdateAsync(EducationUpdateDto educationUpdateDto, string modifiedByName);
         Task<IResult> DeleteAsync(int educationId, string modifiedByName);
         Task<IResult> HardDeleteAsync(int educationId);
+        Task<int> CountAsync();
     }
 }

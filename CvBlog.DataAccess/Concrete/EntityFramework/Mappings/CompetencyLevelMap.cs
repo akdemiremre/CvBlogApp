@@ -30,22 +30,22 @@ namespace CvBlog.Data.Concrete.EntityFramework.Mappings
             /*
              * beginner (başlangıç), elementary (temel), pre-intermediate (ortanın altı), intermediate (orta), upper-intermediate (ortanın üstü), advanced (ileri), proficiency (uzmanlık).
              */
-            string[] competencyLevels = { "beginner", "elementary", "pre-intermediate", "intermediate", "upper-intermediate", "advanced", "expert-proficency" };
-            for (int i = 0; i < competencyLevels.Count(); i++)
-            {
-                builder.HasData(new CompetencyLevel
-                {
-                    Id = i+1,
-                    Name = competencyLevels[i],
-                    IsActive = true,
-                    IsDeleted = false,
-                    CreatedByName = "InitialCreate",
-                    CreatedDate = DateTime.Now,
-                    ModifiedByName = "InitialCreate",
-                    ModifiedDate = DateTime.Now,
-                    Note = "CompetencyLevel("+ competencyLevels[i] + ")",
-                });
-            }
+            //string[] competencyLevels = { "beginner", "elementary", "pre-intermediate", "intermediate", "upper-intermediate", "advanced", "expert-proficency" };
+            //for (int i = 0; i < competencyLevels.Count(); i++)
+            //{
+            //    builder.HasData(new CompetencyLevel
+            //    {
+            //        Id = i+1,
+            //        Name = competencyLevels[i],
+            //        IsActive = true,
+            //        IsDeleted = false,
+            //        CreatedByName = "InitialCreate",
+            //        CreatedDate = DateTime.Now,
+            //        ModifiedByName = "InitialCreate",
+            //        ModifiedDate = DateTime.Now,
+            //        Note = "CompetencyLevel("+ competencyLevels[i] + ")",
+            //    });
+            //}
         }
     }
 }

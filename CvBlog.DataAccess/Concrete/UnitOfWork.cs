@@ -25,6 +25,7 @@ namespace CvBlog.Data.Concrete
         private EfCustomerRepository _customerRepository;
         private EfCvRepository _cvRepository;
         private EfEducationRepository _educationRepository;
+        private EfEducationLevelRepository _educationLevelRepository;
         private EfExperienceRepository _experienceRepository;
         private EfMyLanguageRepository _myLanguageRepository;
         private EfPortfolioRepository _portfolioRepository;
@@ -55,6 +56,7 @@ namespace CvBlog.Data.Concrete
         public ICvRepository Cvs => _cvRepository ?? new EfCvRepository(_context);
 
         public IEducationRepository Educations => _educationRepository ?? new EfEducationRepository(_context);
+        public IEducationLevelRepository EducationLevels => _educationLevelRepository ?? new EfEducationLevelRepository(_context);
 
         public IExperienceRepository Experiences => _experienceRepository ?? new EfExperienceRepository(_context);
 
